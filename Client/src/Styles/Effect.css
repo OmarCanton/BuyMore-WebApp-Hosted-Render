@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.effect-wrapper {
+    font-family: 'Lobster Two';
+    color: #1D2671;
+    font-weight: bold;
+    font-size: xx-large;
+    animation: animateLoading 3s alternate infinite;
+}
+@keyframes animateLoading {
+    from {
+        transform: scale(0.5);
+        opacity: 0.2;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.5);
+        opacity: 0.2;
+    }
+}

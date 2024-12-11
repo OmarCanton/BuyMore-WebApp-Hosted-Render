@@ -1,0 +1,26 @@
+.themeChanger {
+    position: fixed;
+    background-color: rgb(22, 22, 22);
+    width: 10px;
+    height: 10px;
+    top: 50vh;
+    border-radius: 50%;
+    z-index: 99999;
+    opacity: 0;
+    animation: themeChangeOverlay 2s forwards;
+    pointer-events: none;
+} 
+@keyframes themeChangeOverlay {
+    from {
+        scale: 0;
+        opacity: 0;    
+    }
+    50% {
+        scale: 50;
+        opacity: 1;
+    }
+    to {
+        scale: 1000;
+        opacity: 0;
+    }
+}

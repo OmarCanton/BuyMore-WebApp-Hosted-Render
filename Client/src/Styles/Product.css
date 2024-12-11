@@ -1,0 +1,274 @@
+.checkWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    & .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 10px;
+        & span {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-right: 10%;
+            font-weight: bold;
+            font-size: 2.25rem;
+        }
+    }
+    
+    & .productSectionWrapper {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 3%;
+        padding-bottom: 90px;
+        & .productSection {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-bottom: 20px;
+            & > div {
+                width: 100%;
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                border: 1px solid rgb(228, 228, 228);
+                border-radius: 10px;
+            }
+            & .image {
+                & img {
+                    width: 400px;
+                    height: 400px;
+                    object-fit: contain;
+                    &:hover {
+                        scale: 1.1;
+                    }
+                }
+            }
+            & .description {
+                align-items: flex-start;
+                justify-content: center;
+                & .name {
+                    color: #1D2671;
+                    font-weight: bold;
+                    font-size: 2.25rem;
+                }
+                & .desc {
+                    color: grey;
+                }
+                & .catBrand {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-direction: row;
+                    color: grey;
+                    gap: 30px;
+                }
+                & .prices {
+                    position: relative;
+                    top: 5px;
+                }
+                & .cart {
+                    position: relative;
+                    top: 10px;
+                    width: 100%;
+                    & button {
+                        width: 40%;
+                        padding: 2%;
+                        border-radius: 5px;
+                        border: none;
+                        color: white;
+                        background-color: #C33764;
+                        transition: all 0.15s;
+                        cursor: pointer;
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                        &:active {
+                            opacity: 0.5;
+                        }
+                    }
+                }
+            }
+            & .comment {
+                gap: 5px;
+                & form {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                    & h3 {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        & p {
+                            text-align: center;
+                        }
+                    }
+                    & textarea {
+                        width: 90%;
+                        height: 200px;
+                        padding: 20px;
+                        cursor: auto;
+                        font-size: medium;
+                        border: none;
+                        background-color: rgb(231, 231, 231);
+                        border-radius: 5px;
+                        outline: none;
+                        &:hover {
+                            box-shadow: 0 3px 10px -5px black;
+                        }
+                    }
+                    & button {
+                        padding: 5px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            & .rating {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 5px;
+                & .ratingWrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: 10px;
+                    & .starsWrapper {
+                        display: flex;
+                        flex-direction: row;
+                    }
+                    & button {
+                        padding: 5px;
+                        cursor: pointer;
+                    }
+
+                }
+            }
+            
+        }
+        & .activityIndicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30%;
+            position: absolute;
+            right: 0;
+            top: 30%;
+        }
+        & .viewComments {
+            width: 30%;
+            padding: 10px;
+            border: 1px solid rgb(228, 228, 228);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 5px;
+            & h3 {
+                padding: 5px;
+            }
+            & .userCommentWrapper {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                border-radius: 10px;
+                background-color: rgb(235, 235, 235);
+                color: #1D2671;
+                padding: 10px;
+                & .user {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    padding-left: 15px;
+                    & h4 {
+                        text-align: center;
+                    }
+                }
+                & .userComment {
+                    padding-left: 30px;
+                    color: rgb(80, 80, 80);
+                    text-wrap: wrap;
+                    overflow-wrap: break-word;
+                    & .ratings {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        gap: 5px;
+                        padding-left: 15px;
+                        
+                    }
+                    & ul {
+                        padding-left: 22px;
+                        padding-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 1024px) {
+    .productSection{
+        width: 60% !important;
+    } 
+}
+@media (max-width: 768px) {
+    .productSectionWrapper {
+        align-items: center !important;
+        flex-direction: column;
+        & .productSection {
+            & > div {
+                width: 140% !important;
+            }
+            & .image {
+                & img {
+                    &:hover {
+                        scale: none !important;
+                    }
+                }
+            }
+        }
+        & .viewComments {
+            width: 85% !important;
+        }
+    }
+}
+@media (max-width: 425px) {
+    .header {
+        & span {
+            font-size: 1.5rem !important;
+        }
+    }
+    .productSectionWrapper {
+        & .productSection {
+            & > div {
+                width: 160% !important;
+            }
+            & .image {
+                & img {
+                    width: 300px !important;
+                    height: 300px !important;
+                }
+            }
+        }
+        & .viewComments {
+            width: 96% !important;
+        }
+    }
+}

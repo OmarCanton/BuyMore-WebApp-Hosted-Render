@@ -1,0 +1,233 @@
+.settings-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    & .settings-backTitle {
+        position: relative;
+        right: 5px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+    & .settings-main {
+        padding-top: 20px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        & .user {
+            padding-left: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            gap: 20px;
+            & .profileImage {
+                background-color: lightgrey;
+                width: 30%;
+                height: 300px;
+                border-radius: 20px;
+                & img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 20px;
+                }
+                & .noProfilePic {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    padding: 10px;
+                }
+            }
+            & .guest {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                & span {
+                    font-weight: bold;
+                    font-size: 2rem;
+                }
+            }
+            & .userDetails {
+                padding: 20px;
+                border-radius: 10px;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                flex-direction: column;
+                gap: 10px;
+                color: darkgrey;
+                & .username {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    font-weight: bold;
+                    font-size: 2.25rem;
+                    word-break: break-all;
+                    & .verified {
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+        & ul {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            & .acc {
+                border-top: 1px solid lightgrey;
+            }
+            & li {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                padding: 20px;
+                border-bottom: 1px solid lightgrey;
+                cursor: pointer;
+                & h3{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                }
+                & div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    cursor: pointer;
+                }
+            }
+        }
+        & .logout {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            &:hover {
+                background-color: lightgrey;
+            }
+        }
+        & button {
+            width: 100px;
+            height: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 100px;
+            background-image: linear-gradient( to right, #C33764, #1D2671);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            transition: all 0.15s;
+            position: relative;
+            bottom: 2%;
+            &:hover {
+                opacity: 0.8;
+                color: white;
+            }
+            &:active {
+                width: 90px;
+            }
+        }
+    
+    }
+    & .footer {
+        background-color: #1D2671;
+        width: 100%;
+        height: 50px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        color: darkgrey;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 40px;
+        padding-bottom: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .user {
+        & .profileImage {
+            width: 40% !important;
+        }
+        & .userDetails {
+            width: 60% !important;
+            & .username {
+                font-size: 2rem !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .settings-backTitle {
+        font-size: 0.9rem;
+        & .back-settings {
+            scale: 0.8;
+        }
+
+    }
+    .settings-wrapper {
+        & .settings-main {
+            & .user {
+                gap: 0 !important;
+                padding: 10px !important;
+                flex-direction: column !important;
+                & .profileImage {
+                    width: 300px !important;
+                    height: 300px !important;
+                }
+                & .guest {
+                    flex-direction: column;
+                    justify-content: center !important;
+                    width: 100%;
+                    & span {
+                        font-size: 1.5rem;
+                    }
+                }
+                & .userDetails{
+                    padding: 15px !important;
+                    padding-right: 0 !important;
+                    width: 100% !important;
+                    align-items: center !important;
+                    gap: 5px !important;
+                    & .username {
+                        padding: 0 !important;
+                        font-size: 1.4rem !important;
+                        & .verified {
+                            margin-top: 10px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 375px) {
+    .settings-wrapper {
+        & .settings-main {
+            & .user {
+
+                & .profileImage {
+                    width: 250px !important;
+                    height: 250px !important;
+                }
+            }
+        }
+    }
+}

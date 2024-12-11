@@ -1,0 +1,69 @@
+.shopByCats-wrapper {
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+    padding: 10px;
+    margin-top: 13%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    & span {
+        font-weight: bold;
+        font-size: 2rem;
+    }
+    & .cats-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 20px;
+        color: white;
+        font-weight: bold;
+        & div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            flex: 0 1 120px;
+            height: 80px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            & small {
+                font-size: 0.9rem;
+            }
+            &:nth-child(1) {
+                background-image: url('../Resources/Home.jpg');
+            }
+            &:nth-child(2) {
+                background-image: url('../Resources/Electronics.jpg');
+            }
+            &:nth-child(3) {
+                background-image: url('../Resources/Smartphones.jpg');
+            }
+            &:nth-child(4) {
+                background-image: url('../Resources/Shoes.jpg');
+            }
+            &:nth-child(5) {
+                background-image: url('../Resources/Outerwear.jpg');
+            }
+            &:nth-child(6) {
+                background-image: url('../Resources/Laptops.jpg');
+            }
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .shopByCats-wrapper {
+        display: flex !important;
+    }
+}
+@media (max-width: 375px) {
+    .cats-wrapper {
+        & div {
+            flex: 0 1 110px !important;
+        }
+    }
+}

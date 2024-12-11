@@ -1,0 +1,116 @@
+.mainWrapper {
+    background-color: black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.3%;
+    position: fixed;
+    width: 4.26rem;
+    top: 88%;
+    border-radius: 50px;
+    box-shadow: 0 3px 10px 0px rgb(0, 0, 0);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: auto;
+    background-image: linear-gradient( to right, #C33764, #1D2671);
+    z-index: 99999;
+    height: 10%;
+    & a {
+        text-decoration: none;
+        text-align: center;
+        font-size: larger;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.15s  cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        & .but {
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            cursor: pointer;
+        }
+    }
+    & .wishlist-panel, .favorites {
+        & .numOfItems {
+            color: white;
+            background-color: red;
+            font-weight: normal;
+            font-size: medium;
+            height: 22px;
+            width: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            right: 13%;
+        }
+    }
+    & .chosenRoute {
+        border: 2px solid red;
+        display: none;
+        border-radius: 20px;
+        z-index: 99999;
+        width: 30px;
+        position: absolute;
+        bottom: 5px;
+        left: 20px;
+    }
+}
+.panelNotificationCount {
+    background-color: red;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    clip-path: circle(7px);
+    position: fixed;
+    top: 87.8%;
+    left: 51%;
+    transition: all 0.2s;
+    cursor: auto;
+    color: white;
+    z-index: 99999;
+}
+.mainWrapper:hover{
+    width: 341.5px;
+}
+.mainWrapper:hover + .panelNotificationCount {
+    opacity: 0;
+}
+.mainWrapper:hover a:not(:first-child) {
+    opacity: 1;
+    pointer-events: all;
+}
+.mainWrapper a:not(:first-child) {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .mainWrapper {
+        height: 10.5%;
+        top: 90% !important;
+        background-image: none !important;
+        background-color: rgb(224, 224, 224);
+        width: fit-content !important;
+        border-radius: 0 !important;
+        border-top-left-radius: 20px !important;
+        border-top-right-radius: 20px !important;
+        & a {
+            opacity: 1 !important;
+        }
+        & .chosenRoute {
+            display: block !important;
+        }
+    }
+    .panelNotificationCount {
+        display: none;
+    }
+}
