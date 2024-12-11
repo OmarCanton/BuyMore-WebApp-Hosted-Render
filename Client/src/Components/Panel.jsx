@@ -56,8 +56,8 @@ export default function Panel () {
             <div
                 style={{
                     ...theme === 'dark' && {backgroundColor: themeStyles.style.divColor}, 
-                    // ...!isVisible && {transform: 'translateY(120%)'}
-                    ...!isVisible && {top: 100}
+                    ...!isVisible ? {transform: 'translateY(120%)'} : {transform: 'translateY(0)'}
+                    // ...!isVisible && {top: 100}
                 }} 
                 className='mainWrapper'
             >
