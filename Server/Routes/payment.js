@@ -35,7 +35,6 @@ router.post('/checkout', async (req, res) => {
         res.json({id: session.id})
     } catch(err) {
         res.json({error: true, msg: `Error completing payment\n${err}`})
-        console.log(err)
     }
 })
 
