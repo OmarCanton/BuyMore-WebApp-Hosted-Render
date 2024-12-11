@@ -4,7 +4,7 @@ import '../Styles/ShopByCats.css'
 import { themesContext } from '../Contexts/userDataContext'
 import PropTypes from 'prop-types'
 
-export default function ShopByCatsCard ({name, backImage}) {
+export default function ShopByCatsCard ({name}) {
     const { theme, themeStyles } = useContext(themesContext)
     const navigate = useNavigate()
 
@@ -21,7 +21,6 @@ export default function ShopByCatsCard ({name, backImage}) {
                 } 
                 : 
                 {backgroundColor: 'grey'},
-                backgroundImage: backImage
             }}
             onClick={() => shopWithCategory(name)}
         >
@@ -32,5 +31,4 @@ export default function ShopByCatsCard ({name, backImage}) {
 
 ShopByCatsCard.propTypes = {
     name: PropTypes.string,
-    backImage: PropTypes.string
 }
