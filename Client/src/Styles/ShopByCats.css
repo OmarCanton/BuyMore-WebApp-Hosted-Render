@@ -33,24 +33,6 @@
             & small {
                 font-size: 0.9rem;
             }
-            &:nth-child(1) {
-                background-image: url('../Resources/Home.jpg');
-            }
-            &:nth-child(2) {
-                background-image: url('../Resources/Electronics.jpg');
-            }
-            &:nth-child(3) {
-                background-image: url('../Resources/Smartphones.jpg');
-            }
-            &:nth-child(4) {
-                background-image: url('../Resources/Shoes.jpg');
-            }
-            &:nth-child(5) {
-                background-image: url('../Resources/Outerwear.jpg');
-            }
-            &:nth-child(6) {
-                background-image: url('../Resources/Laptops.jpg');
-            }
         }
     }
 }
