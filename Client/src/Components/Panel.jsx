@@ -26,10 +26,12 @@ export default function Panel () {
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY
-            if(currentScrollY > lastScrollY) {
-                setIsVisible(false)
-            } else {
-                setIsVisible(true)
+            if(window.innerWidth > 768) {
+                if(currentScrollY > lastScrollY) {
+                    setIsVisible(false)
+                } else {
+                    setIsVisible(true)
+                }
             }
             setLastScrollY(currentScrollY)
         }
@@ -41,8 +43,10 @@ export default function Panel () {
     useEffect(() => {
         const handleMouseMove = (event) => {
             const mousePosition = event.clientY
-            if(mousePosition >= (window.innerHeight - 80)) {
-                setIsVisible(true)
+            if(window.innerWidth > 768) {
+                if(mousePosition >= (window.innerHeight - 80)) {
+                    setIsVisible(true)
+                }
             }
         } 
         
