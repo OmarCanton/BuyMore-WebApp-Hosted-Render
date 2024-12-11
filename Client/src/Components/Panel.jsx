@@ -39,12 +39,16 @@ export default function Panel () {
         return () => window.removeEventListener('scroll', handleScroll) 
     }, [lastScrollY, setIsVisible])
     useEffect(() => {
-        window.addEventListener('mousemove', (event) => {
+        const handleMouseMove = (event) => {
             const mousePosition = event.clientY
             if(mousePosition >= (window.innerHeight - 80)) {
                 setIsVisible(true)
             }
-        })
+        } 
+
+        window.addEventListener('mousemove', handleMouseMove)
+
+        return () => window.removeEventListener('mousemove', handleMouseMove)
     }, [setIsVisible])
 
     return (
@@ -52,7 +56,8 @@ export default function Panel () {
             <div
                 style={{
                     ...theme === 'dark' && {backgroundColor: themeStyles.style.divColor}, 
-                    ...!isVisible && {transform: 'translateY(120%)'}
+                    // ...!isVisible && {transform: 'translateY(120%)'}
+                    ...!isVisible && {top: 100}
                 }} 
                 className='mainWrapper'
             >
