@@ -131,8 +131,8 @@ export default function Panel () {
                 <div
                     className="chosenRoute"
                     style={{
-                        ...path === '/' && {left: 19},
-                        ...path === '/home' && {left: 19},
+                        ...path === '/' && {left: 21},
+                        ...path === '/home' && {left: 21},
                         ...path === '/shop' && {left: '25.6%'},
                         ...path === '/cart' && {left: '45.5%'},
                         ...path === '/favorites' && {left: '65%'},
