@@ -42,7 +42,7 @@ export default function Login () {
         setLoading(true)
         setShake(false)
         try {
-            const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/login`, userData, { withCredentials: true })
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/login`, userData, { withCredentials: true })
             if(response.data.error) {
                 if(response.data.hasToVerify) {
                     setReVerify(response.data.hasToVerify)
@@ -101,7 +101,7 @@ export default function Login () {
     const reVerifyUser = async () => {
         setLoading(true)
         try {
-            const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/reVerify`, { email })
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/reVerify`, { email })
             if(response.data.linkSent) {
                 setDialogContent(response.data.msg)
                 setVerifyOpen(true)
@@ -136,7 +136,7 @@ export default function Login () {
         setOpen(false)
         setForgotPassLoading(true)
         try {
-            const response = await axios. post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/forgot-password`, {resetEmail})
+            const response = await axios. post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/forgot-password`, {resetEmail})
             if(response.data.success) {
                 toast.success(response.data.message, {
                     style: {

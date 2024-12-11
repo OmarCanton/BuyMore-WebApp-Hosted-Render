@@ -52,7 +52,7 @@ export default function Account () {
 
     const changeUsername = async () => {
         try {
-            const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/changeUsername/${userId}`, {updatedUsername}, {withCredentials: true})
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/changeUsername/${userId}`, {updatedUsername}, {withCredentials: true})
             if(response.data.success === true) {
                 setUser_username(updatedUsername)
                 toast.success('Username was sucessfully changed', {
@@ -87,7 +87,7 @@ export default function Account () {
 
     const updatePhone = async () => {
         try {
-            const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updatePhone/${userId}`, {updatedPhone}, {withCredentials: true})
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updatePhone/${userId}`, {updatedPhone}, {withCredentials: true})
             if(response.data.success === true) {
                 setPhone(updatedPhone)
                 toast.success('Phone was sucessfully set', {
@@ -122,7 +122,7 @@ export default function Account () {
     const updateAbout = async () => {
         setAboutOpen(false)
         try {
-            const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updateAbout/${userId}`, {updatedAbout}, {withCredentials: true})
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updateAbout/${userId}`, {updatedAbout}, {withCredentials: true})
             if(response.data.success === true) {
                 setAbout(updatedAbout)
                 toast.success('About was sucessfully set', {
@@ -163,7 +163,7 @@ export default function Account () {
             const formData = new FormData()
             formData.append('profileImage' ,file)
             try {
-                const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updateProfilePicture/${userId}`, formData, {
+                const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updateProfilePicture/${userId}`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' }, 
                     withCredentials: true 
                 })
@@ -201,7 +201,7 @@ export default function Account () {
         setViewProfile(false)
         setViewOps(false)
         try {
-            const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/deleteProfilePicture/${userId}`)
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/deleteProfilePicture/${userId}`)
             if(response.data.success) {
                 setProfileChanged((prevState) => !prevState)
             }
@@ -225,7 +225,7 @@ export default function Account () {
     
     const logout = async () => {
         try {
-            const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
+            const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
             if(response.data.message) {
                 navigate('/')
                 setIsLoggedIn(false)
@@ -258,7 +258,7 @@ export default function Account () {
         e.preventDefault()
         setDelAccOpen(false)
         try {
-            const response = await axios.post (`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/delUser/${userId}`, { password })
+            const response = await axios.post (`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/delUser/${userId}`, { password })
             if(response.data.status === true) {
                 setIsLoggedIn(false)
                 setUserId(null)
@@ -301,7 +301,7 @@ export default function Account () {
         setResetOpen(false)
         setOpenLoadingSpinner(true)
         try {
-            const response = await axios. post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/forgot-password`, {resetEmail})
+            const response = await axios. post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/forgot-password`, {resetEmail})
             if(response.data.success) {
                 toast.success(response.data.message, {
                     style: {

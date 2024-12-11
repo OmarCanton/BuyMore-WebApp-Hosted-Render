@@ -89,7 +89,7 @@ export default function Signup () {
         setShake(false)
         try {
 
-            const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/signup-verify`, formData, { withCredentials: true })
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/signup-verify`, formData, { withCredentials: true })
             if(response.data.error) {
                 toast.error(response.data.error, {
                     style: {

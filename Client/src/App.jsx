@@ -67,7 +67,7 @@ export default function App () {
   useEffect(() => {
     const checkUserAuth = async () => {
       try {
-        const  response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/checkAuth`, {withCredentials: true})
+        const  response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/checkAuth`, {withCredentials: true})
         if(response.data.authenticated === true) {
           setIsLoggedIn(true)
           setUser_username(response.data.user.username)

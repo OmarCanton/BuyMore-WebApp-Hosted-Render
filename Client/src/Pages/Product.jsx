@@ -63,7 +63,7 @@ export default function ProductCheck () {
         commentRef.current.value = ''
         if(isLoggedIn) {
             try {
-                const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/addProductComment`, commentBody, {withCredentials: true})
+                const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/addProductComment`, commentBody, {withCredentials: true})
                 if(response.data.msg) {
                     toast.success(response.data.msg, {
                         style: {
@@ -107,7 +107,7 @@ export default function ProductCheck () {
     const addRating = async () => {
         if( isLoggedIn) {
             try{
-                const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/addRating`, ratingBody, {withCredentials: true})
+                const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/addRating`, ratingBody, {withCredentials: true})
                 toast.success(response.data.msg, {
                     style: {
                         backgroundColor: 'black',

@@ -90,7 +90,7 @@ export default function Cart () {
             if(canRedirectToCheckout) {
                 const StripePromise = loadStripe(import.meta.env.VITE_LOADSTRIPE_KEY)
                 try {
-                    const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/checkout`, {items, userId}, {withCredentials: true})
+                    const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/checkout`, {items, userId}, {withCredentials: true})
                     const { id: sessionId } = response.data
                     const stripe = await StripePromise
                     stripe.redirectToCheckout({sessionId}) 

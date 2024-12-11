@@ -3,45 +3,45 @@ import axios from 'axios'
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async (pageNumber) => {
     await new Promise((resolve) => setTimeout(resolve, 200))
-    const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/products?page=${pageNumber}`)
+    const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/products?page=${pageNumber}`)
     return response.data
 })
 export const fetchNewArrivals = createAsyncThunk('products/fetchNewArrivals', async () => {
     await new Promise((resolve) => setTimeout(resolve, 200))
-    const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/newArrivals`)
+    const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/newArrivals`)
     return response.data.newArrivals
 })
 export const fetchAppleFeaturedProducts = createAsyncThunk('products/fetchAppleFeaturedProducts', async () => {
-    const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/appleFeaturedProducts`)
+    const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/appleFeaturedProducts`)
     return response.data.featuredProducts
 })
 export const fetchNikeFeaturedProducts = createAsyncThunk('products/fetchNikeFeaturedProducts', async () => {
-    const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/nikeFeaturedProducts`)
+    const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/nikeFeaturedProducts`)
     return response.data.featuredProducts
 })
 export const fetchSamsungFeaturedProducts = createAsyncThunk('products/fetchSamsungFeaturedProducts', async () => {
-    const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/samsungFeaturedProducts`)
+    const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/samsungFeaturedProducts`)
     return response.data.featuredProducts
 })
 export const fetchLouisVuittonFeaturedProducts = createAsyncThunk('products/fetchLouisVuittonFeaturedProducts', async () => {
-    const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/luisVuittonFeaturedProducts`)
+    const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/luisVuittonFeaturedProducts`)
     return response.data.featuredProducts
 })
 export const fetchComments = createAsyncThunk('products/fetchComments', async (productId) => {
     await new Promise((resolve) => setTimeout(resolve, 200))
-    const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/getComments/${productId}`)
+    const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/getComments/${productId}`)
     return response.data.comments
 
 })
 export const fetchSearchedProducts = createAsyncThunk('products/fetchSearchedProducts', async (name) => {
     await new Promise((resolve) => setTimeout(resolve, 200))
-    const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/search?name=${name}`)
+    const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/search?name=${name}`)
     return response.data
 
 })
 export const fetchFilteredProduct = createAsyncThunk('products/fetchFilteredProduct', async (filterKey) => {
     await new Promise((resolve) => setTimeout(resolve, 200))
-    const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/filter?filterKey=${filterKey}`)
+    const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/filter?filterKey=${filterKey}`)
     return response.data.filteredResults
 
 })
