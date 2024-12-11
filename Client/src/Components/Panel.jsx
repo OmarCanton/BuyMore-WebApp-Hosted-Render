@@ -45,7 +45,7 @@ export default function Panel () {
                 setIsVisible(true)
             }
         } 
-
+        
         window.addEventListener('mousemove', handleMouseMove)
 
         return () => window.removeEventListener('mousemove', handleMouseMove)
@@ -56,8 +56,7 @@ export default function Panel () {
             <div
                 style={{
                     ...theme === 'dark' && {backgroundColor: themeStyles.style.divColor}, 
-                    ...!isVisible ? {transform: 'translateY(120%)'} : {transform: 'translateY(0)'}
-                    // ...!isVisible && {top: 100}
+                    ...!isVisible && window.innerWidth > 768 && {transform: 'translateY(120%)'}
                 }} 
                 className='mainWrapper'
             >
@@ -139,7 +138,7 @@ export default function Panel () {
             { (wishlistItems.length > 0 || favorites.length > 0) &&
                 <div 
                     style={{
-                        ...!isVisible && {transform: 'translateY(500%)'}
+                        ...!isVisible && window.innerWidth > 768 && {transform: 'translateY(500%)'}
                     }}                    
                     className="panelNotificationCount"
                 ></div>
