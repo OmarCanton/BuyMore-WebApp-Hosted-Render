@@ -48,7 +48,7 @@ export default function Settings () {
 
     const logout = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/logout', { withCredentials: true })
+            const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
             if(response.data.message) {
                 navigate('/home')
                 
@@ -63,12 +63,16 @@ export default function Settings () {
                         backgroundColor: 'black',
                         color: 'white'
                     },
-                    duration: 8000
                 })
             }
             
         } catch(err) {
-            console.log(err)
+            toast.error(err, {
+                style: {
+                    backgroundColor: 'black',
+                    color: 'white'
+                },
+            })
         }
     }
 

@@ -45,7 +45,7 @@ router.post('/signup-verify', (req, res, next) => {
             }
         })
 
-        const url = `http://localhost:5173/verifyEmail/${randomToken}`
+        const url = `${process.env.EXTERNAL_URL_FRONTEND_HOSTED}/verifyEmail/${randomToken}`
         const message = `
             <h2>Click on the link below to complete and activate your account, link expires in 1 hour</h2>
             <a href=${url}>Click here Verify</a>`
@@ -114,7 +114,7 @@ router.post('/reVerify',  async (req, res) => {
         }
     })
 
-    const url = `http://localhost:5173/verifyEmail/${randomToken}`
+    const url = `${process.env.EXTERNAL_URL_FRONTEND_HOSTED}/verifyEmail/${randomToken}`
     const message = `
         <h2>Click on the link below to complete and activate your account, link expires in 1 hour</h2>
         <a href=${url}>Verify</a>`
@@ -327,7 +327,7 @@ router.post('/forgot-password', async (req, res) => {
 
     //verification link and message setup
     //a frontend link to redirect user to enter a new password (sent to the user seeking reset)
-    const resetUrl = `http://localhost:5173/reset-password/${resetToken}`
+    const resetUrl = `${process.env.EXTERNAL_URL_FRONTEND_HOSTED}/reset-password/${resetToken}`
     //the message to be sent to the user seeking password reset (***Sent in html format to make the link clickable***)
     const  message = `<h2>You requested for a password reset, click below to reset password, link expires in 1 hour</h2><a href=${resetUrl}>Click Here to reset password</a>`
 

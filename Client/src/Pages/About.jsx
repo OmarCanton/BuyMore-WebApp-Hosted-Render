@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { themesContext } from '../Contexts/userDataContext'
 import { motion } from 'framer-motion'
+
 export default function About () {
     const navigate = useNavigate()
     const { theme, themeStyles } = useContext(themesContext)

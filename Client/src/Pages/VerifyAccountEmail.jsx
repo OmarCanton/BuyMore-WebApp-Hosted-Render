@@ -14,11 +14,10 @@ export default function VerifyAccountEmail() {
 
     useEffect(() => {
         const completeEmailVerification = async () => {
-            const response = await axios.get(`http://localhost:3000/verifyEmail/${token}`)
+            const response = await axios.get(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/verifyEmail/${token}`)
             setSuccess(response.data.success)
             setMessage(response.data.message)
         }
-
         completeEmailVerification()
     }, [token])
 

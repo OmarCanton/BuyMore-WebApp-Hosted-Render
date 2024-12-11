@@ -26,8 +26,8 @@ router.post('/checkout', async (req, res) => {
             payment_method_types: ['card'],
             line_items: lineItems,
             mode: 'payment',
-            success_url: 'http://localhost:5173/checkout/success',
-            cancel_url: 'http://localhost:5173/checkout/cancel',
+            success_url: `${process.env.EXTERNAL_URL_FRONTEND_HOSTED}/checkout/success`,
+            cancel_url: `${process.env.EXTERNAL_URL_FRONTEND_HOSTED}/checkout/cancel`,
             metadata: {
                 userId: userId
             }

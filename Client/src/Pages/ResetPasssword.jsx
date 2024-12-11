@@ -20,7 +20,7 @@ export default function ResetPassword() {
     const resetPassword = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post(`http://localhost:3000/reset-password/${token}`, { newPassword, confNewPassword })
+            const response = await axios.post(`${import.meta.VITE_EXTERNAL_HOSTED_BACKEND_URL}/reset-password/${token}`, { newPassword, confNewPassword })
             if(response.data.success === true) {
                 toast.success(response.data.message, {
                     style: {
