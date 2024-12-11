@@ -25,8 +25,7 @@ export default function Header ({appName}) {
         isLoggedIn,  
         profilePicture, 
         loading, 
-        error, 
-     } = useContext(userDetailsContext)
+    } = useContext(userDetailsContext)
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -141,7 +140,6 @@ export default function Header ({appName}) {
                                         }
                                     </>
                                 }<p className='username' style={{color: 'white'}}>{user_username}</p>
-                                {error && <AccountCircle fontSize='large' />}
                             </div>
                         </Link>
                         :

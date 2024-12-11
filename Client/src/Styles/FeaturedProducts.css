@@ -169,6 +169,10 @@
             }
         }
     }
+    .loadingEffectWrapper {
+        padding: 100px !important;
+        padding-top: 60% !important;
+    }
 }
 
 

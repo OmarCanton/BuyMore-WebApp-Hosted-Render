@@ -23,7 +23,7 @@ export default function Account () {
         about,
         setPhone, 
         setAbout,
-        profilePicture, loading, error,
+        profilePicture, loading,
         setProfileChanged,
     } = useContext(userDetailsContext)
     const {theme, themeStyles} = useContext(themesContext)
@@ -384,7 +384,6 @@ export default function Account () {
                 :
                 <AccountCircle style={{width: 300, height: 300}} htmlColor='grey' />
             }
-            {error && <AccountCircle />}
             
             {isLoggedIn && 
                 <div className="email">
