@@ -46,7 +46,7 @@ export default function App () {
   const [profileChanged, setProfileChanged] = useState(false)
   const [openMenu, setOpenMenu] = useState(false)
   const [showThemeOverlay, setShowThemeOverlay] = useState(false)
-  const [isVisible, setIsVisible] = useState(true)
+  // const [isVisible, setIsVisible] = useState(true)
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'light'
   })
@@ -108,16 +108,18 @@ export default function App () {
   }
   //end
 
-  const containerStyles = {
-    ...isVisible && (window.innerWidth <= 768) && {
-      marginBottom: 40
-    }
-  }
+  // const containerStyles = {
+  //   ...isVisible && (window.innerWidth <= 768) && {
+  //     marginBottom: 40
+  //   }
+  // }
+
   return (
     <>
       <Toaster 
         position='bottom-right' 
-        containerStyle={containerStyles} 
+        // containerStyle={containerStyles} 
+        containerStyle={{marginBottom: 40}}
         toastOptions={{ duration: 3000 }} 
       />
       <themesContext.Provider value={{
@@ -135,7 +137,7 @@ export default function App () {
             profilePicture, loading, error, 
             profileChanged, setProfileChanged,
             openMenu, setOpenMenu,
-            isVisible, setIsVisible
+            // isVisible, setIsVisible
           }}>
           <AnimatePresence mode='wait'>
             <Routes>
