@@ -34,7 +34,7 @@ export default function Settings () {
         user_username, 
         setUser_username,
         setUserEmail,
-        profilePicture, loading, error,
+        profilePicture, loading,
     } = useContext(userDetailsContext)
     const [isHovered1, setIsHovered1] = useState(false)
     const [isHovered2, setIsHovered2] = useState(false)
@@ -163,7 +163,7 @@ export default function Settings () {
                             <span style={{...theme === 'dark' && {color: 'white'}}}>GUEST</span>
                         </div>
                     }
-                    {error && <AccountCircle />}
+                    {/* {error && <AccountCircle />} */}
                 </div>
                 <ul>
                     <li 
