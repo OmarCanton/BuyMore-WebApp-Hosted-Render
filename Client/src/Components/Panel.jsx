@@ -56,7 +56,7 @@ export default function Panel () {
             <div
                 style={{
                     ...theme === 'dark' && {backgroundColor: themeStyles.style.divColor}, 
-                    ...!isVisible && window.innerWidth > 768 && {transform: 'translateY(120%)'}
+                    ...!isVisible && {transform: 'translateY(120%)'}
                 }} 
                 className='mainWrapper'
             >
@@ -138,7 +138,7 @@ export default function Panel () {
             { (wishlistItems.length > 0 || favorites.length > 0) &&
                 <div 
                     style={{
-                        ...!isVisible && window.innerWidth > 768 && {transform: 'translateY(500%)'}
+                        ...!isVisible && {transform: 'translateY(500%)'}
                     }}                    
                     className="panelNotificationCount"
                 ></div>
