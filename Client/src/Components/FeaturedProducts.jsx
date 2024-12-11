@@ -128,7 +128,7 @@ export default function FeaturedProducts () {
                         >FROM APPLE <Apple fontSize="large" /></h2>
                         <div className="container">
                             {
-                                appleFeaturedProducts.length === 0 ? <div style={{padding: '200px'}}>Oops no product found at this time!</div>
+                                appleFeaturedProducts.length === 0 ? <div style={{padding: '50px'}}>Oops no product found at this time!</div>
                                 :
                                 appleFeaturedProducts.map(product => (
                                     <div
@@ -173,7 +173,7 @@ export default function FeaturedProducts () {
                         >FROM NIKE</h2>
                         <div className="container">
                         {
-                            nikeFeaturedProducts.length === 0 ? <div style={{padding: '200px'}}>Oops no product found at this time!</div>
+                            nikeFeaturedProducts.length === 0 ? <div style={{padding: '50px'}}>Oops no product found at this time!</div>
                             :
                             nikeFeaturedProducts.map(product => (
                                 <div 
@@ -219,7 +219,7 @@ export default function FeaturedProducts () {
                         >FROM SAMSUNG</h2>
                         <div className="container">
                         {
-                            samsungFeaturedProducts.length === 0 ? <div style={{padding: '200px'}}>Oops no product found at this time!</div>
+                            samsungFeaturedProducts.length === 0 ? <div style={{padding: '50px'}}>Oops no product found at this time!</div>
                             :
                             samsungFeaturedProducts.map(product => (
                                 <div 
@@ -265,7 +265,7 @@ export default function FeaturedProducts () {
                         >FROM LOUIS VUITTON</h2>
                         <div className="container">
                             {
-                                louisVuittonFeaturedProducts.length === 0 ? <div style={{padding: '200px'}}>Oops no product found at this time!</div>
+                                louisVuittonFeaturedProducts.length === 0 ? <div style={{padding: '50px'}}>Oops no product found at this time!</div>
                                 :
                                 louisVuittonFeaturedProducts.map(product => (
                                     <div 
@@ -307,8 +307,8 @@ export default function FeaturedProducts () {
                     </div>
                 </div>
             )}
-            {(status !== 'loading' && allShopProducts.length === 0) && <div style={{color: theme === 'dark' && 'white',padding: '100px'}}>Oops, no products found at this time!</div>}
-            { status === 'failed' && <p style={{padding: '200px'}}>Error fetching products: {error}</p> }
+            {(status !== 'loading' && allShopProducts.length === 0) && <div style={{color: theme === 'dark' && 'white', padding: '40px'}}>Oops, no products found at this time!</div>}
+            { status === 'failed' && <p style={{padding: '50px'}}>Error fetching products: {error}</p> }
         </>
     )
 }
