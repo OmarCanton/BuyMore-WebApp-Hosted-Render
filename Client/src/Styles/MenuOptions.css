@@ -8,6 +8,12 @@
     gap: 10px;
     width: 100%;
     padding: 10px;
+    & .arrowBack {
+        border: 1px solid red;
+        width: 100%;
+        text-align: left;
+        padding-left: 10px;
+    }
     & .but {
         border: 1px solid red;
         width: 100%;
