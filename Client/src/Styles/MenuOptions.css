@@ -30,7 +30,7 @@
             & .numOfItems {
                 color: red;
                 position: relative;
-                right: 10px;
+                right: 0;
             }
         }
     }
