@@ -191,9 +191,6 @@
     }
 }
 @media (max-width: 320px) {
-    .container {
-        grid-template-columns: repeat(auto-fit, 1fr) !important;
-    }
     .featuredWrapper {
         height: 250px !important;
     }
