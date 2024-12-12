@@ -3,6 +3,8 @@ import { useContext } from 'react'
 import { userDetailsContext, themesContext } from '../Contexts/userDataContext'
 import { ArrowBack, FavoriteRounded, HomeRounded, SettingsRounded, ShoppingBag, ShopRounded } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
+import '../Styles/MenuOptions.css'
+
 
 export default function MenuOptions() {
     const {openMenu, setOpenMenu} = useContext(userDetailsContext)
@@ -32,9 +34,9 @@ export default function MenuOptions() {
             TransitionComponent={Slide}
             TransitionProps={{direction: 'right'}}
         >
-            <div className="menus">
+            <div className="menu-wrapper">
                 <span 
-                    className='back-menu'
+                    className='arrowBack'
                     onClick={() => setOpenMenu(false)}
                 >
                     <ArrowBack />

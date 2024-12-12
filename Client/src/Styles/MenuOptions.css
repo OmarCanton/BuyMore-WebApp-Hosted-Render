@@ -1,4 +1,4 @@
-.menuWrapper {
+.menu-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,13 +43,4 @@
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;
-}
-
-@media (max-width: 425px) {
-    .dialog {
-        left: -10% !important;
-    }
-    .devComp {
-        bottom: -5vh;
-    }
 }
