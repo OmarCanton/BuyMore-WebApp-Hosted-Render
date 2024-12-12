@@ -24,10 +24,10 @@
             gap: 10px;
         }
         & > div { /* container*/
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
             gap: 10px;
             & > div { /*featuredWrapper*/
                 display: flex;
@@ -36,7 +36,6 @@
                 justify-content: center;
                 background-color: rgb(224, 224, 224);
                 box-shadow: 0 5px 10px -5px black;
-                flex: 0 1 250px;
                 height: 400px;
                 padding: 10px;
                 gap: 10px;
@@ -168,9 +167,6 @@
                 width: 150px !important;
             }
         }
-    }
-    .loadingEffectWrapper {
-        padding: 100px !important;
     }
 }
 
