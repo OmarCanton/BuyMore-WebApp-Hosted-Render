@@ -179,6 +179,9 @@
     .menuBar {
         display: flex !important;
     }
+    .right {
+        margin-right: 10px !important;
+    }
     .pageName {
         margin-left: 10px !important;       
     }
