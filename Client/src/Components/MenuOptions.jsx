@@ -1,7 +1,7 @@
 import { Button, Dialog, Slide } from '@mui/material'
 import { useContext } from 'react'
 import { userDetailsContext, themesContext } from '../Contexts/userDataContext'
-import { FavoriteRounded, HomeRounded, SettingsRounded, ShoppingBag, ShopRounded } from '@mui/icons-material'
+import { ArrowBack, FavoriteRounded, HomeRounded, SettingsRounded, ShoppingBag, ShopRounded } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 
 export default function MenuOptions() {
@@ -24,13 +24,21 @@ export default function MenuOptions() {
                 height: '100%',
                 position: 'absolute',
                 left: '0vh',
-
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
 
             }}}
             TransitionComponent={Slide}
             TransitionProps={{direction: 'right'}}
         >
             <div className="menus">
+                <span 
+                    className='back-menu'
+                    onClick={() => setOpenMenu(false)}
+                >
+                    <ArrowBack />
+                </span>
             <Link 
                 to='/' 
                 className='home'
