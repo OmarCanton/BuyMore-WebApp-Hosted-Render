@@ -137,13 +137,10 @@
         text-align: center;
     }
     & .productsWrapper {
-        width: 100%;
-        /* display: flex; */
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
         align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
         gap: 12px;
         padding: 20px;
         margin-top: 100px;
@@ -346,9 +343,6 @@
         padding-right: 5px !important;
         & .wrapper {
             height: 350px !important;
-            & .categoryBrand {
-                width: 170px;
-            }
         }
     }
 }
@@ -365,7 +359,6 @@
             }
             & .categoryBrand {
                 font-size: 0.9rem;
-                width: 140px;
             }
             & .addToCartFav {
                 padding-left: 5px;
