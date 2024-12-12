@@ -12,7 +12,7 @@
     background-color: var(--loginBackgroundColor);
     & .form-wrapper {
         background-color: white;
-        height: 95%;
+        max-height: 95%;
         width: 40%;
         border-radius: var(--borRad);
         display: flex;
