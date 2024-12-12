@@ -1,7 +1,7 @@
 import { Button, Dialog, Slide } from '@mui/material'
 import { useContext } from 'react'
 import { userDetailsContext, themesContext } from '../Contexts/userDataContext'
-import { ArrowBack, FavoriteRounded, HomeRounded, SettingsRounded, ShoppingBag, ShopRounded } from '@mui/icons-material'
+import { ArrowBack, FavoriteRounded, HomeRounded, QuestionAnswer, SettingsRounded, ShoppingBag, ShopRounded } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import '../Styles/MenuOptions.css'
 import { listItems } from '../Redux/Slices/WishlistSlice'
@@ -108,6 +108,18 @@ export default function MenuOptions() {
                             htmlColor='white'
                         />
                         <p style={{...theme === 'dark' && {color: 'white'}}}>Settings</p>
+                    </Button>
+                </Link>
+                <Link 
+                    to='mailto: buymoreapp24@gmail.com' 
+                    onClick={() => setOpenMenu(false)}
+                >
+                    <Button className='but' fullWidth sx={{borderRadius: '50px'}}>
+                        <QuestionAnswer 
+                            fontSize='large' 
+                            htmlColor='white'
+                        />
+                        <p style={{...theme === 'dark' && {color: 'white'}}}>Have a problem?</p>
                     </Button>
                 </Link>
             </div>

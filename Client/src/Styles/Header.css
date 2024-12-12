@@ -203,7 +203,7 @@
         display: none;
     }
     .contact-icon-forMobile {
-        left: 20px !important;
+        display: none !important;
     }
     .wishlist {
         position: relative;
@@ -232,9 +232,9 @@
     }
 }
 @media (max-width: 370px) {
+    
     .right {
         position: relative;
         right: 20px;
-        justify-content: center !important;
     }
 }
