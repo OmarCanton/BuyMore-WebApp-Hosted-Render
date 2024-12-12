@@ -23,7 +23,6 @@ export default function MenuOptions() {
                 padding: 0,
                 margin: 0,
                 minHeight: '100vh',
-                // height: '100vh',
                 position: 'absolute',
                 left: '0vh',
                 display: 'flex',
