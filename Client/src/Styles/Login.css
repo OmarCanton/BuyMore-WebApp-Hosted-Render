@@ -279,10 +279,10 @@
         }
     }
 }
+
 @media (max-width: 375px) {
     .loginHeader {
-        border: 1px solid red !important;
-        font-size: 1.5rem !important;
+        font-size: 1.3rem !important;
     }
     .login-form {
         height: 90% !important;
