@@ -139,7 +139,7 @@
     & .productsWrapper {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(130px, 250px));
         align-items: center;
         justify-content: center;
         gap: 12px;
