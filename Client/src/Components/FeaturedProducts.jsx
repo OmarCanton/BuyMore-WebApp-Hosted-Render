@@ -106,7 +106,7 @@ export default function FeaturedProducts () {
     return (
         <>
         
-            { status === 'loading' && 
+            { (status === 'loading' || status === 'failed') && 
                 <p className="loadingWrapper">
                     <LoadingEffect />
                 </p> 
@@ -308,12 +308,6 @@ export default function FeaturedProducts () {
                     nikeFeaturedProducts.length === 0 &&
                     samsungFeaturedProducts.length === 0
                 ) && <div style={{color: theme === 'dark' && 'white', padding: '40px'}}>Oops, no products found at this time!</div>
-            }
-            { 
-                status === 'failed' && 
-                <p style={{padding: '50px'}}>
-                    <LoadingEffect />
-                </p> 
             }
         </>
     )
