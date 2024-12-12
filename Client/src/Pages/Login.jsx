@@ -55,7 +55,6 @@ export default function Login () {
                 })
                 passInputRef.current.value = ''
                 setPassword('')
-                passInputRef.current.focus()
                 setShake(true)
             }
             if(response.data.success) {
@@ -82,7 +81,7 @@ export default function Login () {
                         backgroundColor: 'black',
                         color: 'white'
                     },
-                    duration: 7000
+                    duration: 3000
                 })
             } else {
                 toast.error('An unexpected error occured!', {
@@ -90,11 +89,10 @@ export default function Login () {
                         backgroundColor: 'black',
                         color: 'white'
                     },
-                    duration: 5000
+                    duration: 3000
                 })
             }
             setLoading(false)
-            console.log(error)
         }
     }
 
@@ -207,7 +205,7 @@ export default function Login () {
                     </div>
                     <form onSubmit={handleLogin}>
                         <div className='email'>
-                            <input autoFocus type="email" name="email" id="email" placeholder='Enter your email' onChange={(e)=> setEmail(e.target.value)} />
+                            <input type="email" name="email" id="email" placeholder='Enter your email' onChange={(e)=> setEmail(e.target.value)} />
                         </div>
                         <div className='pass'>
                             <input style={{paddingRight: 50}} ref={passInputRef} type= { showPassword ? 'text' : 'password' } name="password" id="password" placeholder='Enter your password' onChange={(e) => setPassword(e.target.value)} />

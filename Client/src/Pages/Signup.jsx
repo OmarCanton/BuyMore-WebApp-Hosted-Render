@@ -96,7 +96,7 @@ export default function Signup () {
                         backgroundColor: 'white',
                         color: 'black'
                     },
-                    duration: 7000
+                    duration: 3000
                 })
                 setShake(true)
             }
@@ -106,7 +106,7 @@ export default function Signup () {
                         backgroundColor: 'black',
                         color: 'white'
                     },
-                    duration: 7000,
+                    duration: 3000,
                 })
             }
             setLoading(false)
@@ -123,7 +123,7 @@ export default function Signup () {
                         backgroundColor: 'black',
                         color: 'white'
                     },
-                    duration: 7000
+                    duration: 3000
                 })
             } else {
                 toast.error('An unexpected error occured!', {
@@ -131,7 +131,7 @@ export default function Signup () {
                         backgroundColor: 'black',
                         color: 'white'
                     },
-                    duration: 5000
+                    duration: 4000
                 })
             }
         }
@@ -163,7 +163,7 @@ export default function Signup () {
                 <span className='signup-header' style={{color: themeStyles.style.color}}>Sign up to BuyMore</span>
                 <form onSubmit={handleSignUp}>
                     <div>
-                        <input autoFocus type="text" name="username" id="username" placeholder="Choose a Username" onChange={(e) => setUsername(e.target.value) } />
+                        <input type="text" name="username" id="username" placeholder="Choose a Username" onChange={(e) => setUsername(e.target.value) } />
                     </div>
                     <div>
                         <input type="email" name="email" id="email" placeholder="Enter your Email" onChange={(e) => setEmail(e.target.value) } />
