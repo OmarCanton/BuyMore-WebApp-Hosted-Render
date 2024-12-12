@@ -2,7 +2,6 @@ import { useEffect, useContext } from "react"
 import { userDetailsContext } from "../Contexts/userDataContext"
 import { useDispatch, useSelector } from "react-redux"
 import { 
-    fetchProducts,
     fetchAppleFeaturedProducts, 
     fetchNikeFeaturedProducts, 
     fetchSamsungFeaturedProducts,
@@ -21,12 +20,10 @@ import LoadingEffect from '../Effects/LoadingEffect'
 import { addToCart } from "../Redux/Slices/WishlistSlice"
 import { addToFavorites, favoriteItems, removeFromFavorites } from "../Redux/Slices/FavoritesSlice"
 import { toast } from 'react-hot-toast'
-import { selectProducts } from "../Redux/Slices/productsSlice"
 import { themesContext } from "../Contexts/userDataContext"
 
 export default function FeaturedProducts () {
     const dispatch = useDispatch()
-    const allShopProducts = useSelector(selectProducts)
     const appleFeaturedProducts = useSelector(selectAppleFeaturedProducts)
     const nikeFeaturedProducts = useSelector(selectNikeFeaturedProducts)
     const samsungFeaturedProducts = useSelector(selectSamsungFeaturedProducts)
@@ -73,7 +70,6 @@ export default function FeaturedProducts () {
     //end
 
     useEffect(() => {
-        dispatch(fetchProducts()) 
         dispatch(fetchAppleFeaturedProducts()) 
         dispatch(fetchNikeFeaturedProducts()) 
         dispatch(fetchSamsungFeaturedProducts()) 
@@ -117,7 +113,7 @@ export default function FeaturedProducts () {
                     <LoadingEffect />
                 </p> 
             }
-            { (status === 'succeeded' && allShopProducts.length > 0) && (
+            { (status === 'succeeded') && (
 
                 <div className="featuredProductsWrapper" 
                     style={{backgroundColor: themeStyles.style.backgroundColor}}
@@ -307,7 +303,12 @@ export default function FeaturedProducts () {
                     </div>
                 </div>
             )}
-            {(status !== 'loading' && allShopProducts.length === 0) && <div style={{color: theme === 'dark' && 'white', padding: '40px'}}>Oops, no products found at this time!</div>}
+            {
+                (
+                    appleFeaturedProducts.length === 0 && 
+                    nikeFeaturedProducts.length === 0 &&
+                    samsungFeaturedProducts.length === 0
+                ) && <div style={{color: theme === 'dark' && 'white', padding: '40px'}}>Oops, no products found at this time!</div>}
             { status === 'failed' && <p style={{padding: '50px'}}>Error fetching products: {error}</p> }
         </>
     )
