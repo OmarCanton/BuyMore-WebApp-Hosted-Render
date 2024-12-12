@@ -263,7 +263,6 @@
         }
         & .login-form {
             width: 100% !important;
-            height: 1005 !important;
             border-radius: 0% !important;
             & form {
                 & .singup-noAcc {
@@ -282,10 +281,11 @@
 }
 @media (max-width: 375px) {
     .loginHeader {
+        border: 1px solid red !important;
         font-size: 1.8rem !important;
     }
     .login-form {
-        height: 80% !important;
+        height: 90% !important;
     }
     .singup-noAcc {
         & a {
