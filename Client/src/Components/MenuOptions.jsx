@@ -117,7 +117,10 @@ export default function MenuOptions() {
                     </Button>
                 </Link>
             </div>
-            <small className='comp'>
+            <small 
+                className='comp'
+                style={{...theme === 'dark' && {color: '#3C3C3C'}}}
+            >
                 @CantonsTech 2024, All Rights Reserved.
             </small>
         </Dialog>
