@@ -232,9 +232,15 @@
     }
 }
 @media (max-width: 370px) {
-    
     .right {
         position: relative;
         right: 20px;
+    }
+}
+@media (max-width: 320px) {
+    .right {
+        .wishlist {
+            display: none !important;
+        }
     }
 }
