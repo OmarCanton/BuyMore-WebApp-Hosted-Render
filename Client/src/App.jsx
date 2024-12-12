@@ -108,18 +108,10 @@ export default function App () {
   }
   //end
 
-  // const containerStyles = {
-  //   ...isVisible && (window.innerWidth <= 768) && {
-  //     marginBottom: 40
-  //   }
-  // }
-
   return (
     <>
       <Toaster 
-        position='bottom-right' 
-        // containerStyle={containerStyles} 
-        containerStyle={{marginBottom: 40}}
+        position='bottom-right'
         toastOptions={{ duration: 3000 }} 
       />
       <themesContext.Provider value={{

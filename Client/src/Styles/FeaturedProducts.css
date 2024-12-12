@@ -150,40 +150,25 @@
 
 }
 
-/* @media (max-width: 1024px) {
-    & .featuredWrapper {
-        flex: 0 1 230px !important;
+@media (max-width: 425px) {
+    .container {
+        & .featuredWrapper {
+            height: 300px !important;
+        }
     }
 }
 
-@media (max-width: 425px) {
-    & .featuredWrapper {
-        flex: 0 1 180px !important;
-    }
-    .container {
-        gap: 10px !important;
-        & .featuredWrapper {
-            height: 300px !important;
-            & .categoryBrand {
-                width: 150px !important;
-            }
-        }
-    }
-} */
 
-/* 
 @media (max-width: 375px) {
     .container {
         & .featuredWrapper {
             height: 285px !important;
-            flex: 0 1 160px !important;
             & .productName {
                 font-size: 1rem !important;
                 height: 30px;
             }
             & .categoryBrand {
                 font-size: 0.9rem;
-                width: 140px !important;
             }
             & .addToCartFav {
                 padding-left: 5px;
@@ -197,4 +182,4 @@
             }
         }
     }
-} */
+}
