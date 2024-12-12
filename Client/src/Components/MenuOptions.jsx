@@ -38,7 +38,10 @@ export default function MenuOptions() {
                     className='arrowBack'
                     onClick={() => setOpenMenu(false)}
                 >
-                    <ArrowBack />
+                    <ArrowBack 
+                        fontSize='large'  
+                        style={{...theme === 'dark' && {color: 'white'}}}
+                    />
                 </span>
                 <Link 
                     to='/'
