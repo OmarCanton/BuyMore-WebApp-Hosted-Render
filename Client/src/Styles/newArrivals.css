@@ -99,6 +99,9 @@
     }
 }
 @media (max-width: 425px) {
+    .loadingWrapper-newArrivals {
+        display: none !important;
+    }
     .newArrivals {
         display: none !important;
     }
