@@ -281,11 +281,12 @@
 }
 
 @media (max-width: 375px) {
-    .loginHeader {
-        font-size: 1.3rem !important;
-    }
-    .login-form {
-        height: 90% !important;
+    .login-wrapper {
+        .login-form {
+            .loginHeader {
+                font-size: 1.7rem !important;
+            }
+        }
     }
     .singup-noAcc {
         & a {
