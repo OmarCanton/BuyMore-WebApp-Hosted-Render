@@ -95,27 +95,9 @@
 
 @media (max-width: 768px) {
     .mainWrapper {
-        height: 10.5%;
-        top: 90vh !important;
-        background-image: none !important;
-        background-color: rgb(224, 224, 224);
-        width: fit-content !important;
-        border-radius: 0 !important;
-        border-top-left-radius: 20px !important;
-        border-top-right-radius: 20px !important;
-        & a {
-            opacity: 1 !important;
-        }
-        & .chosenRoute {
-            display: block !important;
-        }
+        display: none !important;
     }
     .panelNotificationCount {
-        display: none;
-    }
-}
-@media (max-width: 375px) {
-    .mainWrapper {
-        width: 100% !important;
+        display: none !important;
     }
 }
