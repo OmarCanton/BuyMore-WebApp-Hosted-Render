@@ -309,6 +309,12 @@ export default function FeaturedProducts () {
                     samsungFeaturedProducts.length === 0
                 ) && <div style={{color: theme === 'dark' && 'white', padding: '40px'}}>Oops, no products found at this time!</div>
             }
+            { 
+                status === 'failed' && 
+                <p style={{padding: '50px'}}>
+                    <LoadingEffect />
+                </p> 
+            }
         </>
     )
 }
