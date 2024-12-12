@@ -267,9 +267,8 @@
             border-radius: 0% !important;
             & form {
                 & .singup-noAcc {
-                    padding: 10px;
-                    text-align: center;
                     display: block !important;
+                    text-align: center;
                     & a {
                         text-decoration: none;
                         color: #c85479; 
@@ -282,6 +281,9 @@
     }
 }
 @media (max-width: 375px) {
+    .loginHeader {
+        font-size: 2rem !important;
+    }
     .singup-noAcc {
         & a {
             text-align: center ;
