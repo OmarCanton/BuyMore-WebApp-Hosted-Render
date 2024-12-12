@@ -21,4 +21,6 @@
 }
 .comp {
     color: lightgrey;
+    position: relative;
+    top: 20%;
 }
