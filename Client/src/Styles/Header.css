@@ -239,9 +239,17 @@
 }
 @media (max-width: 320px) {
     .right {
-        right: 0 !important;
         .wishlist {
             display: none !important;
+        }
+        .theme {
+            left: 0 !important;
+        }
+    }
+    .login {
+        .loginForMobile {
+            position: relative;
+            right: 5px !important;
         }
     }
 }
