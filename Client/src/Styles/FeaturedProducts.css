@@ -183,3 +183,8 @@
         }
     }
 }
+@media (max-width: 320px) {
+    .featuredWrapper {
+        height: 250px !important;
+    }
+}
