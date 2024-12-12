@@ -380,3 +380,9 @@
         }
     }
 }
+
+@media (max-width: 320px) {
+    .wrapper {
+        height: 250px !important;
+    }
+}
