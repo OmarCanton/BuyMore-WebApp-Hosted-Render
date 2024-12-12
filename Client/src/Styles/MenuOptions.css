@@ -30,5 +30,6 @@
 }
 .comp {
     color: lightgrey;
-     text-align: center;
+    text-align: center;
+    padding: 10px;
 }
