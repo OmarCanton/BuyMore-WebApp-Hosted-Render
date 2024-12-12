@@ -79,7 +79,7 @@ export default function Header ({appName}) {
     return (
         <div className="wrapper-header" style={headbgColor}>
             <span className="menuBar" onClick={() => setOpenMenu(true)}>
-                <Menu fontSize='large' />
+                <Menu fontSize='large' style={{...theme === 'dark' && {color: 'white'}}}/>
             </span>
             <p className='pageName' style={{...theme == 'light' && window.innerWidth <= 425 && {color: '#1D2671'}}}>
                 {appName}

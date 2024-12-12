@@ -16,6 +16,7 @@
         display: none;
         align-items: center;
         justify-content: center;
+        margin-left: 10px;
     }
     & .pageName {
         margin-left: 20px;
@@ -177,6 +178,9 @@
 @media (max-width: 768px) {
     .menuBar {
         display: flex !important;
+    }
+    .pageName {
+        margin-left: 10px !important;       
     }
     .contact {
         display: none !important;
