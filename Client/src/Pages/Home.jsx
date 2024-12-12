@@ -6,13 +6,10 @@ import Hero from '../Components/Hero'
 import NewArrivals from '../Components/NewArrivals'
 import ShopByCategories from '../Components/ShopByCategories'
 import { themesContext } from '../Contexts/userDataContext'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import ThemeChangeAnime from '../Components/ThemeChangeAnime'
 
 export default function Home () {
-    useEffect(() => {
-        alert(window.innerWidth)
-    }, [])
     const { theme, showThemeOverlay } = useContext(themesContext)
     return (
         <div className='mainWrapper-home' 
