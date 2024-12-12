@@ -142,7 +142,7 @@
         grid-template-columns: repeat(auto-fit, minmax(130px, 250px));
         align-items: center;
         justify-content: center;
-        gap: 12px;
+        gap: 15px;
         padding: 20px;
         margin-top: 100px;
         & .wrapper {
