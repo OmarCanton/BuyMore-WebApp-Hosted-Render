@@ -10,7 +10,6 @@ import {
     selectNikeFeaturedProducts,
     selectSamsungFeaturedProducts,
     selectLouisVuittonFeaturedProducts,
-    selectProductsError, 
     selectProductsStatus 
 } from "../Redux/Slices/productsSlice"
 import '../Styles/FeaturedProducts.css'
@@ -29,7 +28,6 @@ export default function FeaturedProducts () {
     const samsungFeaturedProducts = useSelector(selectSamsungFeaturedProducts)
     const louisVuittonFeaturedProducts = useSelector(selectLouisVuittonFeaturedProducts)
     const status = useSelector(selectProductsStatus)
-    const error = useSelector(selectProductsError)
     const favorites = useSelector(favoriteItems)
     const navigate = useNavigate()
     const { isLoggedIn } = useContext(userDetailsContext)
@@ -309,8 +307,8 @@ export default function FeaturedProducts () {
                     appleFeaturedProducts.length === 0 && 
                     nikeFeaturedProducts.length === 0 &&
                     samsungFeaturedProducts.length === 0
-                ) && <div style={{color: theme === 'dark' && 'white', padding: '40px'}}>Oops, no products found at this time!</div>}
-            { status === 'failed' && <p style={{padding: '50px'}}>Error fetching products: {error}</p> }
+                ) && <div style={{color: theme === 'dark' && 'white', padding: '40px'}}>Oops, no products found at this time!</div>
+            }
         </>
     )
 }

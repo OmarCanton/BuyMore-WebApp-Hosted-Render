@@ -12,18 +12,22 @@ export const fetchNewArrivals = createAsyncThunk('products/fetchNewArrivals', as
     return response.data.newArrivals
 })
 export const fetchAppleFeaturedProducts = createAsyncThunk('products/fetchAppleFeaturedProducts', async () => {
+    await new Promise((resolve) => setTimeout(resolve, 200))
     const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/appleFeaturedProducts`)
     return response.data.featuredProducts
 })
 export const fetchNikeFeaturedProducts = createAsyncThunk('products/fetchNikeFeaturedProducts', async () => {
+    await new Promise((resolve) => setTimeout(resolve, 200))
     const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/nikeFeaturedProducts`)
     return response.data.featuredProducts
 })
 export const fetchSamsungFeaturedProducts = createAsyncThunk('products/fetchSamsungFeaturedProducts', async () => {
+    await new Promise((resolve) => setTimeout(resolve, 200))
     const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/samsungFeaturedProducts`)
     return response.data.featuredProducts
 })
 export const fetchLouisVuittonFeaturedProducts = createAsyncThunk('products/fetchLouisVuittonFeaturedProducts', async () => {
+    await new Promise((resolve) => setTimeout(resolve, 200))
     const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/luisVuittonFeaturedProducts`)
     return response.data.featuredProducts
 })
