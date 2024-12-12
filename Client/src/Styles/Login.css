@@ -282,7 +282,7 @@
 }
 @media (max-width: 375px) {
     .loginHeader {
-        font-size: 2rem !important;
+        font-size: 1.8rem !important;
     }
     .singup-noAcc {
         & a {
