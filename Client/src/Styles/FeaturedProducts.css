@@ -150,7 +150,7 @@
 
 }
 
-@media (max-width: 1050px) {
+@media (min-width: 450px) and (max-width: 1050px) {
     .container {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
     }
