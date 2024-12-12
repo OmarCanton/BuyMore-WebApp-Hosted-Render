@@ -149,7 +149,8 @@
     }
 
 }
-@media (max-width: 1024px) {
+
+/* @media (max-width: 1024px) {
     & .featuredWrapper {
         flex: 0 1 230px !important;
     }
@@ -168,9 +169,9 @@
             }
         }
     }
-}
+} */
 
-
+/* 
 @media (max-width: 375px) {
     .container {
         & .featuredWrapper {
@@ -196,4 +197,4 @@
             }
         }
     }
-}
+} */
