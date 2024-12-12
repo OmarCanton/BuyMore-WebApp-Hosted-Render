@@ -95,9 +95,8 @@
 
 @media (max-width: 768px) {
     .mainWrapper {
-        position: sticky !important;
         height: 10.5%;
-        bottom: 0 !important;
+        top: 90vh !important;
         background-image: none !important;
         background-color: rgb(224, 224, 224);
         width: fit-content !important;
