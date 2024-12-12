@@ -81,7 +81,15 @@ export default function Header ({appName}) {
             <span className="menuBar" onClick={() => setOpenMenu(true)}>
                 <Menu fontSize='large' style={{...theme === 'dark' && {color: 'white'}}}/>
             </span>
-            <p className='pageName' style={{...theme == 'light' && window.innerWidth <= 425 && {color: '#1D2671'}}}>
+            <p 
+                className='pageName' 
+                style={{...theme === 'dark' && {
+                    background: 'linear-gradient( to right, #C33764, #1D2671)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    filter: 'brightness(1.5)'                
+                }}}
+            >
                 {appName}
             </p>
             <div className="right">
