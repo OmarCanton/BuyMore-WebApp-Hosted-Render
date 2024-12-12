@@ -239,6 +239,7 @@
 }
 @media (max-width: 320px) {
     .right {
+        right: 0 !important;
         .wishlist {
             display: none !important;
         }
