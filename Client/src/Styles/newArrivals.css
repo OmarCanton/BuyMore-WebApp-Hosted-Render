@@ -100,6 +100,6 @@
 }
 @media (max-width: 425px) {
     .newArrivals {
-        display: none;
+        display: none !important;
     }
 }
