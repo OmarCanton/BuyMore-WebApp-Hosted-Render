@@ -50,6 +50,7 @@ export default function MenuOptions() {
                             fontSize='large' 
                             htmlColor='white'  
                         />
+                        <p>Home</p>
                     </Button>
                 </Link>
                 <Link 
@@ -61,7 +62,8 @@ export default function MenuOptions() {
                             fontSize='large' 
                             htmlColor='white'
                         />
-                        </Button>
+                        <p>Shop</p>
+                    </Button>
                 </Link>
                 <Link 
                     to='/cart' 
@@ -71,7 +73,8 @@ export default function MenuOptions() {
                         <ShoppingBag 
                             htmlColor='white' 
                             fontSize='large' 
-                        />                
+                        />     
+                        <p>Wishlist</p>           
                         {/* <div className="numOfItems">{wishlistItems.length}</div> */}
                     </Button>
                 </Link>
@@ -84,6 +87,7 @@ export default function MenuOptions() {
                             fontSize='large' 
                             htmlColor='white'
                         />
+                        <p>Favorites</p>
                         {/* <div className="numOfItems">{favorites.length}</div> */}
                     </Button>
                 </Link>
@@ -96,9 +100,13 @@ export default function MenuOptions() {
                             fontSize='large' 
                             htmlColor='white'
                         />
+                        <p>Settings</p>
                     </Button>
                 </Link>
             </div>
+            <small className='comp'>
+                @CantonsTech 2024, All Rights Reserved.
+            </small>
         </Dialog>
     )
 }
