@@ -32,8 +32,7 @@
         }
         & .numOfItems {
             color: red;
-            position: relative;
-            right: 0;
+            padding-right: 10px;
         }
     }
 }
