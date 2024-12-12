@@ -19,7 +19,7 @@ export default function MenuOptions() {
             }}
             disableScrollLock
             PaperProps={{style: {
-                ...theme === 'dark' && {backgroundColor: '#3C3C3C'},
+                ...theme === 'dark' ? {backgroundColor: '#3C3C3C'} : {backgroundColor: 'rgb(224, 224, 224'},
                 padding: 0,
                 margin: 0,
                 minHeight: '100vh',
@@ -50,7 +50,7 @@ export default function MenuOptions() {
                             fontSize='large' 
                             htmlColor='white'  
                         />
-                        <p>Home</p>
+                        <p style={{...theme === 'dark' && {color: 'white'}}}>Home</p>
                     </Button>
                 </Link>
                 <Link 
@@ -62,7 +62,7 @@ export default function MenuOptions() {
                             fontSize='large' 
                             htmlColor='white'
                         />
-                        <p>Shop</p>
+                        <p style={{...theme === 'dark' && {color: 'white'}}}>Shop</p>
                     </Button>
                 </Link>
                 <Link 
@@ -74,7 +74,7 @@ export default function MenuOptions() {
                             htmlColor='white' 
                             fontSize='large' 
                         />     
-                        <p>Wishlist</p>           
+                        <p style={{...theme === 'dark' && {color: 'white'}}}>Wishlist</p>           
                         {/* <div className="numOfItems">{wishlistItems.length}</div> */}
                     </Button>
                 </Link>
@@ -87,7 +87,7 @@ export default function MenuOptions() {
                             fontSize='large' 
                             htmlColor='white'
                         />
-                        <p>Favorites</p>
+                        <p style={{...theme === 'dark' && {color: 'white'}}}>Favorites</p>
                         {/* <div className="numOfItems">{favorites.length}</div> */}
                     </Button>
                 </Link>
@@ -100,7 +100,7 @@ export default function MenuOptions() {
                             fontSize='large' 
                             htmlColor='white'
                         />
-                        <p>Settings</p>
+                        <p style={{...theme === 'dark' && {color: 'white'}}}>Settings</p>
                     </Button>
                 </Link>
             </div>
