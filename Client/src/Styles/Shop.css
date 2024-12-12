@@ -139,7 +139,7 @@
     & .productsWrapper {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(130px, 250px));
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
         align-items: center;
         justify-content: center;
         gap: 15px;
@@ -288,11 +288,13 @@
     
 }
 
-/* @media (min-width: 450px) and (max-width: 1050px) {
-    .wrapper {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+
+@media (min-width: 1050px) {
+    .productsWrapper {
+        grid-template-columns: repeat(5, 1fr) !important;
     }
-} */
+}
+
 @media (max-width: 425px) {
     .shop-header {
         padding-left: 5px !important;
