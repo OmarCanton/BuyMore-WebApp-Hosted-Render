@@ -44,7 +44,7 @@ export default function MenuOptions() {
                     onClick={() => setOpenMenu(false)}
                 >
                     <ArrowBack 
-                        fontSize='large'  
+                        fontSize='large'
                         style={{...theme === 'dark' && {color: 'white'}}}
                     />
                 </span>
@@ -55,7 +55,6 @@ export default function MenuOptions() {
                     <Button className='but' fullWidth sx={{borderRadius: '50px'}}>
                         <HomeRounded 
                             fontSize='large' 
-                            htmlColor='white'  
                         />
                         <p style={{...theme === 'dark' && {color: 'white'}}}>Home</p>
                     </Button>
@@ -67,7 +66,6 @@ export default function MenuOptions() {
                     <Button className='but' fullWidth sx={{borderRadius: '50px'}}>
                         <ShopRounded  
                             fontSize='large' 
-                            htmlColor='white'
                         />
                         <p style={{...theme === 'dark' && {color: 'white'}}}>Shop</p>
                     </Button>
@@ -78,7 +76,6 @@ export default function MenuOptions() {
                 >
                     <Button className='but' fullWidth sx={{borderRadius: '50px'}}>
                         <ShoppingBag 
-                            htmlColor='white' 
                             fontSize='large' 
                         />     
                         <p style={{...theme === 'dark' && {color: 'white'}}}>Wishlist</p>           
@@ -92,7 +89,6 @@ export default function MenuOptions() {
                     <Button className='but' fullWidth sx={{borderRadius: '50px'}}>
                         <FavoriteRounded 
                             fontSize='large' 
-                            htmlColor='white'
                         />
                         <p style={{...theme === 'dark' && {color: 'white'}}}>Favorites</p>
                     </Button>
@@ -105,7 +101,6 @@ export default function MenuOptions() {
                     <Button className='but' fullWidth sx={{borderRadius: '50px'}}>
                         <SettingsRounded 
                             fontSize='large' 
-                            htmlColor='white'
                         />
                         <p style={{...theme === 'dark' && {color: 'white'}}}>Settings</p>
                     </Button>
@@ -117,9 +112,8 @@ export default function MenuOptions() {
                     <Button className='but' fullWidth sx={{borderRadius: '50px'}}>
                         <QuestionAnswer 
                             fontSize='large' 
-                            htmlColor='white'
                         />
-                        <p style={{...theme === 'dark' && {color: 'white'}}}>Have a problem?</p>
+                        <p style={{...theme === 'dark' && {color: 'white'}}}>Having a problem?</p>
                     </Button>
                 </Link>
             </div>
