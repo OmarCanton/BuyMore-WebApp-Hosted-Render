@@ -16,3 +16,9 @@
         font-weight: bold;
     }
 }
+
+@media (max-width: 370px) {
+    .featuredHeader {
+        font-size: 1.8rem !important;
+    }
+}
