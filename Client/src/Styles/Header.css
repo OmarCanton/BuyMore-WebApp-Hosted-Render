@@ -235,5 +235,8 @@
     .right {
         position: relative;
         right: 20px;
+        & .userProfile {
+            margin-right: 15px !important;
+        }
     }
 }
