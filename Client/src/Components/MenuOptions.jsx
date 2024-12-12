@@ -20,7 +20,8 @@ export default function MenuOptions() {
                 ...theme === 'dark' && {backgroundColor: '#3C3C3C'},
                 padding: 0,
                 margin: 0,
-                height: '100vh',
+                minHeight: '100vh',
+                height: '100%',
                 position: 'absolute',
                 left: '0vh',
 
