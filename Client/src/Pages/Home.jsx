@@ -23,7 +23,12 @@ export default function Home () {
             <ShopByCategories />
             <span 
                 className='featuredHeader' 
-                style={{...theme == 'light' && window.innerWidth <= 425 && {color: '#1D2671'}}}
+                style={{...theme === 'dark' && {
+                    background: 'linear-gradient( to right, #C33764, #1D2671)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    filter: 'brightness(1.5)'                
+                }}}
             >Featured Products</span>
             <FeaturedProducts />
             <Panel />
