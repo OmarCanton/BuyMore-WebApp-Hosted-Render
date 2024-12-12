@@ -305,6 +305,7 @@ export default function FeaturedProducts () {
             )}
             {
                 (
+                    status === 'succeeded' &&
                     appleFeaturedProducts.length === 0 && 
                     nikeFeaturedProducts.length === 0 &&
                     samsungFeaturedProducts.length === 0
