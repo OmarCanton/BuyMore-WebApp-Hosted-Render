@@ -12,6 +12,11 @@
     height: 10vh;
     background-color: transparent;
     backdrop-filter: blur(10px);
+    & .menuBar {
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
     & .pageName {
         margin-left: 20px;
         font-size: xx-large;
@@ -170,6 +175,9 @@
 }
 
 @media (max-width: 768px) {
+    .menuBar {
+        display: flex;
+    }
     .contact {
         display: none !important;
     }

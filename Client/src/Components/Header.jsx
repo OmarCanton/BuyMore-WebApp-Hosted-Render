@@ -4,7 +4,7 @@ import '../Styles/Header.css'
 import PropTypes from 'prop-types'
 import { userDetailsContext } from '../Contexts/userDataContext'
 import { Button } from '@mui/material'
-import { AccountCircle, ShoppingBag, QuestionAnswer } from '@mui/icons-material'
+import { AccountCircle, ShoppingBag, QuestionAnswer, Menu } from '@mui/icons-material'
 import {  useSelector } from 'react-redux'
 import { listItems } from '../Redux/Slices/WishlistSlice'
 import { LightMode, DarkMode } from '@mui/icons-material'
@@ -24,7 +24,8 @@ export default function Header ({appName}) {
         user_username, 
         isLoggedIn,  
         profilePicture, 
-        loading, 
+        loading,
+        setOpenMenu 
     } = useContext(userDetailsContext)
 
     useEffect(() => {
@@ -77,6 +78,9 @@ export default function Header ({appName}) {
 
     return (
         <div className="wrapper-header" style={headbgColor}>
+            <span className="menuBar" onClick={() => setOpenMenu(true)}>
+                <Menu fontSize='large' />
+            </span>
             <p className='pageName' style={{...theme == 'light' && window.innerWidth <= 425 && {color: '#1D2671'}}}>
                 {appName}
             </p>

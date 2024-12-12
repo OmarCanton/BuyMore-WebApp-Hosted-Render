@@ -8,6 +8,7 @@ import ShopByCategories from '../Components/ShopByCategories'
 import { themesContext } from '../Contexts/userDataContext'
 import { useContext } from 'react'
 import ThemeChangeAnime from '../Components/ThemeChangeAnime'
+import MenuOptions from '../Components/MenuOptions'
 
 export default function Home () {
     const { theme, showThemeOverlay } = useContext(themesContext)
@@ -16,6 +17,7 @@ export default function Home () {
             style={{...theme == 'dark' && {backgroundColor: 'rgb(22, 22, 22'}}}
         >
             <Header appName='buyMore&reg;' />
+            <MenuOptions />
             <Hero />
             <NewArrivals />
             <ShopByCategories />
