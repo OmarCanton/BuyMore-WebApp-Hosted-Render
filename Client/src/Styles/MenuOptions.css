@@ -26,6 +26,11 @@
             text-transform: capitalize;
             font-size: 1.1rem;
         }
+        & .numOfItems {
+            color: red;
+            position: relative;
+            right: 10px;
+        }
     }
 }
 .comp {

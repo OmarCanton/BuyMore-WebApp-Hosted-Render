@@ -4,11 +4,17 @@ import { userDetailsContext, themesContext } from '../Contexts/userDataContext'
 import { ArrowBack, FavoriteRounded, HomeRounded, SettingsRounded, ShoppingBag, ShopRounded } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import '../Styles/MenuOptions.css'
+import { listItems } from '../Redux/Slices/WishlistSlice'
+import { favoriteItems } from '../Redux/Slices/FavoritesSlice'
+import { useSelector } from 'react-redux'
 
 
 export default function MenuOptions() {
     const {openMenu, setOpenMenu} = useContext(userDetailsContext)
     const {theme} = useContext(themesContext)
+    const wishlistItems = useSelector(listItems)
+    const favorites = useSelector(favoriteItems)
+
     return (
         <Dialog 
             open={openMenu}
@@ -76,7 +82,7 @@ export default function MenuOptions() {
                             fontSize='large' 
                         />     
                         <p style={{...theme === 'dark' && {color: 'white'}}}>Wishlist</p>           
-                        {/* <div className="numOfItems">{wishlistItems.length}</div> */}
+                        <div className="numOfItems">{wishlistItems.length}</div>
                     </Button>
                 </Link>
                 <Link 
@@ -89,7 +95,7 @@ export default function MenuOptions() {
                             htmlColor='white'
                         />
                         <p style={{...theme === 'dark' && {color: 'white'}}}>Favorites</p>
-                        {/* <div className="numOfItems">{favorites.length}</div> */}
+                        <div className="numOfItems">{favorites.length}</div>
                     </Button>
                 </Link>
                 <Link 
