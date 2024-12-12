@@ -137,6 +137,7 @@
         text-align: center;
     }
     & .productsWrapper {
+        width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
         align-items: center;
@@ -151,7 +152,6 @@
             box-shadow: 0 5px 10px -5px black;
             align-items: center;
             justify-content: center;
-            /* flex: 0 1 250px; */
             height: 400px;
             padding: 10px;
             gap: 10px;
