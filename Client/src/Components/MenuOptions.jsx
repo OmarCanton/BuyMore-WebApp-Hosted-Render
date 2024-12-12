@@ -82,8 +82,8 @@ export default function MenuOptions() {
                             fontSize='large' 
                         />     
                         <p style={{...theme === 'dark' && {color: 'white'}}}>Wishlist</p>           
-                        <div className="numOfItems">{wishlistItems.length}</div>
                     </Button>
+                    <div className="numOfItems">{wishlistItems.length}</div>
                 </Link>
                 <Link 
                     to='/favorites' 
@@ -95,8 +95,8 @@ export default function MenuOptions() {
                             htmlColor='white'
                         />
                         <p style={{...theme === 'dark' && {color: 'white'}}}>Favorites</p>
-                        <div className="numOfItems">{favorites.length}</div>
                     </Button>
+                    <div className="numOfItems">{favorites.length}</div>
                 </Link>
                 <Link 
                     to='/settings' 

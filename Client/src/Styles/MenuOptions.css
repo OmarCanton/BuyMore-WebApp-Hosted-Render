@@ -16,6 +16,9 @@
     & a {
         text-decoration: none;
         width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         & .but {
             width: 100%;
             display: flex;
@@ -26,11 +29,11 @@
                 text-transform: capitalize;
                 font-size: 1.1rem;
             }
-            & .numOfItems {
-                color: red;
-                position: relative;
-                right: 0;
-            }
+        }
+        & .numOfItems {
+            color: red;
+            position: relative;
+            right: 0;
         }
     }
 }
