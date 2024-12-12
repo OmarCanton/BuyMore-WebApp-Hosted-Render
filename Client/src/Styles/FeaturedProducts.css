@@ -159,7 +159,6 @@
 
 @media (max-width: 425px) {
     .loadingWrapper {
-        padding: 50px !important;
         overflow: hidden !important;
     }
     .container {
