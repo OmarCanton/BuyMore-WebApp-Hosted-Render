@@ -284,6 +284,9 @@
     .loginHeader {
         font-size: 1.8rem !important;
     }
+    .login-form {
+        height: 80% !important;
+    }
     .singup-noAcc {
         & a {
             text-align: center ;
