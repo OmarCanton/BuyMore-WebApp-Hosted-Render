@@ -176,7 +176,7 @@
 
 @media (max-width: 768px) {
     .menuBar {
-        display: flex;
+        display: flex !important;
     }
     .contact {
         display: none !important;
