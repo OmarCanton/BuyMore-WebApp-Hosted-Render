@@ -22,7 +22,6 @@
             align-items: center;
             justify-content: flex-start;
             gap: 15px;
-            border: 1px solid red;
             & p {
                 text-transform: capitalize;
                 font-size: 1.1rem;
