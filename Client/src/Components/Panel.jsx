@@ -1,5 +1,5 @@
-import { useContext/*, useEffect, useState*/ } from 'react'
-import { themesContext/*, userDetailsContext*/ } from '../Contexts/userDataContext'
+import { useContext, useEffect, useState } from 'react'
+import { themesContext, userDetailsContext } from '../Contexts/userDataContext'
 import { Link, useLocation } from 'react-router-dom'
 import '../Styles/Panel.css'
 import {
@@ -22,47 +22,44 @@ export default function Panel () {
     const {theme, themeStyles} = useContext(themesContext)
 
 
-    // const {isVisible, setIsVisible} = useContext(userDetailsContext)
-    // const [lastScrollY, setLastScrollY] = useState(0)
+    const {isVisible, setIsVisible} = useContext(userDetailsContext)
+    const [lastScrollY, setLastScrollY] = useState(0)
 
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //         const currentScrollY = window.scrollY
-    //         if(window.innerWidth > 768) {
-    //             if(currentScrollY > lastScrollY) {
-    //                 setIsVisible(false)
-    //             } else {
-    //                 setIsVisible(true)
-    //             }
-    //         }
-    //         setLastScrollY(currentScrollY)
-    //     }
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY
+            if(currentScrollY > lastScrollY) {
+                setIsVisible(false)
+            } else {
+                setIsVisible(true)
+            }
+            setLastScrollY(currentScrollY)
+        }
 
-    //     window.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll)
 
-    //     return () => window.removeEventListener('scroll', handleScroll) 
-    // }, [lastScrollY, setIsVisible])
-    // useEffect(() => {
-    //     const handleMouseMove = (event) => {
-    //         const mousePosition = event.clientY
-    //         if(window.innerWidth > 768) {
-    //             if(mousePosition >= (window.innerHeight - 80)) {
-    //                 setIsVisible(true)
-    //             }
-    //         }
-    //     } 
+        return () => window.removeEventListener('scroll', handleScroll) 
+    }, [lastScrollY, setIsVisible])
+
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+            const mousePosition = event.clientY
+            if(mousePosition >= (window.innerHeight - 80)) {
+                setIsVisible(true)
+            }
+        }
         
-    //     window.addEventListener('mousemove', handleMouseMove)
+        window.addEventListener('mousemove', handleMouseMove)
 
-    //     return () => window.removeEventListener('mousemove', handleMouseMove)
-    // }, [setIsVisible])
+        return () => window.removeEventListener('mousemove', handleMouseMove)
+    }, [setIsVisible])
 
     return (
         <>
             <div
                 style={{
                     ...theme === 'dark' && {backgroundColor: themeStyles.style.divColor}, 
-                    // ...!isVisible && {transform: 'translateY(120%)'}
+                    ...!isVisible && {transform: 'translateY(120%)'}
                 }} 
                 className='mainWrapper'
             >
@@ -131,8 +128,8 @@ export default function Panel () {
                 <div
                     className="chosenRoute"
                     style={{
-                        ...path === '/' && {left: 21},
-                        ...path === '/home' && {left: 21},
+                        ...path === '/' && {left: 20},
+                        ...path === '/home' && {left: 20},
                         ...path === '/shop' && {left: '25.6%'},
                         ...path === '/cart' && {left: '45.5%'},
                         ...path === '/favorites' && {left: '65%'},
@@ -143,9 +140,9 @@ export default function Panel () {
             </div>
             { (wishlistItems.length > 0 || favorites.length > 0) &&
                 <div 
-                    // style={{
-                    //     ...!isVisible && {transform: 'translateY(500%)'}
-                    // }}                    
+                    style={{
+                        ...!isVisible && {transform: 'translateY(500%)'}
+                    }}                    
                     className="panelNotificationCount"
                 ></div>
             }
