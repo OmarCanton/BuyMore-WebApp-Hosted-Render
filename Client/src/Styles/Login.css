@@ -267,10 +267,9 @@
             border-radius: 0% !important;
             & form {
                 & .singup-noAcc {
-                    display: flex !important;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 2.5px;
+                    padding: 10px;
+                    text-align: center;
+                    display: block !important;
                     & a {
                         text-decoration: none;
                         color: #c85479; 

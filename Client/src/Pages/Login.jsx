@@ -227,7 +227,7 @@ export default function Login () {
                             <Link style={{ color: themeStyles.style.color}}>Forgot Password?</Link>
                         </span>
                         <span className='singup-noAcc' style={{...theme === 'dark' && {color: 'white'}}}>
-                            Don&apos;t have an account yet? <Link to={'/signup'}>Signup</Link> now
+                            Don&apos;t have an account yet?&nbsp;<Link to={'/signup'}>Signup</Link>&nbsp;now
                         </span>
                     </form>
                 </div>

@@ -203,9 +203,7 @@ export default function Signup () {
                     <button>{loading && <CircularProgress style={{width: 25, height: 25, color: 'white'}}/>} Signup</button>
                 </form>
                 <div className='loginSignupLink'>
-                    <p>Already have an account?</p>
-                    <Link style={{...theme === 'dark' && {color: '#dd4273'}}} to='/login'>Login</Link> 
-                    <p>now</p>
+                    Already have an account?&nbsp;<Link style={{...theme === 'dark' && {color: '#dd4273'}}} to='/login'>Login</Link>&nbsp;now
                 </div>
             </div>
             <Dialog 
