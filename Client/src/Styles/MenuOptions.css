@@ -1,6 +1,5 @@
 .menu-wrapper {
     border: 1px solid red;
-    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -8,6 +7,7 @@
     gap: 10px;
     width: 100%;
     padding: 10px;
+    position: ;
     & .arrowBack {
         border: 1px solid red;
         width: 100%;
@@ -26,7 +26,7 @@
         gap: 10px;
         & p {
             text-transform: capitalize;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
     }
 }

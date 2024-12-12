@@ -17,7 +17,6 @@ export default function MenuOptions() {
                     setOpenMenu(false)
                 }
             }}
-            disableScrollLock
             PaperProps={{style: {
                 ...theme === 'dark' ? {backgroundColor: '#3C3C3C'} : {backgroundColor: 'rgb(224, 224, 224'},
                 padding: 0,
