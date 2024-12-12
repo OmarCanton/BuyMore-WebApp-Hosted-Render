@@ -95,6 +95,7 @@
 
 @media (max-width: 768px) {
     .mainWrapper {
+        position: sticky !important;
         height: 10.5%;
         bottom: 0 !important;
         background-image: none !important;
