@@ -12,8 +12,9 @@
         font-size: 2rem;
     }
     & .cats-wrapper {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
         gap: 10px;
         align-items: center;
         justify-content: center;
@@ -69,9 +70,7 @@
 
 @media (max-width: 425px) {
     .shopByCats-wrapper {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
+        display: flex;
     }
 }
 @media (max-width: 375px) {
