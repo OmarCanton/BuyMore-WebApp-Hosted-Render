@@ -179,9 +179,6 @@
     .menuBar {
         display: flex !important;
     }
-    .right {
-        margin-right: 10px !important;
-    }
     .pageName {
         margin-left: 10px !important;       
     }
@@ -232,5 +229,10 @@
         & .accountSvg {
             display: none;
         }
+    }
+}
+@media (max-width: 370px) {
+    .right {
+        padding-right: 20px !important;
     }
 }
