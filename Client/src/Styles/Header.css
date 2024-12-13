@@ -12,18 +12,22 @@
     height: 10vh;
     background-color: transparent;
     backdrop-filter: blur(10px);
-    & .menuBar {
-        display: none;
-        align-items: center;
-        justify-content: center;
-        margin-left: 10px;
-    }
     & .pageName {
         margin-left: 20px;
         font-size: xx-large;
         font-weight: bold;
         color: rgb(255, 255, 255);
         font-family: 'Lobster Two';
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        & .menuBar {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
     }
     & .right {
         display: flex;
