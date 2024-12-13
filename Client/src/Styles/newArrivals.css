@@ -98,7 +98,7 @@
         }
     }
 }
-@media (max-width: 425px) {
+@media (max-width: 650px) {
     .loadingWrapper-newArrivals {
         display: none !important;
     }
