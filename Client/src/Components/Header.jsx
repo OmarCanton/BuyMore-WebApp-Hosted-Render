@@ -30,7 +30,7 @@ export default function Header ({appName}) {
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
-            if(window.innerWidth <= 425) {
+            if(window.innerWidth <= 650) {
                 if(window.scrollY === 0) {
                     setHeadbgColor((prevState) => (
                         {
@@ -83,7 +83,7 @@ export default function Header ({appName}) {
             </span>
             <p 
                 className='pageName' 
-                style={{...theme == 'light' && window.innerWidth <= 425 && {color: '#1D2671'}}}
+                style={{...theme == 'light' && window.innerWidth <= 650 && {color: '#1D2671'}}}
             >
                 {appName}
             </p>
@@ -98,7 +98,7 @@ export default function Header ({appName}) {
                 {isLoggedIn &&
                     <div className='contact-icon-forMobile'>
                         <Link to='mailto: buymoreapp24@gmail.com' className='contact-btn-mobile' >
-                            <QuestionAnswer htmlColor='white' style={{...theme == 'light' && window.innerWidth <= 425 && {color: '#3C3C3C'}}}/>
+                            <QuestionAnswer htmlColor='white' style={{...theme == 'light' && window.innerWidth <= 650 && {color: '#3C3C3C'}}}/>
                         </Link>
                     </div>
                 }
@@ -114,7 +114,7 @@ export default function Header ({appName}) {
                     {theme === 'light' ? 
                         <LightMode 
                             htmlColor='white'
-                            style={{...theme == 'light' && window.innerWidth <= 425 && {color: '#3C3C3C'}}}
+                            style={{...theme == 'light' && window.innerWidth <= 650 && {color: '#3C3C3C'}}}
                         /> 
                         : 
                         <DarkMode htmlColor='white'/>
@@ -124,7 +124,7 @@ export default function Header ({appName}) {
                     <Link to='/cart'>
                         <Button className='but' fullWidth sx={{borderRadius: '50px'}}>
                             <ShoppingBag 
-                                style={{...theme == 'light' && window.innerWidth <= 425 && {color: '#3C3C3C'}}} 
+                                style={{...theme == 'light' && window.innerWidth <= 650 && {color: '#3C3C3C'}}} 
                                 htmlColor='white' 
                                 fontSize='large'
                             />
