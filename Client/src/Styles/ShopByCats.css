@@ -67,7 +67,7 @@
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 650px) {
     .shopByCats-wrapper {
         display: flex;
     }

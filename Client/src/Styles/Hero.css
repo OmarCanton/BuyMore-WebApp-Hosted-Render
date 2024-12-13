@@ -133,7 +133,7 @@
         }
     }
 }
-@media (max-width: 425px) {
+@media (max-width: 650px) {
     .heroWrapper {
         display: none;
         & video {
