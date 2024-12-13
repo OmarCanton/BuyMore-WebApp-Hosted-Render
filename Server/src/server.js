@@ -33,7 +33,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: { 
-        httpOnly: true, // Prevents JavaScript access
+        // httpOnly: true, // Prevents JavaScript access
         secure: true,   // Ensures cookie is sent only over HTTPS
         sameSite: 'Strict',
         maxAge: 1000 * 60 * 60 * 24 * 2 //store user session for 2 days --default 
