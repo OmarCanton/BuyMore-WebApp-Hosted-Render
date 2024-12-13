@@ -302,12 +302,18 @@
         grid-template-columns: repeat(3, 200px);
     }
 }
-@media (min-width: 441px) and (max-width: 767px) {
+@media (min-width: 501px) and (max-width: 767px) {
     .shop-wrapper .productsWrapper {
         grid-template-columns: repeat(3, 180px);
     }
 }
-@media (min-width: 370px) and (max-width: 440px) {
+
+@media (min-width: 426px) and (max-width: 500px) {
+    .shop-wrapper .productsWrapper {
+        grid-template-columns: repeat(2, 180px);
+    }
+}
+@media (min-width: 370px) and (max-width: 425px) {
     .shop-wrapper .productsWrapper {
         grid-template-columns: repeat(2, 170px);
     }
