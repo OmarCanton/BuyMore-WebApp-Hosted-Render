@@ -288,9 +288,11 @@
 }
 
 @media (min-width: 1300px) {
-    .productsWrapper {
-        grid-template-columns: repeat(5, 250px) !important;
-    }
+    .shop-wrapper {
+        & .productsWrapper {
+            grid-template-columns: repeat(5, 250px) !important;
+        }
+    }      
 }
 @media (min-width: 1024px) {
     .productsWrapper {
