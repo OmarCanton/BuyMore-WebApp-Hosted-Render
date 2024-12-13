@@ -139,7 +139,7 @@
     & .productsWrapper {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(5, 1fr); 
+        grid-template-columns: repeat(auto-fit, 230px);
         align-items: center;
         justify-content: center;
         gap: 12px;
@@ -342,59 +342,17 @@
     }
 }
 
-@media (max-width: 1440px) {
-    .shop-wrapper {
-        & .productsWrapper {
-           grid-template-columns: repeat(4, 1fr) !important; /* 4 equal columns for laptops */
-        }
-    }
-}
 
-  /* For tablet screens, 3 columns */
-  @media (max-width: 1024px) {
-    .shop-wrapper {
-        & .productsWrapper {
-            grid-template-columns: repeat(3, 1fr) !important; /* 3 equal columns */
-        }
-    }
-}
-  
-  /* For mobile screens (up to 425px), 2 columns */
-  @media (max-width: 425px) {
-    .shop-wrapper {
-        & .productsWrapper {
-            grid-template-columns: repeat(2, 1fr) !important; /* 2 equal columns */
-        }
-    }
-}
-
-
-/* @media (min-width: 1015px) and (max-width: 1200px) {
+@media (max-width: 776px) {
     .productsWrapper {
-        grid-template-columns: repeat(4, 1fr) !important;       
-    }
-}
-@media (min-width: 680px) and (max-width: 1014) {
-    .productsWrapper {
-        grid-template-columns: repeat(3, 1fr) !important;       
-    }
-}
-@media (max-width: 679) {
-    .productsWrapper {
-        grid-template-columns: repeat(2, 1fr) !important;       
-    }
-} */
-
-/* @media (max-width: 776px) {
-    .productsWrapper {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;       
+        grid-template-columns: repeat(auto-fit, 200px) !important;       
     }
 }
 @media (max-width: 531px) {
     .productsWrapper {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;       
+        grid-template-columns: repeat(auto-fit, 150px) !important;       
     }
-} */
+}
 
 @media (max-width: 375px) {
     .searchIcon2 {
@@ -424,9 +382,9 @@
 }
 
 @media (max-width: 320px) {
-    /* .productsWrapper {
+    .productsWrapper {
         grid-template-columns: repeat(2, 150px) !important;       
-    } */
+    }
     .wrapper {
         height: 250px !important;
     }
