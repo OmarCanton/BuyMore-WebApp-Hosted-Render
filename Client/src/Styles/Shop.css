@@ -382,7 +382,7 @@
 
 @media (max-width: 320px) {
     .productsWrapper {
-        grid-template-columns: repeat(auto-fit, 150px) !important;       
+        grid-template-columns: repeat(2, 150px) !important;       
     }
     .wrapper {
         height: 250px !important;
