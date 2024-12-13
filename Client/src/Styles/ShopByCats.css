@@ -79,3 +79,10 @@
         }
     }
 }
+@media (max-width: 370px) {
+    .shopByCats-wrapper {
+        & span {
+            font-size: 1.8rem !important;
+        }
+    }
+}
