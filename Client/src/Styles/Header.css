@@ -240,6 +240,9 @@
 @media (max-width: 320px) {
     .right {
         border: 1px solid red;
+        right: 0 !important;
+        justify-content: right;
+        gap: 5px !important;
         .wishlist {
             display: none !important;
         }
