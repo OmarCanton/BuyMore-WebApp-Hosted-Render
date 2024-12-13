@@ -192,6 +192,24 @@
     }
 }
 
+@media (max-width: 650px) {
+    .loginForMobile {
+        display: block !important;
+        text-decoration: none;
+        color: #C33764;
+        font-weight: bold;
+    }
+    .login{
+        background-color: transparent !important;
+        & .loginText {
+            display: none;
+        }
+        & .accountSvg {
+            display: none;
+        }
+    }
+}
+
 @media (max-width: 425px) {
     .userProfile {
         img {
@@ -214,21 +232,6 @@
         position: relative;
         left: 30px;
         scale: 1.2;
-    } 
-    .loginForMobile {
-        display: block !important;
-        text-decoration: none;
-        color: #C33764;
-        font-weight: bold;
-    }
-    .login{
-        background-color: transparent !important;
-        & .loginText {
-            display: none;
-        }
-        & .accountSvg {
-            display: none;
-        }
     }
 }
 @media (max-width: 370px) {
