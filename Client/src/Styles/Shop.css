@@ -345,6 +345,19 @@
     }
 }
 
+@media (max-width: 675px) {
+    .shop-header {
+        & .headerComp-first {
+            & .searchForm1 {
+                display: none !important;
+            }
+            & .searchIcon2 {
+                display: block !important;
+                
+            }
+        }
+    }
+}
 @media (max-width: 425px) {
     .shop-header {
         padding-left: 5px !important;
@@ -356,13 +369,6 @@
             }
             & h2 {
                 font-size: 1.3rem;
-            }
-            & .searchForm1 {
-                display: none !important;
-            }
-            & .searchIcon2 {
-                display: block !important;
-                
             }
             & .filter {
                 padding: 0 !important;
