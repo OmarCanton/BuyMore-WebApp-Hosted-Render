@@ -49,9 +49,8 @@ export default function Settings () {
     const logout = async () => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
-            if(response.data.message) {
-                navigate('/home')
-                
+            if(response.data.success === true) {
+                navigate('/')
                 setIsLoggedIn(false)
                 setUserId(null)
                 setUser_username(null)
@@ -64,6 +63,14 @@ export default function Settings () {
                         color: 'white'
                     },
                 })
+            }
+            if(response.data.error) {
+                toast.error(response.data.error, {
+                    style: {
+                        backgroundColor: 'white',
+                        color: 'black'
+                    },
+                })    
             }
             
         } catch(err) {
@@ -251,7 +258,8 @@ export default function Settings () {
                         onMouseEnter={() => setIsHovered7(true)}
                         onMouseLeave={() => setIsHovered7(false)}
                         style={{...isHovered7 && {...theme === 'dark' && {backgroundColor: themeStyles.style.divColor}}}}
-                        className="logout" onClick={logout}
+                        className="logout" 
+                        onClick={logout}
                     >
                         <LogoutRounded htmlColor='red' fontSize='large' />
                         <h3 style={{color: themeStyles.style.color, cursor: 'pointer'}}>Logout</h3>
