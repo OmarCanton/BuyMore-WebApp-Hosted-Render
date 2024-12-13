@@ -250,7 +250,7 @@
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 650px) {
     .login-wrapper {
         box-shadow: none !important;
         flex-direction: column !important;
