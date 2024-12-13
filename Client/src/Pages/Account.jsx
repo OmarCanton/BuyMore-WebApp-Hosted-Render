@@ -223,42 +223,42 @@ export default function Account () {
         }
     } 
     
-    // const logout = async () => {
-    //     try {
-    //         const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
-    //         if(response.data.success === true) {
-    //             navigate('/')
-    //             setIsLoggedIn(false)
-    //             setUserId(null)
-    //             setUser_username(null)
-    //             setUserEmail(null)
-    //             setAbout(null)
-    //             setPhone(null)
-    //             toast.success(response.data.message, {
-    //                 style: {
-    //                     backgroundColor: 'black',
-    //                     color: 'white'
-    //                 }
-    //             })
-    //         }
-    //         if(response.data.error) {
-    //             toast.error(response.data.error, {
-    //                 style: {
-    //                     backgroundColor: 'white',
-    //                     color: 'black'
-    //                 },
-    //             })    
-    //         }
+    const logout = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
+            if(response.data.success === true) {
+                navigate('/')
+                setIsLoggedIn(false)
+                setUserId(null)
+                setUser_username(null)
+                setUserEmail(null)
+                setAbout(null)
+                setPhone(null)
+                toast.success(response.data.message, {
+                    style: {
+                        backgroundColor: 'black',
+                        color: 'white'
+                    }
+                })
+            }
+            if(response.data.error) {
+                toast.error(response.data.error, {
+                    style: {
+                        backgroundColor: 'white',
+                        color: 'black'
+                    },
+                })    
+            }
             
-    //     } catch(err) {
-    //         toast.error(`An error occured\n${err}`, {
-    //             style: {
-    //                 backgroundColor: 'white',
-    //                 color: 'black'
-    //             },
-    //         })
-    //     }
-    // }
+        } catch(err) {
+            toast.error(`An error occured\n${err}`, {
+                style: {
+                    backgroundColor: 'white',
+                    color: 'black'
+                },
+            })
+        }
+    }
     
     const delUser = async (e) => {
         e.preventDefault()
@@ -364,7 +364,7 @@ export default function Account () {
                     style={{color: themeStyles.style.color}}
                 >Account Settings</h2>
                 { isLoggedIn &&
-                    <div className="header-logout" title="Logout" onClick={() => console.log('logout route')}>
+                    <div className="header-logout" title="Logout" onClick={logout}>
                         <Logout htmlColor="red" style={{transform: 'scale(1.3)'}} />
                     </div>
                 }
