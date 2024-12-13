@@ -208,6 +208,9 @@
             display: none;
         }
     }
+    .username {
+        display: none;
+    }
 }
 
 @media (max-width: 425px) {
@@ -216,9 +219,6 @@
             height: 50px !important;
             width: 50px !important;
         }
-    }
-    .username {
-        display: none;
     }
     .contact-icon-forMobile {
         display: none !important;
