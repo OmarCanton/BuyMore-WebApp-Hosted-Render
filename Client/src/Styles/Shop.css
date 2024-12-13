@@ -292,7 +292,12 @@
         grid-template-columns: repeat(5, 250px);
     }      
 }
-@media (min-width: 950px) and (max-width: 1299px) {
+@media (min-width: 1111px) and (max-width: 1299px) {
+    .shop-wrapper .productsWrapper {
+        grid-template-columns: repeat(4, 250px);
+    }
+}
+@media (min-width: 950px) and (max-width: 1100px) {
     .shop-wrapper .productsWrapper {
         grid-template-columns: repeat(4, 230px);
     }
