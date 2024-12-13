@@ -299,7 +299,7 @@
 }
 @media (min-width: 768px) and (max-width: 1023px) {
     .shop-wrapper .productsWrapper {
-        grid-template-columns: repeat(4, 180px);
+        grid-template-columns: repeat(3, 200px);
     }
 }
 @media (min-width: 576px) and (max-width: 767px) {
