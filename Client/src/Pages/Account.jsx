@@ -226,7 +226,7 @@ export default function Account () {
     const logout = async () => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
-            if(response.data.message) {
+            if(response.data.success === 'true') {
                 navigate('/')
                 setIsLoggedIn(false)
                 setUserId(null)
@@ -238,9 +238,16 @@ export default function Account () {
                     style: {
                         backgroundColor: 'black',
                         color: 'white'
-                    },
-                    duration: 8000
+                    }
                 })
+            }
+            if(response.data.error) {
+                toast.error(response.data.error, {
+                    style: {
+                        backgroundColor: 'white',
+                        color: 'black'
+                    },
+                })    
             }
             
         } catch(err) {
@@ -257,7 +264,7 @@ export default function Account () {
         e.preventDefault()
         setDelAccOpen(false)
         try {
-            const response = await axios.post (`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/delUser/${userId}`, { password })
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/delUser/${userId}`, { password })
             if(response.data.status === true) {
                 setIsLoggedIn(false)
                 setUserId(null)
@@ -300,7 +307,7 @@ export default function Account () {
         setResetOpen(false)
         setOpenLoadingSpinner(true)
         try {
-            const response = await axios. post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/forgot-password`, {resetEmail})
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/forgot-password`, {resetEmail})
             if(response.data.success) {
                 toast.success(response.data.message, {
                     style: {
@@ -488,7 +495,7 @@ export default function Account () {
                         <span 
                             style={{backgroundColor: themeStyles.style.divColor, color: themeStyles.style.color}}
                         >Status</span>
-                        <p style={{color: themeStyles.style.color}}> Regular User</p>
+                        <p style={{color: themeStyles.style.color}}>Regular User</p>
                     </div>
                 </>
             }

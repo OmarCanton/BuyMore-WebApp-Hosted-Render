@@ -169,7 +169,7 @@ router.get('/logout', (req, res) => {
     if(req.user) {
         req.logout(err => {
             if(err) {
-                res.json({error: 'Error logging out, try again!'})
+                res.json({error: `Error logging out, try again!\n${err}`})
             }
             res.json({success: true, message: 'Kindly come back next time to buy More!'})
         })
