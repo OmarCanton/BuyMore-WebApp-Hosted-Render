@@ -90,8 +90,12 @@ export default function Shop () {
     //end
 
     useEffect(() => {
-        dispatch(fetchProducts(pageNumber))
-    }, [dispatch, pageNumber])
+        if(category) {
+            dispatch(fetchFilteredProduct(category))
+        } else {
+            dispatch(fetchProducts(pageNumber))
+        }
+    }, [dispatch, pageNumber, category])
 
 
     const checkProduct = (product) => {
@@ -145,14 +149,6 @@ export default function Shop () {
         return () => window.removeEventListener('scroll', handleScroll)
         
     }, [])
-
-    //fetching category's products if user clicked on the shop by category from the mobile screen
-    useEffect(() => {
-        if(category) {
-            dispatch(fetchFilteredProduct(category))
-        }
-    }, [dispatch, category])
-
 
     return (
         <div className="shop-wrapper" 
