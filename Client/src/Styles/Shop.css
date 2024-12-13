@@ -368,6 +368,16 @@
         padding-right: 5px !important;
         & .wrapper {
             height: 350px !important;
+            & .addToCartFav {
+                padding-left: 5px;
+                padding-right: 5px;
+                & .addItToCart {
+                    display: block !important;
+                }
+                & button {
+                    display: none;
+                }
+            }
         }
     }
 }
@@ -384,16 +394,6 @@
             }
             & .categoryBrand {
                 font-size: 0.9rem;
-            }
-            & .addToCartFav {
-                padding-left: 5px;
-                padding-right: 5px;
-                & .addItToCart {
-                    display: block !important;
-                }
-                & button {
-                    display: none;
-                }
             }
         }
     }
