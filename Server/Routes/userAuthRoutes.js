@@ -171,6 +171,7 @@ router.get('/logout', (req, res) => {
             if(err) {
                 res.json({error: `Error logging out, try again!\n${err}`})
             }
+            res.clearCookie('connect.sid');
             res.json({success: true, message: 'Kindly come back next time to buy More!'})
         })
     }

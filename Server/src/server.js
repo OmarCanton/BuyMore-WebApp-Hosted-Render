@@ -32,7 +32,12 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 * 2 }, //store user session for 2 days --default
+    cookie: { 
+        httpOnly: true, // Prevents JavaScript access
+        secure: true,   // Ensures cookie is sent only over HTTPS
+        sameSite: 'Strict',
+        maxAge: 1000 * 60 * 60 * 24 * 2 //store user session for 2 days --default 
+    }, 
     store: MongoStore.create({
         client: mongoose.connection.getClient()
     })
