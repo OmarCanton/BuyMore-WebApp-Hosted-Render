@@ -302,14 +302,14 @@
         grid-template-columns: repeat(3, 200px);
     }
 }
-@media (min-width: 576px) and (max-width: 767px) {
+@media (min-width: 441px) and (max-width: 767px) {
     .shop-wrapper .productsWrapper {
         grid-template-columns: repeat(3, 180px);
     }
 }
-@media (min-width: 325px) and (max-width: 575px) {
+@media (min-width: 325px) and (max-width: 440px) {
     .shop-wrapper .productsWrapper {
-        grid-template-columns: repeat(2, 180px);
+        grid-template-columns: repeat(2, 170px);
     }
 }
 @media (min-width: 320px) and (max-width: 324px) {
