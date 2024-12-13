@@ -244,14 +244,18 @@
         right: 20px;
     }
 }
+@media (max-width: 345px) {
+    .right {
+        .wishlist {
+            display: none !important;
+        }
+    }
+}
 @media (max-width: 320px) {
     .right {
         right: 0 !important;
         justify-content: right;
         gap: 5px !important;
-        .wishlist {
-            display: none !important;
-        }
         .theme {
             left: 0 !important;
         }
