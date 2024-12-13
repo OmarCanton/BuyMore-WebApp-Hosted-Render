@@ -353,7 +353,11 @@
             }
             & .searchIcon2 {
                 display: block !important;
-                
+            }
+            & .filter {
+                & .filterIcon {
+                    display: none;
+                }
             }
         }
     }
@@ -374,9 +378,6 @@
                 padding: 0 !important;
                 margin-right: -4px !important;
                 gap: 0 !important;
-                & .filterIcon {
-                    display: none;
-                }
                 & select {
                     padding: 10px !important;
                     background-color: #1d2571f1;
