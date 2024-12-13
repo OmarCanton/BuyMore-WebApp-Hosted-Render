@@ -226,7 +226,6 @@ export default function Account () {
     const logout = async () => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
-            alert(response.data)
             if(response.data.message) {
                 navigate('/')
                 setIsLoggedIn(false)
@@ -245,7 +244,6 @@ export default function Account () {
             }
             
         } catch(err) {
-            alert(err)
             toast.error(`An error occured\n${err}`, {
                 style: {
                     backgroundColor: 'white',
