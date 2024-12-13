@@ -250,10 +250,4 @@
             left: 0 !important;
         }
     }
-    .login {
-        .loginForMobile {
-            position: relative;
-            right: 5px !important;
-        }
-    }
 }
