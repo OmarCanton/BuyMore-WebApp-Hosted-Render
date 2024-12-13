@@ -19,7 +19,7 @@ export default function SuccessPage () {
             >
                 <CheckCircle htmlColor='green' className='mark' />
                 <p style={{...theme === 'dark' && {color: 'white'}}}>Payment was successful, Thank You!</p>
-                <button className='btn-payment' onClick={() => navigate('/shop')}>Continue Shopping</button>
+                <button className='btn-payment' onClick={() => navigate('/')}>Continue Shopping</button>
             </div>
         </div>
     )

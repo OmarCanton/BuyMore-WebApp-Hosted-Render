@@ -21,7 +21,7 @@ export default function CancelPage () {
                 <p 
                     style={{...theme === 'dark' ? {color: 'white'} : {color: 'red'}}}
                 >Payment was unsuccessful!</p>
-                <button className='btn-payment' onClick={() => navigate('/home')}>Go Back Home</button>
+                <button className='btn-payment' onClick={() => navigate('/')}>Go Back Home</button>
             </div>
         </div>
     )
