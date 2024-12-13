@@ -139,7 +139,7 @@
     & .productsWrapper {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        grid-template-columns: repeat(5, 1fr); 
         align-items: center;
         justify-content: center;
         gap: 12px;
@@ -342,11 +342,6 @@
     }
 }
 
-@media (min-width: 1201px) and (max-width: 1440) {
-    .productsWrapper {
-        grid-template-columns: repeat(5, 1fr) !important;       
-    }
-}
 @media (min-width: 1015px) and (max-width: 1200px) {
     .productsWrapper {
         grid-template-columns: repeat(4, 1fr) !important;       
