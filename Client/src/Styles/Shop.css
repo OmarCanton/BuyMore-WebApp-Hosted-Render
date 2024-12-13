@@ -343,7 +343,9 @@
 }
 
 
-@media (max-width: 776px) {
+
+
+/* @media (max-width: 776px) {
     .productsWrapper {
         grid-template-columns: repeat(auto-fit, 200px) !important;       
     }
@@ -352,7 +354,7 @@
     .productsWrapper {
         grid-template-columns: repeat(auto-fit, 150px) !important;       
     }
-}
+} */
 
 @media (max-width: 375px) {
     .searchIcon2 {
