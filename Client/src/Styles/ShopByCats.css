@@ -12,6 +12,7 @@
         font-size: 2rem;
     }
     & .cats-wrapper {
+        width: 100%;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
@@ -26,7 +27,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 10px;
-            height: 80px;
+            height: 140px;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -70,6 +71,13 @@
 @media (max-width: 650px) {
     .shopByCats-wrapper {
         display: flex;
+    }
+}
+@media (max-width: 425px) {
+    .cats-wrapper {
+        & div {    
+            height: 80px !important;
+        }
     }
 }
 @media (max-width: 375px) {
