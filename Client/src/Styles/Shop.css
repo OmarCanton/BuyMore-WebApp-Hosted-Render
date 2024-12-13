@@ -289,27 +289,27 @@
 
 @media (min-width: 1300px) {
     .productsWrapper {
-        grid-template-columns: repeat(5, 250px);
+        grid-template-columns: repeat(5, 250px) !important;
     }
 }
 @media (min-width: 1024px) {
     .productsWrapper {
-        grid-template-columns: repeat(4, 250px);
+        grid-template-columns: repeat(4, 250px) !important;
     }
 }
 @media (min-width: 768px) {
     .productsWrapper {
-        grid-template-columns: repeat(4, 180px);
+        grid-template-columns: repeat(4, 180px) !important;
     }
 }
 @media (min-width: 576px) {
     .productsWrapper {
-        grid-template-columns: repeat(3, 180px);
+        grid-template-columns: repeat(3, 180px) !important;
     }
 }
 @media (min-width: 320px) {
     .productsWrapper {
-        grid-template-columns: repeat(2, 150px);
+        grid-template-columns: repeat(2, 150px) !important;
     }
 }
 
