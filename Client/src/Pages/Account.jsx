@@ -224,7 +224,6 @@ export default function Account () {
     } 
     
     const logout = async () => {
-        alert('logged out')
         try {
             const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
             alert(response.data)
