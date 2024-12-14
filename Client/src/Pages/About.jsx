@@ -74,7 +74,7 @@ export default function About () {
                             y: '20%', 
                             opacity: 0,
                             transition: {
-                                duration: 1.4
+                                delay: 1.4
                             }
                         }}
                         transition={{delay: 0.2, ease: 'anticipate'}}
@@ -90,7 +90,7 @@ export default function About () {
                             y: '20%', 
                             opacity: 0,
                             transition: {
-                                duration: 1.2
+                                delay: 1.2
                             }
                         }}
                         transition={{delay: 0.4, ease: 'anticipate'}}   
@@ -106,7 +106,7 @@ export default function About () {
                             y: '20%', 
                             opacity: 0,
                             transition: {
-                                duration: 1.0
+                                delay: 1.0
                             }
                         }}
                         transition={{delay: 0.6, ease: 'anticipate'}}
@@ -126,7 +126,7 @@ export default function About () {
                             y: '20%', 
                             opacity: 0,
                             transition: {
-                                duration: 0.8
+                                delay: 0.8
                             }
                         }}
                         transition={{delay: 0.8, ease: 'anticipate'}}
@@ -142,7 +142,7 @@ export default function About () {
                             y: '20%', 
                             opacity: 0,
                             transition: {
-                                duration: 0.6
+                                delay: 0.6
                             }
                         }}
                         transition={{delay: 1, ease: 'anticipate'}}
@@ -158,7 +158,7 @@ export default function About () {
                             y: '20%',
                             opacity: 0,
                             transition: {
-                                duration: 0.4
+                                delay: 0.4
                             }
                         }}
                         transition={{delay: 1.2, ease: 'anticipate'}}
