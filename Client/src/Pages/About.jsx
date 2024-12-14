@@ -26,7 +26,7 @@ export default function About () {
             <motion.div 
                 initial={{y: '10%', opacity: 0}}
                 animate={{y: '0', opacity: 1}}
-                exit={{y: '20%', opacity: 0}}
+                exit={{y: '20%'}}
                 transition={{duration: 0.15, ease: 'anticipate'}}
                 className="main"  
                 style={{...theme === 'dark' && {
