@@ -70,7 +70,7 @@ export default function Cart () {
                     className="noItem" 
                     style={{color: themeStyles.style.color}}
                 >
-                    <Lottie loop={true} animationData={EmptyCart_Fav} />
+                    <Lottie height={'80vh'}  loop={true} animationData={EmptyCart_Fav} />
                 </span>
             )
         } else {
