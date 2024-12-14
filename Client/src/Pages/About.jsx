@@ -56,7 +56,7 @@ export default function About () {
                         y: '20%', 
                         opacity: 0,
                         transition: {
-                            duration: 1.4
+                            delay: 1.4
                         }
                     }}
                     transition={{duration: 0.1, delay: 0.14, ease: 'anticipate'}}
