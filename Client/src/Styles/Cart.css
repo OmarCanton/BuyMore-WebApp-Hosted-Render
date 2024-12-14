@@ -41,11 +41,8 @@
         gap: 40px;
         padding: 40px;
         & .noItem {
-            & .svg {
-                & svg {
-                    height: 80vh;
-                }
-            }
+            height: 80vh;
+            object-fit: contain;
         }
         & .noItem-Login-Container {
             display: flex;
