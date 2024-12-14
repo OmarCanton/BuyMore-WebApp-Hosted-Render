@@ -41,8 +41,14 @@
         gap: 40px;
         padding: 40px;
         & .noItem {
-            height: 80vh;
-            object-fit: contain;
+            height: 100%;
+            width: 100%;
+            & .anime {
+                & svg {
+                    max-height: 80vh;
+                    max-width: 80vw;
+                }
+            }
         }
         & .noItem-Login-Container {
             display: flex;
