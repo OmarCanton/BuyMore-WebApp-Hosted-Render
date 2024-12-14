@@ -4,8 +4,8 @@ div {
     display: flex;
     align-items: center;
     justify-content: center;
-    & .notFound-wrapper {
+    /* & .notFound-wrapper {
         width: 70%;
         height: 70%;
-    }
+    } */
 }
