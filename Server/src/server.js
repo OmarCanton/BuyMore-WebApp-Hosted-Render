@@ -28,15 +28,16 @@ connectToDB()
 app.use(express.json())
 app.use(cookieParser())
 
-app.set('trust proxy', 1)
+app.set('trust proxy', 1) //set for render because render uses proxy and if not sent it will block cookies from being set and sent
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: { 
-        httpOnly: true,
+        httpOnly: true, //cookie not accessible by client-side javaScript
         secure: true,   // Ensures cookie is sent only over HTTPS
-        sameSite: 'none',
+        sameSite: 'none', //If both front-end and back-end have different domains just like this one, this must set to none else lax or strict
         maxAge: 1000 * 60 * 60 * 24 * 2 //store user session for 2 days --default 
     }, 
     store: MongoStore.create({
