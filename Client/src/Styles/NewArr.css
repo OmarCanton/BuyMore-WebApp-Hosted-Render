@@ -37,10 +37,6 @@
             align-items: center;
             justify-content: center;
             gap: 22px;
-            & span {
-                font-weight: bold;
-                font-size: 1.5rem;
-            }
             & button {
                 width: 100px;
                 height: 40px;
