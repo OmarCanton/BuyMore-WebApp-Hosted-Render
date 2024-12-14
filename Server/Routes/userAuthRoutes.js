@@ -174,6 +174,8 @@ router.get('/logout', (req, res) => {
             res.clearCookie('connect.sid');
             res.json({success: true, message: 'Kindly come back next time to buy More!'})
         })
+    } else {
+        res.json({error: 'User not authenticated'})
     }
 })
 
