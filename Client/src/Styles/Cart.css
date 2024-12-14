@@ -40,6 +40,13 @@
         flex-wrap: wrap;
         gap: 40px;
         padding: 40px;
+        & .noItem {
+            & .svg {
+                & svg {
+                    height: 80vh;
+                }
+            }
+        }
         & .noItem-Login-Container {
             display: flex;
             align-items: center;
