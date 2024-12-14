@@ -19,6 +19,7 @@ import Themes from './Pages/Themes'
 import OrderPayment from './Pages/OrderPayment'
 import TermsAndCons from './Pages/TermsAndCons'
 import Dev from './Pages/Developer'
+import ScrollPageToTop from './Components/ScrollPageToTop'
 import { Toaster } from 'react-hot-toast'
 import { userDetailsContext, themesContext } from './Contexts/userDataContext'
 import ProductCheck from './Pages/Product'
@@ -132,6 +133,7 @@ export default function App () {
             isVisible, setIsVisible
           }}>
           <AnimatePresence mode='wait'>
+            <ScrollPageToTop />
             <Routes>
               <Route index element={<Home />} />
               <Route path='/home' element={<Home />} />
