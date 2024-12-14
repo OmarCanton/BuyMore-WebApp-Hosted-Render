@@ -19,6 +19,9 @@ import { toast } from 'react-hot-toast'
 import { loadStripe } from '@stripe/stripe-js'
 import axios from 'axios'
 import { motion } from 'framer-motion'
+import Lottie from 'lottie-react'
+import EmptyCart_Fav from '../Effects/EmptyCart_Fav.json'
+
 
 export default function Cart () {
     const [loadingPayment, setLoadingPayment] = useState(false)
@@ -66,7 +69,9 @@ export default function Cart () {
                 <span 
                     className="noItem" 
                     style={{color: themeStyles.style.color}}
-                >No items added!<br /> Please add items from Shop to purchase from here</span>
+                >
+                    <Lottie loop={true} animationData={EmptyCart_Fav} />
+                </span>
             )
         } else {
             return (

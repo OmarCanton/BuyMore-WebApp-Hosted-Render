@@ -40,11 +40,6 @@
         flex-wrap: wrap;
         gap: 40px;
         padding: 40px;
-        & .noItem {
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
         & .noItem-Login-Container {
             display: flex;
             align-items: center;
@@ -202,9 +197,6 @@
     }
     .items-overall-wrapper {
         padding: 10px !important;
-        & .noItem {
-            font-size: 1.1rem !important;
-        }
         .item-wrapper {
             flex: 0 1 100%!important;    
             height: 200px !important;
