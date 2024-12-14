@@ -97,10 +97,7 @@ export default function Settings () {
                 </Button>
                 <h2>Settings</h2>
             </div>
-            <motion.div 
-                exit={{x: '20%'}}
-                className="settings-main"
-            >
+            <div className="settings-main">
                 <div className="user">
                     { isLoggedIn ?
                         <>
@@ -272,7 +269,7 @@ export default function Settings () {
                         <button>Login</button>
                     </Link>
                 }
-            </motion.div>
+            </div>
             <div className="footer">
                 <p>Version: 1.0.0</p>
             </div>
