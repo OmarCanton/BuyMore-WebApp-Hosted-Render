@@ -51,8 +51,6 @@
         }
         & .noItem-Login-Container {
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-direction: column;
             & button {
                 width: 100px;
