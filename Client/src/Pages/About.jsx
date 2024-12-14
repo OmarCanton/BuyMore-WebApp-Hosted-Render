@@ -47,7 +47,13 @@ export default function About () {
                 <motion.p 
                     initial={{y: '20%', opacity: 0}}
                     animate={{y: 0, opacity: 1}}
-                    exit={{y: '20%', opacity: 0}}
+                    exit={{
+                        y: '20%', 
+                        opacity: 0, 
+                        transition: {
+                            duration: 0.08
+                        }
+                    }}
                     transition={{duration: 0.1, delay: 0.14, ease: 'anticipate'}}
                 >
                     BuyMore is your one-stop destination for all your shopping needs! 
@@ -69,7 +75,13 @@ export default function About () {
                     <motion.span 
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
-                        exit={{y: '20%', opacity: 0}}
+                        exit={{
+                            y: '20%', 
+                            opacity: 0,
+                            transition: {
+                                duration: 0.10
+                            }
+                        }}
                         transition={{delay: 0.4, ease: 'anticipate'}}   
                     >
                         <Link to=''>
@@ -79,7 +91,13 @@ export default function About () {
                     <motion.span
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
-                        exit={{y: '20%', opacity: 0}}
+                        exit={{
+                            y: '20%', 
+                            opacity: 0,
+                            transition: {
+                                duration: 0.11
+                            }
+                        }}
                         transition={{delay: 0.6, ease: 'anticipate'}}
                     >
                         <Link to=''>
@@ -93,7 +111,13 @@ export default function About () {
                     <motion.span
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
-                        exit={{y: '20%', opacity: 0}}
+                        exit={{
+                            y: '20%', 
+                            opacity: 0,
+                            transition: {
+                                duration: 0.12
+                            }
+                        }}
                         transition={{delay: 0.8, ease: 'anticipate'}}
                     >
                         <Link to=''>
@@ -103,7 +127,13 @@ export default function About () {
                     <motion.span
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
-                        exit={{y: '20%', opacity: 0}}
+                        exit={{
+                            y: '20%', 
+                            opacity: 0,
+                            transition: {
+                                duration: 0.13
+                            }
+                        }}
                         transition={{delay: 1, ease: 'anticipate'}}
                     >
                         <Link to=''>
@@ -113,7 +143,13 @@ export default function About () {
                     <motion.span
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
-                        exit={{y: '20%', opacity: 0}}
+                        exit={{
+                            y: '20%',
+                            opacity: 0,
+                            transition: {
+                                duration: 0.14
+                            }
+                        }}
                         transition={{delay: 1.2, ease: 'anticipate'}}
                     >
                         <Link to=''>
