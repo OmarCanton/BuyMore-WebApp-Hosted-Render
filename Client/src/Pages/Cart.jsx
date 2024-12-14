@@ -161,7 +161,7 @@ export default function Cart () {
                         <motion.div 
                             initial={{y: '10%', opacity: 0}}
                             animate={{y:0, opacity: 1}}
-                            exit={{z: '20%'}}
+                            exit={{y: '20%'}}
                             transition={{delay: 0.15, duration: 0.15, ease: 'anticipate'}}
                             key={item._id} 
                             className="item-wrapper" 
