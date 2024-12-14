@@ -65,7 +65,7 @@
                 color: white;
                 transition: all 0.15s;
                 position: relative;
-                bottom: 60px;
+                bottom: 50px;
                 &:hover {
                     opacity: 0.8;
                     color: white;
