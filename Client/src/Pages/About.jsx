@@ -26,8 +26,8 @@ export default function About () {
             <motion.div 
                 initial={{y: '10%', opacity: 0}}
                 animate={{y: '0', opacity: 1}}
-                transition={{duration: 0.15, ease: 'anticipate'}}
                 exit={{y: '20%', opacity: 0}}
+                transition={{duration: 0.15, ease: 'anticipate'}}
                 className="main"  
                 style={{...theme === 'dark' && {
                     backgroundColor: themeStyles.style.divColor, 
@@ -47,6 +47,7 @@ export default function About () {
                 <motion.p 
                     initial={{y: '20%', opacity: 0}}
                     animate={{y: 0, opacity: 1}}
+                    exit={{y: '20%', opacity: 0}}
                     transition={{duration: 0.1, delay: 0.14, ease: 'anticipate'}}
                 >
                     BuyMore is your one-stop destination for all your shopping needs! 
@@ -58,6 +59,7 @@ export default function About () {
                     <motion.span 
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
+                        exit={{y: '20%', opacity: 0}}
                         transition={{delay: 0.2, ease: 'anticipate'}}
                     >
                         <Link to=''>
@@ -67,6 +69,7 @@ export default function About () {
                     <motion.span 
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
+                        exit={{y: '20%', opacity: 0}}
                         transition={{delay: 0.4, ease: 'anticipate'}}   
                     >
                         <Link to=''>
@@ -76,6 +79,7 @@ export default function About () {
                     <motion.span
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
+                        exit={{y: '20%', opacity: 0}}
                         transition={{delay: 0.6, ease: 'anticipate'}}
                     >
                         <Link to=''>
@@ -89,6 +93,7 @@ export default function About () {
                     <motion.span
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
+                        exit={{y: '20%', opacity: 0}}
                         transition={{delay: 0.8, ease: 'anticipate'}}
                     >
                         <Link to=''>
@@ -98,6 +103,7 @@ export default function About () {
                     <motion.span
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
+                        exit={{y: '20%', opacity: 0}}
                         transition={{delay: 1, ease: 'anticipate'}}
                     >
                         <Link to=''>
@@ -107,6 +113,7 @@ export default function About () {
                     <motion.span
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
+                        exit={{y: '20%', opacity: 0}}
                         transition={{delay: 1.2, ease: 'anticipate'}}
                     >
                         <Link to=''>
