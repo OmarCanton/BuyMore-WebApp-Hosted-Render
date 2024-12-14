@@ -61,11 +61,14 @@
             }
         }
         & .noItem {
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.5rem;
+            height: 100%;
+            width: 100%;
+            & .anime {
+                & svg {
+                    max-height: 80vh;
+                }
+            }
         }
-
         & .wrapper-newArr, .wrapper-favs {
             display: flex;
             align-items: center;

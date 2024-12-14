@@ -10,6 +10,8 @@ import { favoriteItems, getFavoritesFromLocalStorage, removeAll } from "../Redux
 import { Button } from "@mui/material"
 import { ArrowBackIosNewRounded } from "@mui/icons-material"
 import { motion } from 'framer-motion'
+import Lottie from "lottie-react"
+import EmptyCart_Fav from '../Effects/EmptyCart_Fav.json'
 
 export default function NewArrivalsPage () {
     const { isLoggedIn } = useContext(userDetailsContext)
@@ -52,7 +54,12 @@ export default function NewArrivalsPage () {
     const msg = () => {
         if(isLoggedIn) {
             return (
-                <span className="noItem">No items added!<br /> Please add items to favorites from Shop</span>
+                <span 
+                    className="noItem" 
+                    style={{color: themeStyles.style.color}}
+                >
+                    <Lottie className="anime" loop={true} animationData={EmptyCart_Fav} />
+                </span>
             )
         } else {
             return (
