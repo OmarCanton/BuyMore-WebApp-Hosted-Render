@@ -4,8 +4,8 @@ import '../Styles/PageNotFound.css'
 
 export default function PageNotFound () {
     return(
-        <div>
-            <div className="notFound-wrapper">
+        <div className="notFound-wrapper">
+            <div>
                 <Lottie loop={true} animationData={PageNotFoundAnime} />
             </div>
         </div>
