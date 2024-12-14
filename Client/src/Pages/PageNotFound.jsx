@@ -1,7 +1,12 @@
+import PageNotFoundAnime from '../Effects/PageNotFoundAnime.json'
+import Lottie from 'lottie-react'
+
 export default function PageNotFound () {
     return(
         <div>
-            <h1>Page Requested Not Found</h1>
+            <div className="notFound-wrapper">
+                <Lottie loop={true} animationData={PageNotFoundAnime} />
+            </div>
         </div>
     )
 }
