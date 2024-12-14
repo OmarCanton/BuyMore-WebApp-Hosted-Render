@@ -31,6 +31,9 @@ import { addToFavorites, favoriteItems, removeFromFavorites } from "../Redux/Sli
 import { addToCart } from "../Redux/Slices/WishlistSlice"
 import { toast } from 'react-hot-toast'
 import { motion } from 'framer-motion'
+import Lottie from 'lottie-react'
+import SearchNotFound from '../Effects/SearchNotFound.json' 
+import ShopEmpty from '../Effects/SearchNotFound.json' 
 
 export default function Shop () {
     const dispatch = useDispatch()
@@ -277,7 +280,7 @@ export default function Shop () {
                     Search Results for &apos;{searched_Name}&apos;
                 </h2>
             }
-            { status === 'loading' && 
+            { status === 'loading' &&
                 <p className="loadingEffectWrapper">
                     <LoadingEffect />
                 </p>
@@ -330,7 +333,9 @@ export default function Shop () {
                             </motion.div>
                         ))
                         :
-                        <div style={{marginTop: 100}}>Oops no product found at this time!</div>
+                        <div className="searchNotFound" style={{marginTop: 100}}>
+                            <Lottie className="searchAnime" loop={true} animationData={SearchNotFound} />
+                        </div>
                     }
                 </div>
                 
@@ -381,9 +386,15 @@ export default function Shop () {
                     <p>Page {pageNumber + 1}</p>
                 </div>
             }
-            { status === 'failed' && <p 
-                style={{color: themeStyles.style.color, backgroundColor:themeStyles.style.backgroundColor, padding: '200px'}}
-            >Error fetching products: {error}</p> }
+            { status === 'failed' && 
+                <p 
+                    className="No-shopItem"
+                    style={{color: themeStyles.style.color, backgroundColor:themeStyles.style.backgroundColor}}
+                >
+                    <Lottie className="anime-noItem" loop={true} animationData={ShopEmpty} />
+                    {error}
+                </p> 
+            }
             <Panel />
         </div>
     )

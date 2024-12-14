@@ -262,6 +262,13 @@
             border: none;
             transition: all 0.2s 0.5s;
         }
+        & .searchNotFound {
+            & .searchAnime {
+                & svg {
+                    max-height: 80vh;
+                }
+            }
+        }
     }
     & .prevAndNextPage {
         display: flex;
@@ -282,6 +289,13 @@
             font-size: large;
             cursor: pointer;
             background-color: lightgrey;
+        }
+    }
+    & .No-shopItem {
+        & .anime-noItem {
+            & svg {
+                max-height: 80vh;
+            }
         }
     }
     
