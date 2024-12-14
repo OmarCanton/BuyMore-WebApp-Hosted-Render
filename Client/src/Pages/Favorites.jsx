@@ -12,6 +12,7 @@ import { ArrowBackIosNewRounded } from "@mui/icons-material"
 import { motion } from 'framer-motion'
 import Lottie from "lottie-react"
 import EmptyCart_Fav from '../Effects/EmptyCart_Fav.json'
+import LoginAnime from '../Effects/LoginAnime.json'
 
 export default function NewArrivalsPage () {
     const { isLoggedIn } = useContext(userDetailsContext)
@@ -64,7 +65,9 @@ export default function NewArrivalsPage () {
         } else {
             return (
                 <div className="noItem-Login-Container">
-                    <span className="noItem">Please log into your account to view added items</span>
+                    <span className="noItem">
+                        <Lottie className="anime" loop={true} animationData={LoginAnime} />
+                    </span>
                     <Link to='/login'>
                         <button>Login</button>
                     </Link>
