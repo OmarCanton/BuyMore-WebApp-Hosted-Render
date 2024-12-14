@@ -50,12 +50,12 @@
             }
         }
         & .noItem-Login-Container {
-            position: relative;
-            bottom: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            position: relative;
+            bottom: 55px;
             & button {
                 width: 100px;
                 height: 40px;
@@ -67,7 +67,7 @@
                 color: white;
                 transition: all 0.15s;
                 position: relative;
-                bottom: 50px;
+                bottom: 100px;
                 &:hover {
                     opacity: 0.8;
                     color: white;
