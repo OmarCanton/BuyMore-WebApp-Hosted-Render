@@ -296,6 +296,7 @@ export default function Shop () {
                             <motion.div 
                                 initial={{y: '10%', opacity: 0}}
                                 animate={{y:0, opacity: 1}}
+                                exit={{y: '20%'}}
                                 transition={{delay: 0.15, duration: 0.4, ease: 'anticipate'}}
                                 className='wrapper' 
                                 key={product._id} 
