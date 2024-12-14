@@ -42,7 +42,7 @@
         padding: 40px;
         & .noItem {
             width: 100%;
-            height: 100%;
+            height: 80vh;
         }
         & .noItem-Login-Container {
             display: flex;
