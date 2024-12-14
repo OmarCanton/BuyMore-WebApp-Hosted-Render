@@ -55,9 +55,6 @@ export default function About () {
                     exit={{
                         y: '20%', 
                         opacity: 0,
-                        transition: {
-                            delay: 1.4
-                        }
                     }}
                     transition={{duration: 0.1, delay: 0.14, ease: 'anticipate'}}
                 >
