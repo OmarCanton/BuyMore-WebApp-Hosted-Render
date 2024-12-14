@@ -50,7 +50,11 @@
             }
         }
         & .noItem-Login-Container {
+            position: relative;
+            bottom: 40px;
             display: flex;
+            align-items: center;
+            justify-content: center;
             flex-direction: column;
             & button {
                 width: 100px;
