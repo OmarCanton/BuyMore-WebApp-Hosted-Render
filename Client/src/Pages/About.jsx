@@ -29,7 +29,7 @@ export default function About () {
                 exit={{
                     y: '20%',
                     transition: {
-                        duration: 1.5
+                        delay: 1.5
                     }
                 }}
                 transition={{duration: 0.15, ease: 'anticipate'}}
