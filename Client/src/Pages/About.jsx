@@ -27,6 +27,7 @@ export default function About () {
                 initial={{y: '10%', opacity: 0}}
                 animate={{y: '0', opacity: 1}}
                 transition={{duration: 0.15, ease: 'anticipate'}}
+                exit={{y: '10%'}}
                 className="main"  
                 style={{...theme === 'dark' && {
                     backgroundColor: themeStyles.style.divColor, 
