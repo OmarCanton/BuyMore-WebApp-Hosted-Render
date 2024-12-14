@@ -54,10 +54,8 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            position: absolute;
-            width: 100vw;
-            height: 100vh;
-            gap: 10px;
+            position: relative;
+            bottom: 55px;
             & button {
                 width: 100px;
                 height: 40px;
@@ -68,6 +66,8 @@
                 border-radius: 5px;
                 color: white;
                 transition: all 0.15s;
+                position: relative;
+                bottom: 50px;
                 &:hover {
                     opacity: 0.8;
                     color: white;
