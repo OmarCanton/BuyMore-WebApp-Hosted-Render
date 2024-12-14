@@ -152,7 +152,7 @@
                         opacity: 0.8;
                     }
                     &:active {
-                        width: 75%;
+                        opacity: 0.5;
                     }
                 }
                 & .fav {
