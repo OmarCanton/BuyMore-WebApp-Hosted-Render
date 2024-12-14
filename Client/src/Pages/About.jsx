@@ -26,7 +26,12 @@ export default function About () {
             <motion.div 
                 initial={{y: '10%', opacity: 0}}
                 animate={{y: '0', opacity: 1}}
-                exit={{y: '20%'}}
+                exit={{
+                    y: '20%',
+                    transition: {
+                        duration: 1.5
+                    }
+                }}
                 transition={{duration: 0.15, ease: 'anticipate'}}
                 className="main"  
                 style={{...theme === 'dark' && {
@@ -62,7 +67,13 @@ export default function About () {
                     <motion.span 
                         initial={{y: '20%', opacity: 0}}
                         animate={{y: '0', opacity: 1}}
-                        exit={{y: '20%', opacity: 0}}
+                        exit={{
+                            y: '20%', 
+                            opacity: 0,
+                            transition: {
+                                duration: 1.4
+                            }
+                        }}
                         transition={{delay: 0.2, ease: 'anticipate'}}
                     >
                         <Link to=''>
