@@ -95,7 +95,12 @@ export default function Cart () {
                     const stripe = await StripePromise
                     stripe.redirectToCheckout({sessionId}) 
                 } catch(err) {
-                    console.log(err)
+                    toast.error(err, {
+                        style: {
+                            backgroundColor: 'black',
+                            color: 'white'
+                        }
+                    })
                 }
             }
 

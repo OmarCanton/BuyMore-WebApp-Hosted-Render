@@ -44,9 +44,11 @@ export default function Settings () {
     const [isHovered6, setIsHovered6] = useState(false)
     const [isHovered7, setIsHovered7] = useState(false)
     const {theme, themeStyles} = useContext(themesContext)
+    const [loggingOut, setLoggingOut] = useState(false)
 
 
     const logout = async () => {
+        setLoggingOut(true)
         try {
             const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
             if(response.data.success === true) {
@@ -63,6 +65,7 @@ export default function Settings () {
                         color: 'white'
                     },
                 })
+
             }
             if(response.data.error) {
                 toast.error(response.data.error, {
@@ -70,8 +73,9 @@ export default function Settings () {
                         backgroundColor: 'white',
                         color: 'black'
                     },
-                })    
+                })   
             }
+            setLoggingOut(false)
             
         } catch(err) {
             toast.error(err, {
@@ -80,6 +84,7 @@ export default function Settings () {
                     color: 'white'
                 },
             })
+            setLoggingOut(false)
         }
     }
 
@@ -261,8 +266,14 @@ export default function Settings () {
                         className="logout" 
                         onClick={logout}
                     >
-                        <LogoutRounded htmlColor='red' fontSize='large' />
-                        <h3 style={{color: themeStyles.style.color, cursor: 'pointer'}}>Logout</h3>
+                        {
+                            loggingOut ? <CircularProgress style={{width: 25, height: 25, ...theme === 'dark' ? {color: 'white'} : {color: 'grey'}}} />
+                            :
+                            <>
+                                <LogoutRounded htmlColor='red' fontSize='large' />
+                                <h3 style={{color: themeStyles.style.color, cursor: 'pointer'}}>Logout</h3>
+                            </>
+                        }
                     </div>
                     :
                     <Link to='/login'>

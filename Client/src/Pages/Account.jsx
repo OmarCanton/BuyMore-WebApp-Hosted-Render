@@ -48,6 +48,7 @@ export default function Account () {
     const delInputRef = useRef()
     const inputChangeRefs = useRef()
     const [viewOps, setViewOps] = useState(false)
+    const [loggingOut, setLoggingOut] = useState(false)
 
 
     const changeUsername = async () => {
@@ -224,6 +225,7 @@ export default function Account () {
     } 
     
     const logout = async () => {
+        setLoggingOut(true)
         try {
             const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
             if(response.data.success === true) {
@@ -234,6 +236,7 @@ export default function Account () {
                 setUserEmail(null)
                 setAbout(null)
                 setPhone(null)
+                setLoggingOut(false)
                 toast.success(response.data.message, {
                     style: {
                         backgroundColor: 'black',
@@ -257,6 +260,7 @@ export default function Account () {
                     color: 'black'
                 },
             })
+            setLoggingOut(false)
         }
     }
     
@@ -365,7 +369,11 @@ export default function Account () {
                 >Account Settings</h2>
                 { isLoggedIn &&
                     <div className="header-logout" title="Logout" onClick={logout}>
-                        <Logout htmlColor="red" style={{transform: 'scale(1.3)'}} />
+                        { 
+                            loggingOut ? <CircularProgress style={{width: 25, height: 25, ...theme === 'dark' ? {color: 'white'} : {color: 'grey'}}} /> 
+                            : 
+                            <Logout htmlColor="red" style={{transform: 'scale(1.3)'}} />
+                        }
                     </div>
                 }
             </div>
