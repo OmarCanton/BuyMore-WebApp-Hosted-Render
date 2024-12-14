@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Panel from "../Components/Panel";
 import '../Styles/Cart.css'
@@ -30,7 +30,6 @@ export default function Cart () {
     const navigate = useNavigate()
     const {user_username, isLoggedIn, userId} = useContext(userDetailsContext)
     const {theme, themeStyles} = useContext(themesContext)
-    const productRef = useRef()
 
     useEffect(() => {
         dispatch(getWishlistFromLocalStorage())
@@ -39,8 +38,6 @@ export default function Cart () {
 
     const removeItem = (id) => {
         if(isLoggedIn) {
-            productRef.current.style.backgroundColor = 'red'
-            productRef.current.style.transition = 'all 2s'
             dispatch(removeFromCart(id))
         } else {
             toast.error(`Cannot manipulate wishlist, please login`, {
@@ -162,10 +159,8 @@ export default function Cart () {
                     msg() 
                     : items.map(item => (
                         <motion.div 
-                            ref={productRef}
                             initial={{y: '10%', opacity: 0}}
                             animate={{y:0, opacity: 1}}
-                            exit={{y: '20%'}}
                             transition={{delay: 0.15, duration: 0.15, ease: 'anticipate'}}
                             key={item._id} 
                             className="item-wrapper" 
