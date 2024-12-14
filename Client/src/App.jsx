@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Home from './Pages/Home'
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
@@ -109,6 +109,8 @@ export default function App () {
   }
   //end
 
+  const location = useLocation ()
+
   return (
     <>
       <Toaster 
@@ -134,7 +136,7 @@ export default function App () {
           }}>
           <AnimatePresence mode='wait'>
             <ScrollPageToTop />
-            <Routes>
+            <Routes location={location} key={location.pathname}>
               <Route index element={<Home />} />
               <Route path='/home' element={<Home />} />
               <Route path='settings' element={<Settings />} />
