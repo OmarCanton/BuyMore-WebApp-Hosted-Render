@@ -15,7 +15,6 @@ const cors = require('cors')
 
 const app = express();
 
-
 app.use(cors({
     origin: process.env.EXTERNAL_URL_FRONTEND_HOSTED,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -28,7 +27,7 @@ connectToDB()
 app.use(express.json())
 app.use(cookieParser())
 
-app.set('trust proxy', 1) //set for render because render uses proxy and if not sent it will block cookies from being set and sent
+app.set('trust proxy', 1) //set for render because render uses proxy and if not sent it will block cookies from being set and sent to the client
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
