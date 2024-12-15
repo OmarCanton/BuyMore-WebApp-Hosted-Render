@@ -269,6 +269,8 @@
         gap: 10px;
         align-items: center;
         justify-content: center;
+        position: relative;
+        bottom: 250px;
         & .searchAnime {
             & svg {
                 max-height: 80vh;
