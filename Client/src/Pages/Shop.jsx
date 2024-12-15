@@ -23,8 +23,7 @@ import {
     searchedName, 
     isSearch, 
     isFiltered,
-    selectProductsStatus, 
-    selectProductsError, 
+    selectProductsStatus,
     selectProducts 
 } from '../Redux/Slices/productsSlice'
 import { addToFavorites, favoriteItems, removeFromFavorites } from "../Redux/Slices/FavoritesSlice"
@@ -41,7 +40,6 @@ export default function Shop () {
     const products = useSelector(selectProducts)
     const totalProductsPages = useSelector(totalNumberOfProductsPages)
     const status = useSelector(selectProductsStatus)
-    const error = useSelector(selectProductsError)
     const favorites = useSelector(favoriteItems)
     const is_Search = useSelector(isSearch)
     const is_Filtered = useSelector(isFiltered)
@@ -392,7 +390,6 @@ export default function Shop () {
                     style={{color: themeStyles.style.color, backgroundColor:themeStyles.style.backgroundColor}}
                 >
                     <Lottie className="anime-noItem" loop={true} animationData={ShopEmpty} />
-                    {error}
                 </p> 
             }
             <Panel />
