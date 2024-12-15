@@ -23,6 +23,7 @@ import {
 } from '../src/Redux/Slices/imageslice'
 import { AnimatePresence } from 'framer-motion'
 import { CircularProgress } from '@mui/material'
+import './Styles/App.css'
 
 const LazyLoadSettings = React.lazy(() => import('./Pages/Settings'))
 const LazyLoadShop = React.lazy(() => import('./Pages/Shop'))
