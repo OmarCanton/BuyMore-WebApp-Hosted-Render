@@ -379,7 +379,7 @@ export default function Shop () {
                     <p>Page {pageNumber + 1}</p>
                 </div>
             }
-            { products.length <= 0 &&
+            { (status === 'succeeded' && products.length <= 0) &&
                 <div className="searchNotFound">
                     <Lottie className="searchAnime" loop={true} animationData={SearchNotFound} />
                     <p>Sorry, No such product!</p>
