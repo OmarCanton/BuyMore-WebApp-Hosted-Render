@@ -15,8 +15,13 @@ const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
         folder: 'buymoreapp_user_profiles',
-        allowed_formats: ['jpg', 'png', 'jpeg']
+        allowed_formats: ['jpg', 'png', 'jpeg'],
+        public_id: (req, file) => {
+            return `${req.user._id}_profile`; // Use user ID to generate a unique public ID
+        },
+        transformation: [{ width: 200, height: 200, crop: 'fill' }] // Resize and crop the image      
     }
+    
 })
 const upload = multer({
     storage: storage,
