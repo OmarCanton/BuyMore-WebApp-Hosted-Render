@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../Styles/Header.css'
 import PropTypes from 'prop-types'
 import { userDetailsContext } from '../Contexts/userDataContext'
-import { Button } from '@mui/material'
+import { Button, CircularProgress } from '@mui/material'
 import { AccountCircle, ShoppingBag, QuestionAnswer, Menu } from '@mui/icons-material'
 import {  useSelector } from 'react-redux'
 import { listItems } from '../Redux/Slices/WishlistSlice'
@@ -133,29 +133,32 @@ export default function Header ({appName}) {
                     <div className="numOfItems">{wishlistItems.length}</div>
                 </div>
                 <div className='accounts'>
-                    { isLoggedIn ?
-                        <Link to='/settings/account' className='profileLink'>
-                            <div className="userProfile">
-                                { loading === true ? 
-                                    <AccountCircle fontSize='large' /> 
-                                    : 
-                                    <>
-                                        { profilePicture ?
-                                            <img src={profilePicture} alt={user_username} /> 
-                                            :
-                                            <AccountCircle fontSize='large' htmlColor='lightgrey' />         
-                                        }
-                                    </>
-                                }<p className='username' style={{color: 'white'}}>{user_username}</p>
-                            </div>
-                        </Link>
-                        :
-                        <Link to='/login' className='login' >
-                            <Link className='loginForMobile' to='/login'>Login</Link>
-                            <div className='loginText'>Login </div>
-                            <AccountCircle className='accountSvg' fontSize='large' htmlColor='darkgrey' style={{cursor: "pointer"}} />
-                        </Link>
-                    }   
+                    <>
+                        {loading && <CircularProgress style={{width: 25, height: 25}} />}
+                        { isLoggedIn ?
+                            <Link to='/settings/account' className='profileLink'>
+                                <div className="userProfile">
+                                    { loading === true ? 
+                                        <AccountCircle fontSize='large' /> 
+                                        : 
+                                        <>
+                                            { profilePicture ?
+                                                <img src={profilePicture} alt={user_username} /> 
+                                                :
+                                                <AccountCircle fontSize='large' htmlColor='lightgrey' />         
+                                            }
+                                        </>
+                                    }<p className='username' style={{color: 'white'}}>{user_username}</p>
+                                </div>
+                            </Link>
+                            :
+                            <Link to='/login' className='login' >
+                                <Link className='loginForMobile' to='/login'>Login</Link>
+                                <div className='loginText'>Login </div>
+                                <AccountCircle className='accountSvg' fontSize='large' htmlColor='darkgrey' style={{cursor: "pointer"}} />
+                            </Link>
+                        }   
+                    </>
                 </div>
             </div>
         </div>
