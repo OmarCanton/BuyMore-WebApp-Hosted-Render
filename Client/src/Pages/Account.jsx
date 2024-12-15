@@ -565,7 +565,7 @@ export default function Account () {
                     className="viewProfile" 
                     width={'100%'}
                     height={'100%'}
-                    src={`../UserProfile/${profilePicture}`} 
+                    src={profilePicture} 
                     alt='user Profile'
                     onClick={() => setViewOps(false)}
                 />
