@@ -217,10 +217,6 @@
 }
 
 @media (max-width: 425px) {
-    /* .right {
-        position: relative;
-        right: 20px;
-    } */
     .userProfile {
         img {
             height: 50px !important;
@@ -241,12 +237,12 @@
         scale: 1.2;
     }
 }
-/* @media (max-width: 375px) {
+@media (max-width: 400px) {
     .right {
         position: relative;
-        right: 20px;
+        right: 30px;
     }
-} */
+}
 @media (max-width: 345px) {
     .right {
         right: 0 !important;
