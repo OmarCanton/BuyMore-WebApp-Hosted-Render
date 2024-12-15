@@ -566,7 +566,7 @@ export default function Account () {
                     width={'100%'}
                     height={'100%'}
                     src={profilePicture} 
-                    alt='user Profile'
+                    alt={user_username}
                     onClick={() => setViewOps(false)}
                 />
                 <DialogActions style={{
