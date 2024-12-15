@@ -275,10 +275,10 @@
             & svg {
                 max-height: 80vh;
             }
-            & p {
-                position: relative;
-                bottom: 5vh;
-            }
+        }
+        & p {
+            position: relative;
+            bottom: 10vh;
         }
     }
     & .prevAndNextPage {
