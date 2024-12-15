@@ -17,7 +17,7 @@ const storage = new CloudinaryStorage({
         folder: 'buymoreapp_user_profiles',
         allowed_formats: ['jpg', 'png', 'jpeg'],
         public_id: (req, file) => {
-            return `${req.user._id}_profile`; // Use user ID to generate a unique public ID
+            return `${req.user._id}_profile`
         },
     }
     
