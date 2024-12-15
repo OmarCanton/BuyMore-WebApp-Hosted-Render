@@ -292,7 +292,7 @@ export default function Shop () {
                     }}
                     className="productsWrapper"
                 >
-                    { products.length > 0 ? 
+                    { products.length > 0 &&
                         products.map(product => (
                             <motion.div 
                                 initial={{y: '10%', opacity: 0}}
@@ -330,14 +330,8 @@ export default function Shop () {
                                 </div>
                             </motion.div>
                         ))
-                        :
-                        <div className="searchNotFound">
-                            <Lottie className="searchAnime" loop={true} animationData={SearchNotFound} />
-                            <p>Sorry, No such product!</p>
-                        </div>
                     }
                 </div>
-                
             )}
             {
                 (!is_Search && !is_Filtered && status === 'succeeded' && products.length > 0) &&
@@ -383,6 +377,12 @@ export default function Shop () {
                         }}
                     >&gt;&gt;</button>
                     <p>Page {pageNumber + 1}</p>
+                </div>
+            }
+            { products.length <= 0 &&
+                <div className="searchNotFound">
+                    <Lottie className="searchAnime" loop={true} animationData={SearchNotFound} />
+                    <p>Sorry, No such product!</p>
                 </div>
             }
             { status === 'failed' && 
