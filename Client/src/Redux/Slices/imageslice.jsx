@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchProfileImage = createAsyncThunk('profileImage/fetchProfileImage', async (id) => {
-    const response = await axios.get(`h${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/getProfilePicture/${id}`)
+    const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/getProfilePicture/${id}`)
+    console.log('RES FROM REDUX::::', response.data)
     return response.data
 })
 
