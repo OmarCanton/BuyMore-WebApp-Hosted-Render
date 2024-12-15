@@ -56,6 +56,7 @@ export default function App () {
   })
   const location = useLocation ()
 
+  const [isConnected, setIsConnected] = useState(navigator.onLine) //default to online since the app is rendered when you have internet connectivity else the website wont open
 
   useEffect(() => {
     if(openMenu) {
@@ -112,6 +113,29 @@ export default function App () {
     }} 
   }
   //end
+
+  //check internet connectivity
+
+  const connected = () => {
+    setIsConnected(true)
+    alert('Connected')
+    console.log(isConnected)
+  }
+
+  const disconnected = () => {
+    setIsConnected(false)
+    alert('No Internet')
+  }
+  
+  useEffect(() => {
+    window.addEventListener('online', connected)
+    window.addEventListener('offline', disconnected)
+
+    return () => {
+      window.removeEventListener('online', connected)
+      window.removeEventListener('offline', disconnected)
+    } 
+  }, [])
 
   return (
     <>
