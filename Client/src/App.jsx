@@ -2,14 +2,9 @@ import React, { useState, useEffect, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Home from './Pages/Home'
 import Cart from './Pages/Cart'
-import PageNotFound from './Pages/PageNotFound'
 import NewArrivalsPage from './Pages/NewArrivalsPage'
 import Favorites from './Pages/Favorites'
 import About from './Pages/About'
-import SuccessPage from './Pages/PaymentPages/Success'
-import CancelPage from './Pages/PaymentPages/Cancel'
-import ResetPassword from './Pages/ResetPasssword'
-import VerifyAccountEmail from './Pages/VerifyAccountEmail'
 import Account from './Pages/Account'
 import Themes from './Pages/Themes'
 import OrderPayment from './Pages/OrderPayment'
@@ -18,7 +13,6 @@ import Dev from './Pages/Developer'
 import ScrollPageToTop from './Components/ScrollPageToTop'
 import { Toaster } from 'react-hot-toast'
 import { userDetailsContext, themesContext } from './Contexts/userDataContext'
-import ProductCheck from './Pages/Product'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { 
@@ -34,7 +28,12 @@ const LazyLoadSettings = React.lazy(() => import('./Pages/Settings'))
 const LazyLoadShop = React.lazy(() => import('./Pages/Shop'))
 const LazyLoadSignup = React.lazy(() => import('./Pages/Signup'))
 const LazyLoadLogin = React.lazy(() => import('./Pages/Login'))
-
+const LazyLoadResetPassword = React.lazy(() => import('./Pages/ResetPasssword'))
+const LazyLoadVerifyEmailAcc = React.lazy(() => import('./Pages/VerifyAccountEmail'))
+const LazyLoadProductCheck = React.lazy(() => import('./Pages/Product'))
+const LazyLoadSuccessPage = React.lazy(() => import('./Pages/PaymentPages/Success'))
+const LazyLoadCancelPage = React.lazy(() => import('./Pages/PaymentPages/Cancel'))
+const LazyLoadPageNotFound = React.lazy(() => import('./Pages/PageNotFound'))
 
 export default function App () {
   const [user_username, setUser_username] = useState(null)
@@ -170,12 +169,36 @@ export default function App () {
                   <LazyLoadSignup />
                 </Suspense>
               } />
-              <Route path='reset-password/:token' element={<ResetPassword />} />
-              <Route path='verifyEmail/:token' element={<VerifyAccountEmail />} />
-              <Route path='product/:id' element={<ProductCheck />} />
-              <Route path='checkout/success' element={<SuccessPage />} />
-              <Route path='checkout/cancel' element={<CancelPage />} />
-              <Route path='*' element={<PageNotFound />}/>
+              <Route path='reset-password/:token' element={
+                <Suspense fallback={<CircularProgress />}>
+                  <LazyLoadResetPassword />
+                </Suspense>
+              } />
+              <Route path='verifyEmail/:token' element={
+                <Suspense fallback={<CircularProgress />}>
+                  <LazyLoadVerifyEmailAcc />
+                </Suspense>
+              } />
+              <Route path='product/:id' element={
+                <Suspense fallback={<CircularProgress />}>
+                  <LazyLoadProductCheck />
+                </Suspense>
+              } />
+              <Route path='checkout/success' element={
+                <Suspense fallback={<CircularProgress />}>
+                  <LazyLoadSuccessPage />
+                </Suspense>
+              } />
+              <Route path='checkout/cancel' element={
+                <Suspense fallback={<CircularProgress />}>
+                  <LazyLoadCancelPage />
+                </Suspense>
+              } />
+              <Route path='*' element={
+                <Suspense fallback={<CircularProgress />}>
+                  <LazyLoadPageNotFound />
+                </Suspense>
+              }/>
             </Routes>
           </AnimatePresence>
         </userDetailsContext.Provider>
