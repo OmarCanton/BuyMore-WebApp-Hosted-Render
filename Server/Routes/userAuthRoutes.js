@@ -332,7 +332,7 @@ router.post('/forgot-password', async (req, res) => {
     //a frontend link to redirect user to enter a new password (sent to the user seeking reset)
     const resetUrl = `${process.env.EXTERNAL_URL_FRONTEND_HOSTED}/reset-password/${resetToken}`
     //the message to be sent to the user seeking password reset (***Sent in html format to make the link clickable***)
-    const  message = `<h2>You requested for a password reset, click below to reset password, link expires in 1 hour</h2><a href=${resetUrl}>Click Here to reset password</a>`
+    const  message = `<h2>You requested for a password reset, click on the link below to reset password, expires in 1 hour</h2><a href=${resetUrl}>Click Here to reset password</a>`
 
     try {
         //the mail receiver (user account seeking password reset)

@@ -279,6 +279,7 @@
         & p {
             position: relative;
             bottom: 10vh;
+            font-weight: bold;
         }
     }
     & .prevAndNextPage {
