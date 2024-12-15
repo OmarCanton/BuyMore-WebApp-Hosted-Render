@@ -33,7 +33,7 @@ export default function MenuOptions() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-
+                transition: 'all 0.25s ease-in'
             }}}
             TransitionComponent={Slide}
             TransitionProps={{direction: 'right'}}

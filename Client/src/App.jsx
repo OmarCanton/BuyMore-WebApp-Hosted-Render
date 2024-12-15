@@ -114,20 +114,18 @@ export default function App () {
   }
   //end
 
+
   //check internet connectivity
-
-  const connected = () => {
-    setIsConnected(true)
-    alert('Connected')
-    console.log(isConnected)
-  }
-
-  const disconnected = () => {
-    setIsConnected(false)
-    alert('No Internet')
-  }
-  
   useEffect(() => {
+    const connected = () => {
+      setIsConnected(true)
+      // alert('Connected')
+    }
+    const disconnected = () => {
+      setIsConnected(false)
+      alert('No Internet')
+    }
+
     window.addEventListener('online', connected)
     window.addEventListener('offline', disconnected)
 
@@ -135,7 +133,7 @@ export default function App () {
       window.removeEventListener('online', connected)
       window.removeEventListener('offline', disconnected)
     } 
-  }, [])
+  }, [isConnected])
 
   return (
     <>
