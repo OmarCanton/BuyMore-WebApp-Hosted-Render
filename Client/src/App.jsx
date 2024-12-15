@@ -5,11 +5,8 @@ import Cart from './Pages/Cart'
 import NewArrivalsPage from './Pages/NewArrivalsPage'
 import Favorites from './Pages/Favorites'
 import About from './Pages/About'
-import Account from './Pages/Account'
 import Themes from './Pages/Themes'
 import OrderPayment from './Pages/OrderPayment'
-import TermsAndCons from './Pages/TermsAndCons'
-import Dev from './Pages/Developer'
 import ScrollPageToTop from './Components/ScrollPageToTop'
 import { Toaster } from 'react-hot-toast'
 import { userDetailsContext, themesContext } from './Contexts/userDataContext'
@@ -29,12 +26,15 @@ const LazyLoadSettings = React.lazy(() => import('./Pages/Settings'))
 const LazyLoadShop = React.lazy(() => import('./Pages/Shop'))
 const LazyLoadSignup = React.lazy(() => import('./Pages/Signup'))
 const LazyLoadLogin = React.lazy(() => import('./Pages/Login'))
+const LazyLoadAccount = React.lazy(() => import('./Pages/Account'))
 const LazyLoadResetPassword = React.lazy(() => import('./Pages/ResetPasssword'))
 const LazyLoadVerifyEmailAcc = React.lazy(() => import('./Pages/VerifyAccountEmail'))
 const LazyLoadProductCheck = React.lazy(() => import('./Pages/Product'))
 const LazyLoadSuccessPage = React.lazy(() => import('./Pages/PaymentPages/Success'))
 const LazyLoadCancelPage = React.lazy(() => import('./Pages/PaymentPages/Cancel'))
 const LazyLoadPageNotFound = React.lazy(() => import('./Pages/PageNotFound'))
+const LazyLoadDev = React.lazy(() => import('./Pages/Developer'))
+const LazyLoadTerms = React.lazy(() => import('./Pages/TermsAndCons'))
 
 export default function App () {
   const [user_username, setUser_username] = useState(null)
@@ -153,12 +153,45 @@ export default function App () {
                   <LazyLoadSettings />
                 </Suspense>
               } />
-              <Route path='settings/account' element={<Account />} />
+              <Route path='settings/account' element={
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
+                  <LazyLoadAccount />
+                </Suspense>
+              } />
               <Route path='settings/themes' element={<Themes />}/>
               <Route path='settings/order_Payment_History' element={<OrderPayment />}/>
-              <Route path='settings/terms_and_conditions' element={<TermsAndCons />}/>
+              <Route path='settings/terms_and_conditions' element={
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
+                  <LazyLoadTerms />
+                </Suspense>
+              }/>
               <Route path='about' element={<About />} />
-              <Route path='dev' element={<Dev />} />
+              <Route path='dev' element={
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
+                  <LazyLoadDev />
+                </Suspense>
+              } />
               <Route path='cart' element={<Cart />} />
               <Route path='newArrivals' element={<NewArrivalsPage />} />
               <Route path='shop' element={
