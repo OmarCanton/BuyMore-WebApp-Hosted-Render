@@ -141,7 +141,14 @@ export default function App () {
               <Route index element={<Home />} />
               <Route path='/home' element={<Home />} />
               <Route path='settings' element={
-                <Suspense fallback={<CircularProgress />}>
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
                   <LazyLoadSettings />
                 </Suspense>
               } />
@@ -154,48 +161,111 @@ export default function App () {
               <Route path='cart' element={<Cart />} />
               <Route path='newArrivals' element={<NewArrivalsPage />} />
               <Route path='shop' element={
-                <Suspense fallback={<CircularProgress />}>
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>  
                   <LazyLoadShop />
                 </Suspense>
               } />
               <Route path='favorites' element={<Favorites />} />
               <Route path='login' element={
-                <Suspense fallback={<CircularProgress />}>
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
                   <LazyLoadLogin />
                 </Suspense>
               } />
               <Route path='signup' element={
-                <Suspense fallback={<CircularProgress />}>
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
                   <LazyLoadSignup />
                 </Suspense>
               } />
               <Route path='reset-password/:token' element={
-                <Suspense fallback={<CircularProgress />}>
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
                   <LazyLoadResetPassword />
                 </Suspense>
               } />
               <Route path='verifyEmail/:token' element={
-                <Suspense fallback={<CircularProgress />}>
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
                   <LazyLoadVerifyEmailAcc />
                 </Suspense>
               } />
               <Route path='product/:id' element={
-                <Suspense fallback={<CircularProgress />}>
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
                   <LazyLoadProductCheck />
                 </Suspense>
               } />
               <Route path='checkout/success' element={
-                <Suspense fallback={<CircularProgress />}>
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
                   <LazyLoadSuccessPage />
                 </Suspense>
               } />
               <Route path='checkout/cancel' element={
-                <Suspense fallback={<CircularProgress />}>
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
                   <LazyLoadCancelPage />
                 </Suspense>
               } />
               <Route path='*' element={
-                <Suspense fallback={<CircularProgress />}>
+                <Suspense fallback={
+                  <div 
+                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
+                    className='activityIndicator'
+                  >
+                    <CircularProgress />
+                  </div>
+                }>
                   <LazyLoadPageNotFound />
                 </Suspense>
               }/>
