@@ -170,7 +170,6 @@
             & img {
                 cursor: pointer;
                 height: 40px;
-                width: 40%;
                 clip-path: circle(18px);
                 object-fit: contain;
                 scale: 1.2;
@@ -238,7 +237,7 @@
         scale: 1.2;
     }
 }
-@media (max-width: 370px) {
+@media (max-width: 375px) {
     .right {
         position: relative;
         right: 20px;
