@@ -269,11 +269,12 @@
             align-items: center;
             justify-content: center;
             position: absolute;
-            /* & .searchAnime {
+            top: 50vh;
+            & .searchAnime {
                 & svg {
                     max-height: 80vh;
                 }
-            } */
+            }
         }
     }
     & .prevAndNextPage {
