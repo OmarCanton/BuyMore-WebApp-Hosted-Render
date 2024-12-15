@@ -19,7 +19,6 @@ const storage = new CloudinaryStorage({
         public_id: (req, file) => {
             return `${req.user._id}_profile`; // Use user ID to generate a unique public ID
         },
-        transformation: [{ width: 200, height: 200, crop: 'fill' }] // Resize and crop the image      
     }
     
 })
