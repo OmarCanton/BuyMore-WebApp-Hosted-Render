@@ -1,14 +1,10 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Home from './Pages/Home'
-import Login from './Pages/Login'
-import Signup from './Pages/Signup'
-import Settings from './Pages/Settings'
 import Cart from './Pages/Cart'
 import PageNotFound from './Pages/PageNotFound'
 import NewArrivalsPage from './Pages/NewArrivalsPage'
 import Favorites from './Pages/Favorites'
-import Shop from './Pages/Shop'
 import About from './Pages/About'
 import SuccessPage from './Pages/PaymentPages/Success'
 import CancelPage from './Pages/PaymentPages/Cancel'
@@ -32,6 +28,13 @@ import {
   selectImageError
 } from '../src/Redux/Slices/imageslice'
 import { AnimatePresence } from 'framer-motion'
+import { CircularProgress } from '@mui/material'
+
+const LazyLoadSettings = React.lazy(() => import('./Pages/Settings'))
+const LazyLoadShop = React.lazy(() => import('./Pages/Shop'))
+const LazyLoadSignup = React.lazy(() => import('./Pages/Signup'))
+const LazyLoadLogin = React.lazy(() => import('./Pages/Login'))
+
 
 export default function App () {
   const [user_username, setUser_username] = useState(null)
@@ -51,6 +54,7 @@ export default function App () {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'light'
   })
+  const location = useLocation ()
 
 
   useEffect(() => {
@@ -109,8 +113,6 @@ export default function App () {
   }
   //end
 
-  const location = useLocation ()
-
   return (
     <>
       <Toaster 
@@ -139,7 +141,11 @@ export default function App () {
             <Routes location={location} key={location.pathname}>
               <Route index element={<Home />} />
               <Route path='/home' element={<Home />} />
-              <Route path='settings' element={<Settings />} />
+              <Route path='settings' element={
+                <Suspense fallback={<CircularProgress />}>
+                  <LazyLoadSettings />
+                </Suspense>
+              } />
               <Route path='settings/account' element={<Account />} />
               <Route path='settings/themes' element={<Themes />}/>
               <Route path='settings/order_Payment_History' element={<OrderPayment />}/>
@@ -148,10 +154,22 @@ export default function App () {
               <Route path='dev' element={<Dev />} />
               <Route path='cart' element={<Cart />} />
               <Route path='newArrivals' element={<NewArrivalsPage />} />
-              <Route path='shop' element={<Shop />} />
+              <Route path='shop' element={
+                <Suspense fallback={<CircularProgress />}>
+                  <LazyLoadShop />
+                </Suspense>
+              } />
               <Route path='favorites' element={<Favorites />} />
-              <Route path='login' element={<Login />} />
-              <Route path='signup' element={<Signup />} />
+              <Route path='login' element={
+                <Suspense fallback={<CircularProgress />}>
+                  <LazyLoadLogin />
+                </Suspense>
+              } />
+              <Route path='signup' element={
+                <Suspense fallback={<CircularProgress />}>
+                  <LazyLoadSignup />
+                </Suspense>
+              } />
               <Route path='reset-password/:token' element={<ResetPassword />} />
               <Route path='verifyEmail/:token' element={<VerifyAccountEmail />} />
               <Route path='product/:id' element={<ProductCheck />} />
