@@ -115,7 +115,7 @@ export default function Settings () {
                                     :
                                     <>
                                         { profilePicture ?
-                                            <img src={`../UserProfile/${profilePicture}`} alt={user_username} />
+                                            <img src={profilePicture} alt={user_username} />
                                             :
                                             <AccountCircle fontSize='large' htmlColor='grey' style={{transform: 'scale(1.2)'}} className="noProfilePic" />         
                                         }

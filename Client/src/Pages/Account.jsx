@@ -162,14 +162,13 @@ export default function Account () {
         const file = e.target.files[0]
         if(file) {
             const formData = new FormData()
-            formData.append('profileImage' ,file)
+            formData.append('profileImage', file)
             try {
                 const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updateProfilePicture/${userId}`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' }, 
                     withCredentials: true 
                 })
                 if(response.data.error) {
-                    console.log(response.data.message)
                     toast.error(response.data.message, {
                         style: {
                             backgroundColor: 'white',
@@ -385,7 +384,7 @@ export default function Account () {
                             :
                             <>
                                 { profilePicture ?
-                                    <img onClick={() => setViewProfile(true)} src={`../UserProfile/${profilePicture}`} alt='user Profile' />
+                                    <img onClick={() => setViewProfile(true)} src={profilePicture} alt={user_username} />
                                     :
                                     <AccountCircle fontSize='large' htmlColor='grey' style={{transform: 'scale(1.2)'}} className="noProfilePic" />         
                                 }

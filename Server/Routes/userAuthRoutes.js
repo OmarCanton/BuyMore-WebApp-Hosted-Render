@@ -7,7 +7,7 @@ require('../Auth/LocalStrategy/localStrategy-signup')
 require('../Auth/LocalStrategy/locaStrategy-signin')
 const User = require('../Config/Models/UserSchema')
 const multer = require('multer')
-const { upload } = require('../Config/multerConfig')
+const upload = require('../Config/multerConfig')
 const nodemailer = require('nodemailer')
 
 const router = Router();
@@ -237,11 +237,15 @@ router.post('/updateAbout/:id', async (req, res) => {
 router.post('/updateProfilePicture/:id', upload.single('profileImage'), async (req, res) => {
     const { id } = req.params
     try {
-        const file = req.file
-        const newUserPicture = file.filename
+        const userProfileImage = req.file.path
 
-        const findUserAndUpdateProfileImage = await User.findByIdAndUpdate(id, { profileImage: newUserPicture })
-        res.json({findUserAndUpdateProfileImage})
+        const findUserAndUpdateProfileImage = await User.findByIdAndUpdate(
+            id, 
+            { profileImage: userProfileImage }, 
+            { new: true }
+        )
+
+        if(findUserAndUpdateProfileImage) return res.json({findUserAndUpdateProfileImage})
     } catch (err) {
         res.json({message: err})
     }
@@ -293,8 +297,7 @@ router.post('/delUser/:id', async (req, res) => {
             res.json({status: false, message: 'There was an error deleting your acoount, try again another time'})
         }
     } catch(err) {
-        console.log(err)
-        res.json({status: false, message: 'An unexpected error occured'})
+        res.json({status: false, message: `An unexpected error \n${err}`})
     }
 })
 
