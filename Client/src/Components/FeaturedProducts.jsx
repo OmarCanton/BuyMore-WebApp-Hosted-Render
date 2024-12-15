@@ -14,7 +14,7 @@ import {
 } from "../Redux/Slices/productsSlice"
 import '../Styles/FeaturedProducts.css'
 import { useNavigate } from "react-router-dom"
-import { FavoriteBorderRounded, Apple, FavoriteRounded, AddShoppingCart } from '@mui/icons-material'
+import { FavoriteBorderRounded, Apple, FavoriteRounded, AddShoppingCart, Verified } from '@mui/icons-material'
 import LoadingEffect from '../Effects/LoadingEffect'
 import { addToCart } from "../Redux/Slices/WishlistSlice"
 import { addToFavorites, favoriteItems, removeFromFavorites } from "../Redux/Slices/FavoritesSlice"
@@ -119,7 +119,7 @@ export default function FeaturedProducts () {
                     <div className="apple">
                         <h2 
                             style={{color: themeStyles.style.color}}
-                        >FROM APPLE <Apple fontSize="large" /></h2>
+                        >FROM APPLE <Apple fontSize="large" /><Verified style={{color: 'lightgrey'}} /></h2>
                         <div className="container">
                             {
                                 appleFeaturedProducts.length === 0 ? <div style={{padding: '50px'}}>Oops no product found at this time!</div>
@@ -164,7 +164,7 @@ export default function FeaturedProducts () {
                     <div className="nike">
                         <h2 
                             style={{color: themeStyles.style.color}}
-                        >FROM NIKE</h2>
+                        >FROM NIKE <Verified style={{color: 'lightgrey'}} /></h2>
                         <div className="container">
                         {
                             nikeFeaturedProducts.length === 0 ? <div style={{padding: '50px'}}>Oops no product found at this time!</div>
@@ -210,7 +210,7 @@ export default function FeaturedProducts () {
                     <div className="samsung">
                         <h2 
                             style={{color: themeStyles.style.color}}
-                        >FROM SAMSUNG</h2>
+                        >FROM SAMSUNG <Verified style={{color: 'lightgrey'}} /></h2>
                         <div className="container">
                         {
                             samsungFeaturedProducts.length === 0 ? <div style={{padding: '50px'}}>Oops no product found at this time!</div>
@@ -256,7 +256,7 @@ export default function FeaturedProducts () {
                     <div className="louisVuitton">
                         <h2 
                             style={{color: themeStyles.style.color}}
-                        >FROM LOUIS VUITTON</h2>
+                        >FROM LOUIS VUITTON <Verified style={{color: 'lightgrey'}} /></h2>
                         <div className="container">
                             {
                                 louisVuittonFeaturedProducts.length === 0 ? <div style={{padding: '50px'}}>Oops no product found at this time!</div>
