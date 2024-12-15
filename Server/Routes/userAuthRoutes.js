@@ -246,7 +246,9 @@ router.post('/updateProfilePicture/:id', upload.single('profileImage'), async (r
         )
 
         if(findUserAndUpdateProfileImage) return res.json({findUserAndUpdateProfileImage})
-        console.log(findUserAndUpdateProfileImage)
+        console.log('FILE::::: ', req.file)
+        console.log('PATH:::::', req.file.path)
+        console.log('SHOULDBEPATH::::', findUserAndUpdateProfileImage)
     } catch (err) {
         res.json({message: err})
     }
