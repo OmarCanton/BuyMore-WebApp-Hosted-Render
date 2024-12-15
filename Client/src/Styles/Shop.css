@@ -263,6 +263,11 @@
             transition: all 0.2s 0.5s;
         }
         & .searchNotFound {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
             & .searchAnime {
                 & svg {
                     max-height: 80vh;
