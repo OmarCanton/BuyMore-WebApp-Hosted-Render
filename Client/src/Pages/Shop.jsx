@@ -333,6 +333,7 @@ export default function Shop () {
                         :
                         <div className="searchNotFound" style={{marginTop: 100}}>
                             <Lottie className="searchAnime" loop={true} animationData={SearchNotFound} />
+                            <p>Sorry, No such product!</p>
                         </div>
                     }
                 </div>
