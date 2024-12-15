@@ -68,8 +68,7 @@ export default function App () {
 
   useEffect(() => {
     dispatch(fetchProfileImage(userId))
-    console.log('FROM FRONTEND::::', profilePicture)
-  }, [dispatch, userId, profileChanged, profilePicture])
+  }, [dispatch, userId, profileChanged])
 
   useEffect(() => {
     const checkUserAuth = async () => {
