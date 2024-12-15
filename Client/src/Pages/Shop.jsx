@@ -331,7 +331,7 @@ export default function Shop () {
                             </motion.div>
                         ))
                         :
-                        <div className="searchNotFound" style={{marginTop: 100}}>
+                        <div className="searchNotFound">
                             <Lottie className="searchAnime" loop={true} animationData={SearchNotFound} />
                             <p>Sorry, No such product!</p>
                         </div>
