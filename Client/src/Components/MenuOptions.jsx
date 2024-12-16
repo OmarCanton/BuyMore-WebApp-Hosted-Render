@@ -35,7 +35,7 @@ export default function MenuOptions() {
                 justifyContent: 'center',
             }}}
             TransitionComponent={Slide}
-            TransitionProps={{direction: 'right'}}
+            TransitionProps={{direction: 'right', timeout: 500}}
         >
             <div className="menu-wrapper">
                 <span 
