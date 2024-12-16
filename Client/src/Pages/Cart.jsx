@@ -72,7 +72,7 @@ export default function Cart () {
                     exit={{y: '10vh', opacity: 0, transition: {
                         delay: 0.2
                     }}}
-                    transition={{delay: 0.15, duration: 0.15, ease: 'anticipate'}}
+                    transition={{delay: 0.2, duration: 0.15, ease: 'anticipate'}}
                     className="noItem" 
                     style={{color: themeStyles.style.color}}
                 >
@@ -87,7 +87,7 @@ export default function Cart () {
                     exit={{y: '10vh', opacity: 0, transition: {
                         delay: 0.2
                     }}}
-                    transition={{delay: 0.15, duration: 0.15, ease: 'anticipate'}}
+                    transition={{delay: 0.2, duration: 0.15, ease: 'anticipate'}}
                     className="noItem-Login-Container" 
                     style={{color: themeStyles.style.color, backgroundColor: themeStyles.style.backgroundColor}}
                 >
@@ -195,7 +195,7 @@ export default function Cart () {
                             exit={{y: '10%', opacity: 0, transition: {
                                 delay: 0.2
                             }}}
-                            transition={{delay: 0.15, duration: 0.15, ease: 'anticipate'}}
+                            transition={{delay: 0.2, duration: 0.15, ease: 'anticipate'}}
                             key={item._id} 
                             className="item-wrapper" 
                             style={{backgroundColor: themeStyles.style.divColor}}
