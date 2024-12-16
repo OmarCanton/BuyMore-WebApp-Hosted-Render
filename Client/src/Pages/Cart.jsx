@@ -72,6 +72,7 @@ export default function Cart () {
                     exit={{y: '10vh', opacity: 0, transition: {
                         delay: 0.2
                     }}}
+                    transition={{delay: 0.15, duration: 0.15, ease: 'anticipate'}}
                     className="noItem" 
                     style={{color: themeStyles.style.color}}
                 >
@@ -86,6 +87,7 @@ export default function Cart () {
                     exit={{y: '10vh', opacity: 0, transition: {
                         delay: 0.2
                     }}}
+                    transition={{delay: 0.15, duration: 0.15, ease: 'anticipate'}}
                     className="noItem-Login-Container" 
                     style={{color: themeStyles.style.color, backgroundColor: themeStyles.style.backgroundColor}}
                 >
