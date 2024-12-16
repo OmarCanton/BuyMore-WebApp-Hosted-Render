@@ -55,23 +55,37 @@ export default function NewArrivalsPage () {
     const msg = () => {
         if(isLoggedIn) {
             return (
-                <span 
+                <motion.span 
+                    initial={{y: '10vh', opacity: 0}} 
+                    animate={{y: 0, opacity: 1}}
+                    exit={{y: '10vh', opacity: 0, transition: {
+                        delay: 0.2
+                    }}}
+                    transition={{delay: 0.2, duration: 0.15, ease: 'anticipate'}}
                     className="noItem" 
                     style={{color: themeStyles.style.color}}
                 >
                     <Lottie className="anime" loop={true} animationData={EmptyCart_Fav} />
-                </span>
+                </motion.span>
             )
         } else {
             return (
-                <div className="noItem-Login-Container">
+                <motion.div 
+                    className="noItem-Login-Container"
+                    initial={{y: '10vh', opacity: 0}} 
+                    animate={{y: 0, opacity: 1}}
+                    exit={{y: '10vh', opacity: 0, transition: {
+                        delay: 0.2
+                    }}}
+                    transition={{delay: 0.2, duration: 0.15, ease: 'anticipate'}}
+                >
                     <span className="noItem">
                         <Lottie className="anime" loop={true} animationData={LoginAnime} />
                     </span>
                     <Link to='/login'>
                         <button>Login</button>
                     </Link>
-                </div>
+                </motion.div>
             )
         }
     }
@@ -81,7 +95,13 @@ export default function NewArrivalsPage () {
         <div className="favs-mainWrapper" 
             style={{color: themeStyles.style.color, backgroundColor: themeStyles.style.backgroundColor}}
         >
-            <div className='header-favs'>
+            <motion.div 
+                className='header-favs'
+                initial={{y: '-10vh', opacity: 0}}
+                animate={{y: 0, opacity: 1}}
+                exit={{y: '-10vh', opacity: 0}}
+                transition={{duration: 0.2}}
+            >
                 <Button className="back" style={{cursor: 'pointer'}} onClick={() => navigate(-1)}>
                     <ArrowBackIosNewRounded 
                         style={{color: themeStyles.style.color, cursor: 'pointer'}} 
@@ -94,7 +114,7 @@ export default function NewArrivalsPage () {
                 {favorites.length > 0 && 
                     <Button className="clearAll" onClick={() => dispatch(removeAll())}>Clear</Button>
                 }
-            </div>
+            </motion.div>
             <div className="productsWrapper-favs" 
                 style={{ 
                     color: themeStyles.style.color, 
@@ -108,6 +128,9 @@ export default function NewArrivalsPage () {
                         <motion.div 
                             initial={{y: '10%', opacity: 0}}
                             animate={{y:0, opacity: 1}}
+                            exit={{y: '10%', opacity: 0, transition: {
+                                delay: 0.2
+                            }}}
                             transition={{delay: 0.15, duration: 0.3, ease: 'anticipate'}}
                             style={{backgroundColor: themeStyles.style.divColor}} 
                             className='wrapper-favs' key={product._id} 
