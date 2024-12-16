@@ -155,7 +155,11 @@ export default function Shop () {
         <div className="shop-wrapper" 
             style={{color: themeStyles.style.color, backgroundColor: themeStyles.style.backgroundColor}}
         >
-            <div
+            <motion.div
+                initial={{y: '-10vh', opacity: 0}}
+                animate={{y: 0, opacity: 1}}
+                exit={{y: '-10vh', opacity: 0}}
+                transition={{duration: 0.2}}
                 ref={headerRef} 
                 className="shop-header" 
                 style={{...theme === 'dark' && { backgroundColor: themeStyles.style.divColor}}}
@@ -269,7 +273,7 @@ export default function Shop () {
                         </form>
                     </>
                 }
-            </div>
+            </motion.div>
             
             {(is_Search && name) && 
                 <h2 className="searchMsg"
@@ -297,6 +301,9 @@ export default function Shop () {
                             <motion.div 
                                 initial={{y: '10%', opacity: 0}}
                                 animate={{y:0, opacity: 1}}
+                                exit={{y: '10%', opacity: 0, transition: {
+                                    delay: 0.2
+                                }}}
                                 transition={{delay: 0.15, duration: 0.4, ease: 'anticipate'}}
                                 className='wrapper' 
                                 key={product._id} 
