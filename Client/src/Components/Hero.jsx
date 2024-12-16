@@ -130,7 +130,7 @@ export default function Hero () {
                     transform: `translateX(-${ currentIndex * 100 }%`,
                     transition: 'transform 0.5s ease-in'
                 }}>
-                    {videos.map((videoSrc, index) => (
+                    {window.innerWidth > 650 && videos.map((videoSrc, index) => (
                         <video 
                             className='video'
                             muted
