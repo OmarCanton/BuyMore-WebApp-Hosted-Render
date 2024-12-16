@@ -66,16 +66,27 @@ export default function Cart () {
     const msg = () => {
         if(isLoggedIn) {
             return (
-                <span 
+                <motion.span
+                    initial={{y: '10vh', opacity: 0}} 
+                    animate={{y: 0, opacity: 1}}
+                    exit={{y: '10vh', opacity: 0, transition: {
+                        delay: 0.2
+                    }}}
                     className="noItem" 
                     style={{color: themeStyles.style.color}}
                 >
                     <Lottie className="anime" loop={true} animationData={EmptyCart_Fav} />
-                </span>
+                </motion.span>
             )
         } else {
             return (
-                <div className="noItem-Login-Container" 
+                <motion.div    
+                    initial={{y: '10vh', opacity: 0}} 
+                    animate={{y: 0, opacity: 1}}
+                    exit={{y: '10vh', opacity: 0, transition: {
+                        delay: 0.2
+                    }}}
+                    className="noItem-Login-Container" 
                     style={{color: themeStyles.style.color, backgroundColor: themeStyles.style.backgroundColor}}
                 >
                     <span className="noItem">
@@ -84,7 +95,7 @@ export default function Cart () {
                     <Link to='/login'>
                         <button>Login</button>
                     </Link>
-                </div>
+                </motion.div>
             )
         }
     }
@@ -139,7 +150,13 @@ export default function Cart () {
         <div className="wrapper-cart" 
             style={{color: themeStyles.style.color, backgroundColor: themeStyles.style.backgroundColor}}
         >
-            <div className='header'>
+            <motion.div 
+                initial={{y: '-10vh', opacity: 0}}
+                animate={{y: 0, opacity: 1}}
+                exit={{y: '-10vh', opacity: 0}}
+                transition={{duration: 0.2}}
+                className='header'
+            >
                 <Button style={{cursor: 'pointer'}} onClick={() => navigate(-1)}>
                     <ArrowBackIosNewRounded
                         className="back-cart" 
@@ -159,7 +176,7 @@ export default function Cart () {
                         <Button className="clearAll" onClick={clearAll}>Clear</Button>
                     </>
                 }
-            </div>
+            </motion.div>
             <div className="items-overall-wrapper" 
                 style={{
                     color: themeStyles.style.color, 
@@ -173,6 +190,9 @@ export default function Cart () {
                         <motion.div 
                             initial={{y: '10%', opacity: 0}}
                             animate={{y:0, opacity: 1}}
+                            exit={{y: '10%', opacity: 0, transition: {
+                                delay: 0.2
+                            }}}
                             transition={{delay: 0.15, duration: 0.15, ease: 'anticipate'}}
                             key={item._id} 
                             className="item-wrapper" 
