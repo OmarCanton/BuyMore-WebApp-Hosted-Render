@@ -65,6 +65,7 @@ export default function Login () {
                     }
                 })
                 setIsLoggedIn(true)
+                localStorage.setItem('isAuth', true)
                 setUser_username(response.data.user.username)
                 setUserId(response.data.user._id)
                 setUserEmail(response.data.user.email)

@@ -54,6 +54,7 @@ export default function Settings () {
             if(response.data.success === true) {
                 navigate('/')
                 setIsLoggedIn(false)
+                localStorage.removeItem('isAuth')
                 setUserId(null)
                 setUser_username(null)
                 setUserEmail(null)

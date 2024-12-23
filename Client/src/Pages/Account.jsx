@@ -230,6 +230,7 @@ export default function Account () {
             if(response.data.success === true) {
                 navigate('/')
                 setIsLoggedIn(false)
+                localStorage.removeItem('isAuth')
                 setUserId(null)
                 setUser_username(null)
                 setUserEmail(null)
@@ -270,6 +271,7 @@ export default function Account () {
             const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/delUser/${userId}`, { password })
             if(response.data.status === true) {
                 setIsLoggedIn(false)
+                localStorage.removeItem('isAuth')
                 setUserId(null)
                 setUser_username(null)
                 setUserEmail(null)

@@ -41,7 +41,9 @@ export default function App () {
   const [userEmail, setUserEmail] = useState(null)
   const [phone, setPhone] = useState(null)
   const [about, setAbout] = useState(null)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    localStorage.getItem('isAuth') || false
+  })
   const [userId, setUserId] = useState(null)
   const dispatch = useDispatch()
   const profilePicture = useSelector(selectUserProfileImage)
