@@ -82,13 +82,11 @@ const loginUser = async (req, res) => {
             secure: true, //set to false at development
             sameSite: 'strict', //set to strict for cross-site access
             maxAge: 365 * 24 * 60 * 60 * 1000,
-            domain: process.env.EXTERNAL_URL_FRONTEND_HOSTED
         }) : res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: true, 
             sameSite: 'strict',
             maxAge: 3 * 24 * 60 * 60 * 1000,
-            domain: process.env.EXTERNAL_URL_FRONTEND_HOSTED
         })
 
         const authenticatedUser = await User.findOne({ email: user.email }).lean().select("-password")
