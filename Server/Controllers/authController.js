@@ -80,12 +80,12 @@ const loginUser = async (req, res) => {
         rememberMe ? res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: true, //set to false at development
-            sameSite: 'strict', //set to strict for cross-site access
+            sameSite: 'None', //set to strict for cross-site access
             maxAge: 365 * 24 * 60 * 60 * 1000,
         }) : res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: true, 
-            sameSite: 'strict',
+            sameSite: 'None',
             maxAge: 3 * 24 * 60 * 60 * 1000,
         })
 
@@ -121,7 +121,7 @@ const logoutUser = async (req, res) => {
             res.clearCookie('refreshToken', {
                 httpOnly: true,
                 secure: false,
-                sameSite: 'Lax'
+                sameSite: 'None'
             })
             return res.status(200).json({ success: true, message: 'Logout successful, come back another time to BuyMore!'})
         }
@@ -131,6 +131,5 @@ const logoutUser = async (req, res) => {
         return res.status(500).json({ success: false, message: 'Logout failed!'})
     }
 }
-
 
 module.exports = { loginUser, signupUser, refresh, logoutUser }

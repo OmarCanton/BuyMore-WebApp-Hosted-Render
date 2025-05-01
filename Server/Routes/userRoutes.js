@@ -99,8 +99,8 @@ router.post('/delUser/:id', async (req, res) => {
                 //logout user by clearing the refreshToken cookie
                 res.clearCookie('refreshToken', {
                     httpOnly: true,
-                    secure: false,
-                    sameSite: 'Lax'
+                    secure: true,
+                    sameSite: 'None'
                 })
                 await User.deleteOne(findUserForDeletion)
                 res.status(200).json({ message: 'Account delete successful' })
