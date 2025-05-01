@@ -123,9 +123,10 @@ const logoutUser = async (req, res) => {
                 secure: false,
                 sameSite: 'Lax'
             })
-            return res.status(200).json({ success: true, message: 'Logout successful, come back another time to BuyMore!'})
+            res.status(200).json({ success: true, message: 'Logout successful, come back another time to BuyMore!'})
+        } else {
+            res.status(404).json({ success: false, message: 'No refresh token found!' })
         }
-        return res.status(404).json({ success: false, message: 'No refresh token found!' })
     } catch(err) {
         console.error(err)
         return res.status(500).json({ success: false, message: 'Logout failed!'})
