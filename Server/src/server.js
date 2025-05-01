@@ -22,7 +22,7 @@ connectToDB()
 app.use(express.json())
 app.use(cookieParser())
 
-// app.set('trust proxy', 1) //set for render because render uses proxy and if not sent it will block cookies from being set and sent to the client
+app.set('trust proxy', 1) //set for render because render uses proxy and if not sent it will block cookies from being set and sent to the client
 
 //Routes
 // Auhentication routes
