@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import Home from './Pages/Home'
 import Cart from './Pages/Cart'
 import NewArrivalsPage from './Pages/NewArrivalsPage'
@@ -8,19 +8,14 @@ import About from './Pages/About'
 import Themes from './Pages/Themes'
 import OrderPayment from './Pages/OrderPayment'
 import ScrollPageToTop from './Components/ScrollPageToTop'
-import { Toaster } from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import { userDetailsContext, themesContext } from './Contexts/userDataContext'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import { 
-  fetchProfileImage, 
-  selectUserProfileImage, 
-  selectImageLoading, 
-  selectImageError
-} from '../src/Redux/Slices/imageslice'
 import { AnimatePresence } from 'framer-motion'
 import { CircularProgress } from '@mui/material'
 import './Styles/App.css'
+import { logout, updateToken, tokenState } from './Redux/Slices/authSlice'
 
 const LazyLoadSettings = React.lazy(() => import('./Pages/Settings'))
 const LazyLoadShop = React.lazy(() => import('./Pages/Shop'))
@@ -37,28 +32,40 @@ const LazyLoadDev = React.lazy(() => import('./Pages/Developer'))
 const LazyLoadTerms = React.lazy(() => import('./Pages/TermsAndCons'))
 
 export default function App () {
-  const [user_username, setUser_username] = useState(null)
-  const [userEmail, setUserEmail] = useState(null)
-  const [phone, setPhone] = useState(null)
-  const [about, setAbout] = useState(null)
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    localStorage.getItem('isAuth') || false
-  })
-  const [userId, setUserId] = useState(null)
   const dispatch = useDispatch()
-  const profilePicture = useSelector(selectUserProfileImage)
-  const loading = useSelector(selectImageLoading)
-  const error = useSelector(selectImageError)
-  const [profileChanged, setProfileChanged] = useState(false)
   const [openMenu, setOpenMenu] = useState(false)
   const [showThemeOverlay, setShowThemeOverlay] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'light'
   })
-  const location = useLocation ()
-
   const [isConnected, setIsConnected] = useState(navigator.onLine) //default to online since the app is rendered when you have internet connectivity else the website wont open
+  const location = useLocation ()
+  const navigate = useNavigate()
+  const token = useSelector(tokenState)
+
+  //constantly refresh the token every 15 minutes
+  // this is to prevent the user from being logged out when the token expires
+  useEffect(() => {
+    const refreshPage = setInterval(async () => {
+      if(!token) return
+      try {
+        const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/refresh`, {} , {withCredentials: true})
+        if(response?.status === 200) {
+          alert('updated', response?.data?.token)
+          console.error('updated', response?.data?.token)
+          dispatch(updateToken(response?.data?.token))
+        }
+      } catch (err) {
+        console.error('Error refreshing token:', err)
+        toast.error(err?.response?.data?.message)
+        dispatch(logout())
+        await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, {withCredentials: true})
+        navigate('/')
+      }
+    }, 60 * 60 * 1000)
+    return () => clearInterval(refreshPage)
+  }, [dispatch, navigate, token])
 
   useEffect(() => {
     if(openMenu) {
@@ -68,37 +75,6 @@ export default function App () {
     }
   }, [openMenu])
 
-  useEffect(() => {
-    dispatch(fetchProfileImage(userId))
-  }, [dispatch, userId, profileChanged])
-
-  useEffect(() => {
-    const checkUserAuth = async () => {
-      try {
-        const  response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/checkAuth`, {withCredentials: true})
-        if(response.data.authenticated === true) {
-          setIsLoggedIn(true)
-          setUser_username(response.data.user.username)
-          setUserId(response.data.user._id)
-          setUserEmail(response.data.user.email)
-          setPhone(response.data.user.phone)
-          setAbout(response.data.user.about)
-        } else {
-          setIsLoggedIn(false)
-          setUser_username(null)
-          setUserEmail(null)
-          setUserId(null)
-          setAbout(null)
-          setPhone(null)
-        }
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    checkUserAuth()
-  }, [setIsLoggedIn, setUser_username, setUserId])
-
-
   // For the theme context
   useEffect(() => {
     localStorage.setItem('theme', theme)
@@ -106,7 +82,6 @@ export default function App () {
   const changeTheme = (newTheme) => {
     setTheme(newTheme)
   }
-
   const themeStyles = {
     style: {...theme === 'dark' && {
       backgroundColor: 'rgb(22, 22, 22)',
@@ -121,7 +96,6 @@ export default function App () {
   useEffect(() => {
     const connected = () => {
       setIsConnected(true)
-      // alert('Connected')
     }
     const disconnected = () => {
       setIsConnected(false)
@@ -148,15 +122,7 @@ export default function App () {
           showThemeOverlay, setShowThemeOverlay,
         }}
       >
-        <userDetailsContext.Provider value={{ 
-            user_username, setUser_username, 
-            isLoggedIn, setIsLoggedIn, 
-            userId, setUserId,
-            userEmail, setUserEmail,
-            phone, setPhone,
-            about, setAbout,
-            profilePicture, loading, error, 
-            profileChanged, setProfileChanged,
+        <userDetailsContext.Provider value={{
             openMenu, setOpenMenu,
             isVisible, setIsVisible
           }}>

@@ -14,7 +14,7 @@ import {
     removeFromCart, 
     removeAll
 } from "../Redux/Slices/WishlistSlice";
-import { userDetailsContext, themesContext } from "../Contexts/userDataContext";
+import { themesContext } from "../Contexts/userDataContext";
 import { toast } from 'react-hot-toast'
 import { loadStripe } from '@stripe/stripe-js'
 import axios from 'axios'
@@ -22,6 +22,7 @@ import { motion } from 'framer-motion'
 import Lottie from 'lottie-react'
 import EmptyCart_Fav from '../Effects/EmptyCart_Fav.json'
 import LoginAnime from '../Effects/LoginAnime.json'
+import { userState, tokenState } from "../Redux/Slices/authSlice";
 
 export default function Cart () {
     const [loadingPayment, setLoadingPayment] = useState(false)
@@ -31,8 +32,9 @@ export default function Cart () {
     const totalCartQuantity = useSelector(totalQuantity)
     const totalCartPrice = useSelector(totalPrice)
     const navigate = useNavigate()
-    const {user_username, isLoggedIn, userId} = useContext(userDetailsContext)
     const {theme, themeStyles} = useContext(themesContext)
+    const user = useSelector(userState)
+    const token = useSelector(tokenState)
 
     useEffect(() => {
         dispatch(getWishlistFromLocalStorage())
@@ -40,7 +42,7 @@ export default function Cart () {
 
 
     const removeItem = (id) => {
-        if(isLoggedIn) {
+        if(token) {
             dispatch(removeFromCart(id))
         } else {
             toast.error(`Cannot manipulate wishlist, please login`, {
@@ -52,7 +54,7 @@ export default function Cart () {
         }
     }
     const clearAll = () => {
-        if(isLoggedIn) {
+        if(token) {
             dispatch(removeAll())
         } else {
             toast.error(`Cannot manipulate wishlist, please login`, {
@@ -64,7 +66,7 @@ export default function Cart () {
         }
     }
     const msg = () => {
-        if(isLoggedIn) {
+        if(token) {
             return (
                 <motion.span
                     initial={{y: '10vh', opacity: 0}} 
@@ -106,11 +108,11 @@ export default function Cart () {
     //Payment
     const handlePayment = async () => {
         setLoadingPayment(true)
-        if(isLoggedIn) {
+        if(token) {
             if(canRedirectToCheckout) {
                 const StripePromise = loadStripe(import.meta.env.VITE_LOADSTRIPE_KEY)
                 try {
-                    const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/checkout`, {items, userId}, {withCredentials: true})
+                    const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/checkout`, {items, ...user._id}, {withCredentials: true})
                     const { id: sessionId } = response.data
                     const stripe = await StripePromise
                     stripe.redirectToCheckout({sessionId}) 
@@ -124,7 +126,7 @@ export default function Cart () {
                 }
             }
 
-            //HALT THE PROCESS AFTER 15 SECONDS OF NO RESPONSE (MEANING NETWOR ERROR OR OTHER ERROR)
+            //HALT THE PROCESS AFTER 15 SECONDS IF NO RESPONSE (MEANING NETWORK ERROR OR OTHER ERROR)
             setTimeout(() => {
                 setLoadingPayment(false)
                 setCanRedirectToCheckout(false)
@@ -170,7 +172,7 @@ export default function Cart () {
                     className="wishlist-header"
                     style={{color: themeStyles.style.color, backgroundColor: themeStyles.style.backgroundColor}}
                 >
-                    {user_username ? `${user_username}'s wishlist`: 'Wishlist'}
+                    {user?.username ? `${user.username}'s wishlist`: 'Wishlist'}
                 </span>
                 {items.length > 0 && 
                     <>
@@ -215,7 +217,7 @@ export default function Cart () {
                                     style={{...theme === 'dark' && {border: 'none'}}}
                                 >
                                     <input 
-                                        min={0} 
+                                        min={1} 
                                         type="number" 
                                         name="quantity" 
                                         id="quantity"

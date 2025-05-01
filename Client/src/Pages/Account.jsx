@@ -3,29 +3,27 @@ import { Button, CircularProgress, Dialog, DialogActions, DialogTitle, Slide } f
 import { ArrowBackIosNewRounded, PhotoCamera, AccountCircle, Logout, Cancel, Edit, InfoRounded } from "@mui/icons-material"
 import { Link, useNavigate } from "react-router-dom"
 import '../Styles/Account.css'
-import { userDetailsContext, themesContext } from "../Contexts/userDataContext"
+import { themesContext } from "../Contexts/userDataContext"
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import DialogComponent from "../Components/Dialog"
+import { 
+    userState, 
+    tokenState,
+    logout, 
+    updateUsername, 
+    updateUserPhone, 
+    updateUserAbout, 
+    updateProfileImage 
+} from "../Redux/Slices/authSlice"
+import { useDispatch, useSelector } from "react-redux"
+
 
 export default function Account () {
     const navigate = useNavigate()
-    const { 
-        userId, 
-        setUserId,
-        isLoggedIn, 
-        user_username, 
-        setUser_username, 
-        userEmail,
-        setUserEmail,
-        setIsLoggedIn,
-        phone,
-        about,
-        setPhone, 
-        setAbout,
-        profilePicture, loading,
-        setProfileChanged,
-    } = useContext(userDetailsContext)
+    const user = useSelector(userState)
+    const token = useSelector(tokenState)
+    const dispatch = useDispatch()
     const {theme, themeStyles} = useContext(themesContext)
     const [usernameOpen, setUsernameOpen] = useState(false)
     const [phoneOpen, setPhoneOpen] = useState(false)
@@ -53,9 +51,9 @@ export default function Account () {
 
     const changeUsername = async () => {
         try {
-            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/changeUsername/${userId}`, {updatedUsername}, {withCredentials: true})
-            if(response.data.success === true) {
-                setUser_username(updatedUsername)
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/changeUsername/${user?._id}`, {updatedUsername}, {withCredentials: true})
+            if(response?.status === 200) {
+                dispatch(updateUsername(updatedUsername))
                 toast.success('Username was sucessfully changed', {
                     style: {
                         backgroundColor: 'black',
@@ -64,33 +62,20 @@ export default function Account () {
                 })
                 setUsernameOpen(false)
             }
-            if(response.data.error) {
-                toast.error(response.data.error, {
-                    style: {
-                        backgroundColor: 'white',
-                        color: 'black'
-                    }
-                })
-                setUsernameOpen(true)
-                inputChangeRefs.current.value = ''
-                inputChangeRefs.current.focus()
-            }
         } catch (err) {
             console.log(err)
-            toast.error('An error occured', {
-                style: {
-                    backgroundColor: 'white',
-                    color: 'black'
-                },
-            })
+            toast.error(err?.response?.data?.message)
+            setUsernameOpen(true)
+            inputChangeRefs.current.value = ''
+            inputChangeRefs.current.focus()
         }
     }
 
     const updatePhone = async () => {
         try {
-            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updatePhone/${userId}`, {updatedPhone}, {withCredentials: true})
-            if(response.data.success === true) {
-                setPhone(updatedPhone)
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updatePhone/${user?._id}`, {updatedPhone}, {withCredentials: true})
+            if(response?.status === 200) {
+                dispatch(updateUserPhone(updatedPhone))
                 toast.success('Phone was sucessfully set', {
                     style: {
                         backgroundColor: 'black',
@@ -99,33 +84,20 @@ export default function Account () {
                 })
                 setPhoneOpen(false)
             }
-            if(response.data.error) {
-                toast.error(response.data.error, {
-                    style: {
-                        backgroundColor: 'white',
-                        color: 'black'
-                    }
-                })
-                setPhoneOpen(true)
-                inputChangeRefs.current.value = ''
-                inputChangeRefs.current.focus()
-            }
         } catch (err) {
             console.log(err)
-            toast.error('An error occured', {
-                style: {
-                    backgroundColor: 'white',
-                    color: 'black'
-                },
-            })
+            toast.error(err?.response?.data?.message)
+            setPhoneOpen(true)
+            inputChangeRefs.current.value = ''
+            inputChangeRefs.current.focus()
         }
     }
     const updateAbout = async () => {
         setAboutOpen(false)
         try {
-            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updateAbout/${userId}`, {updatedAbout}, {withCredentials: true})
-            if(response.data.success === true) {
-                setAbout(updatedAbout)
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updateAbout/${user._id}`, {updatedAbout}, {withCredentials: true})
+            if(response?.status === 200) {
+                dispatch(updateUserAbout(updatedAbout))
                 toast.success('About was sucessfully set', {
                     style: {
                         backgroundColor: 'black',
@@ -133,22 +105,12 @@ export default function Account () {
                     }
                 })
             }
-            if(response.data.error) {
-                toast.error(response.data.error, {
-                    style: {
-                        backgroundColor: 'white',
-                        color: 'black'
-                    }
-                })
-            }
         } catch (err) {
             console.log(err)
-            toast.error('An error occured', {
-                style: {
-                    backgroundColor: 'white',
-                    color: 'black'
-                },
-            })
+            toast.error(err?.response?.data?.message)
+            setAboutOpen(true)
+            inputChangeRefs.current.value = ''
+            inputChangeRefs.current.focus()
         }
     }
 
@@ -164,36 +126,27 @@ export default function Account () {
             const formData = new FormData()
             formData.append('profileImage', file)
             try {
-                const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updateProfilePicture/${userId}`, formData, {
+                const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/updateProfilePicture/${user?._id}`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' }, 
                     withCredentials: true 
                 })
-                if(response.data.error) {
-                    toast.error(response.data.message, {
+                if(response?.status === 200) {
+                    dispatch(updateProfileImage(response?.data?.userProfileImage))
+                    toast.success(response?.data?.message, {
                         style: {
-                            backgroundColor: 'white',
-                            color: 'black'
-                        },
-                        duration: 5000
+                            backgroundColor: 'black',
+                            color: 'white'
+                        }
                     })
                 }
-                setProfileChanged((prevState) => !prevState)
             } catch(err) {
-                if(err.response) {
-                    toast.error(err.response.data.message, {
-                        style: {
-                            backgroundColor: 'white',
-                            color: 'black'
-                        }
-                    })
-                } else {
-                    toast.error('An Unknown error occured', {
-                        style: {
-                            backgroundColor: 'white',
-                            color: 'black'
-                        }
-                    })
-                }
+                console.error(err)
+                toast.error(err?.response?.data?.message)
+                inputRef.current.value = ''
+                inputRef.current.focus()
+            } finally {
+                setViewProfile(false)
+                setViewOps(false)
             }
         }
     }
@@ -201,104 +154,60 @@ export default function Account () {
         setViewProfile(false)
         setViewOps(false)
         try {
-            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/deleteProfilePicture/${userId}`)
-            if(response.data.success) {
-                setProfileChanged((prevState) => !prevState)
-            }
-            if(response.data.error) {
-                toast.error(response.data.error, {
-                    style: {
-                        backgroundColor: 'white',
-                        color: 'black'
-                    }
-                })
-            }
-        } catch (err) {
-            toast.error(err, {
-                style: {
-                    backgroundColor: 'white',
-                    color: 'black'
-                }
-            })
-        }
-    } 
-    
-    const logout = async () => {
-        setLoggingOut(true)
-        try {
-            const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
-            if(response.data.success === true) {
-                navigate('/')
-                setIsLoggedIn(false)
-                localStorage.removeItem('isAuth')
-                setUserId(null)
-                setUser_username(null)
-                setUserEmail(null)
-                setAbout(null)
-                setPhone(null)
-                setLoggingOut(false)
-                toast.success(response.data.message, {
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/deleteProfilePicture/${user?._id}`)
+            if(response?.status === 200) {
+                dispatch(updateProfileImage(null))
+                toast.success(response?.data?.message, {
                     style: {
                         backgroundColor: 'black',
                         color: 'white'
                     }
                 })
             }
-            if(response.data.error) {
-                toast.error(response.data.error, {
-                    style: {
-                        backgroundColor: 'white',
-                        color: 'black'
-                    },
-                })    
+        } catch (err) {
+            console.error(err)
+            toast.error(err?.response?.data?.message)
+        }
+    } 
+    
+    const logoutUser = async () => {
+        setLoggingOut(true)
+        try {
+            dispatch(logout())
+            const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
+            if(response.status === 200) {
+                toast.success(response?.data?.message)
+                navigate('/')
             }
-            
+            setLoggingOut(false)
         } catch(err) {
-            toast.error(`An error occured\n${err}`, {
-                style: {
-                    backgroundColor: 'white',
-                    color: 'black'
-                },
-            })
+            console.error(err)
+            toast.error(err?.response?.data?.message)
             setLoggingOut(false)
         }
     }
-    
+
     const delUser = async (e) => {
         e.preventDefault()
         setDelAccOpen(false)
         try {
-            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/delUser/${userId}`, { password })
-            if(response.data.status === true) {
-                setIsLoggedIn(false)
-                localStorage.removeItem('isAuth')
-                setUserId(null)
-                setUser_username(null)
-                setUserEmail(null)
-                setAbout(null)
-                setPhone(null)
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/delUser/${user?._id}`, { password })
+            if(response?.status === 200) {
+                dispatch(logout())
                 navigate('/')
-                toast.success(response.data.message, {
+                toast.success(response?.data?.message, {
                     style: {
                         backgroundColor: 'black',
                         color: 'white'
                     }
                 })
             }
-            if(response.data.status === false) {
-                delInputRef.current.value = ''
-                delInputRef.current.focus()
-                toast.error(response.data.message, {
-                    style: {
-                        backgroundColor: 'white',
-                        color: 'black'
-                    },
-                })    
-            }
             
         } catch (err) {
             console.log(err)
-            toast.error('An error occured, try again', {
+            delInputRef.current.value = ''
+            delInputRef.current.focus()    
+            toast.error(err?.response?.data?.message, {
                 style: {
                     backgroundColor: 'white',
                     color: 'black'
@@ -311,36 +220,27 @@ export default function Account () {
         e.preventDefault()
         setResetOpen(false)
         setOpenLoadingSpinner(true)
+        const userEmail = user?.email
         try {
-            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/forgot-password`, {resetEmail})
-            if(response.data.success) {
-                toast.success(response.data.message, {
+            const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/forgot-password`, {resetEmail, userEmail})
+            if(response?.status === 200) {
+                toast.success(response?.data?.message, {
                     style: {
                         backgroundColor: 'black',
                         color: 'white'
-                    },
-                    duration: 10000
+                    }
                 })
             }
-            if(response.data.success === false) {
-                toast.error(response.data.message, {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white'
-                    },
-                    duration: 5000
-                })    
-            }
-            setOpenLoadingSpinner(false)
         } catch (err) {
             console.log(err)
-            toast.error('An unexpected error occured!', {
+            toast.error(err?.response?.data?.message, {
                 style: {
                     backgroundColor: 'black',
                     color: 'white'
-                },
-                duration: 5000
+                }
             })
+        } finally {
+            setOpenLoadingSpinner(false)
         }
 
     }
@@ -349,11 +249,11 @@ export default function Account () {
         <div className="accounts-wrapper" 
             style={{
                 backgroundColor: themeStyles.style.backgroundColor,
-                ...!isLoggedIn && {height: '100vh'}
+                ...!token && {height: '100vh'}
             }}
         >
             <div 
-                style={{...!isLoggedIn && {position: 'absolute', top: 0}}}
+                style={{...!token && {position: 'absolute', top: 0}}}
                 className="accounts-backTitle"
             >
                 <Button title="Back" 
@@ -368,8 +268,8 @@ export default function Account () {
                 <h2 
                     style={{color: themeStyles.style.color}}
                 >Account Settings</h2>
-                { isLoggedIn &&
-                    <div className="header-logout" title="Logout" onClick={logout}>
+                { token &&
+                    <div className="header-logout" title="Logout" onClick={logoutUser}>
                         { 
                             loggingOut ? <CircularProgress style={{width: 25, height: 25, ...theme === 'dark' ? {color: 'white'} : {color: 'grey'}}} /> 
                             : 
@@ -378,21 +278,15 @@ export default function Account () {
                     </div>
                 }
             </div>
-            { isLoggedIn ?
+            { token ?
                 <>
                     <div className="profileImage">
-                        {loading ? 
-                            <CircularProgress /> 
+                        { user?.profileImage ?
+                            <img onClick={() => setViewProfile(true)} src={user?.profileImage} alt={user?.username} />
                             :
-                            <>
-                                { profilePicture ?
-                                    <img onClick={() => setViewProfile(true)} src={profilePicture} alt={user_username} />
-                                    :
-                                    <AccountCircle fontSize='large' htmlColor='grey' style={{transform: 'scale(1.2)'}} className="noProfilePic" />         
-                                }
-                                <PhotoCamera onClick={selectPicture} htmlColor="white" className="changeProfile" fontSize="large" />
-                            </>
+                            <AccountCircle fontSize='large' htmlColor='grey' style={{transform: 'scale(1.2)'}} className="noProfilePic" />         
                         }
+                        <PhotoCamera onClick={selectPicture} htmlColor="white" className="changeProfile" fontSize="large" />
                     </div>
                     <input ref={inputRef} type="file" accept='image/png, image/jpeg, image/jpg' onChange={updateProfilePicture} style={{display: 'none'}} />
                 </>
@@ -400,21 +294,21 @@ export default function Account () {
                 <AccountCircle style={{width: 300, height: 300}} htmlColor='grey' />
             }
             
-            {isLoggedIn && 
+            {token && 
                 <div className="email">
                     <span 
                         style={{backgroundColor: themeStyles.style.divColor, color: themeStyles.style.color}}
                     >Email</span>
-                    <p style={{color: themeStyles.style.color}}>{userEmail}</p>    
+                    <p style={{color: themeStyles.style.color}}>{user?.email}</p>    
                 </div>
             }
             <div className="username">
                 <span 
                     style={{backgroundColor: themeStyles.style.divColor, color: themeStyles.style.color}}
                 >Username</span>
-                {isLoggedIn ? 
+                {token ? 
                     <p> 
-                        <pre style={{color: themeStyles.style.color}}>{user_username}</pre>
+                        <pre style={{color: themeStyles.style.color}}>{user?.username}</pre>
                         <button onClick={() => { 
                             setDialogTitle('Change Username')
                             setUsernameDialogContent(() => { 
@@ -440,13 +334,13 @@ export default function Account () {
                 : <pre style={{...theme === 'dark' && {color: 'white'}}}>Guest</pre>
                 }
             </div>
-            {isLoggedIn && 
+            {token && 
                 <div className="phoneNumber">
                     <span 
                         style={{backgroundColor: themeStyles.style.divColor, color: themeStyles.style.color}}
                     >Phone</span>
                     <p>
-                        <pre style={{color: themeStyles.style.color}}>{phone ? phone : <span className="otherSpan" style={{color: 'grey'}}>Add Phone number</span>}</pre> 
+                        <pre style={{color: themeStyles.style.color}}>{user?.phone ? user?.phone : <span className="otherSpan" style={{color: 'grey'}}>Add Phone number</span>}</pre> 
                         <button onClick={() => { 
                         setDialogTitle('Add/Change Phone')
                         setPhoneDialogContent(() => { 
@@ -471,14 +365,14 @@ export default function Account () {
                     </p>
                 </div>
             }
-            {isLoggedIn &&
+            {token &&
                 <>
                     <div className="about">
                         <span 
                             style={{backgroundColor: themeStyles.style.divColor, color: themeStyles.style.color}}
                         >About</span>
                         <p>
-                            <pre style={{color: themeStyles.style.color}}>{about ? about : <span className="otherSpan" style={{color: 'grey'}}>Briefly write about yourself</span>} </pre> 
+                            <pre style={{color: themeStyles.style.color}}>{user?.about ? user?.about : <span className="otherSpan" style={{color: 'grey'}}>Briefly write about yourself</span>} </pre> 
                             <button onClick={() => { 
                                 setDialogTitle('Add/Change About')
                                 setAboutDialogContent(() => { 
@@ -508,7 +402,7 @@ export default function Account () {
                     </div>
                 </>
             }
-            { isLoggedIn ?
+            { token ?
                 <div className="resetDel">
                     <button
                         style={{...theme === 'dark' && {border: '1px solid white', color: themeStyles.style.color}}} 
@@ -567,8 +461,8 @@ export default function Account () {
                     className="viewProfile" 
                     width={'100%'}
                     height={'100%'}
-                    src={profilePicture} 
-                    alt={user_username}
+                    src={user?.profileImage} 
+                    alt={user?.username}
                     onClick={() => setViewOps(false)}
                 />
                 <DialogActions style={{

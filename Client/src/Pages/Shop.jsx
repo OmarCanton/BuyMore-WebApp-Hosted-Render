@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState, useRef } from "react";
-import { themesContext, userDetailsContext } from "../Contexts/userDataContext";
+import { themesContext } from "../Contexts/userDataContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import { 
     FavoriteBorderRounded, 
@@ -33,6 +33,7 @@ import { motion } from 'framer-motion'
 import Lottie from 'lottie-react'
 import SearchNotFound from '../Effects/SearchNotFound.json' 
 import ShopEmpty from '../Effects/SearchNotFound.json' 
+import { tokenState } from '../Redux/Slices/authSlice'
 
 export default function Shop () {
     const dispatch = useDispatch()
@@ -44,7 +45,6 @@ export default function Shop () {
     const is_Search = useSelector(isSearch)
     const is_Filtered = useSelector(isFiltered)
     const searched_Name = useSelector(searchedName)
-    const { isLoggedIn } = useContext(userDetailsContext)
     const [name, setName] = useState('')
     const filterRef = useRef()
     const headerRef = useRef()
@@ -56,6 +56,7 @@ export default function Shop () {
     const [viewCloseSearch, setViewCloseSearch] = useState(false)
     const location = useLocation()
     const {category} = location.state || {}
+    const token = useSelector(tokenState)
 
     //favorite feature
     const isFav = (item) => { 
@@ -72,7 +73,7 @@ export default function Shop () {
         }
     }
     const addItemToFavorites = (item) => {
-        if(isLoggedIn) {
+        if(token) {
             const isFavorite = favorites.some(favorite => favorite._id === item._id)
             if(isFavorite) {
                 dispatch(removeFromFavorites(item))
@@ -108,7 +109,7 @@ export default function Shop () {
         event.stopPropagation()
     }
     const addItemTocart = (item) => {
-        if(isLoggedIn) {
+        if(token) {
             dispatch(addToCart(item))
             toast.success(`${item.name} added to wishlist`, {
                 style: {

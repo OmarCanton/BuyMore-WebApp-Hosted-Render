@@ -9,10 +9,13 @@ import {  useSelector } from 'react-redux'
 import { listItems } from '../Redux/Slices/WishlistSlice'
 import { LightMode, DarkMode } from '@mui/icons-material'
 import { themesContext } from '../Contexts/userDataContext'
+import { userState, tokenState } from '../Redux/Slices/authSlice'
 
 export default function Header ({appName}) {
     const { theme, changeTheme, setShowThemeOverlay } = useContext(themesContext)    
-
+    const user = useSelector(userState)
+    const token = useSelector(tokenState)
+    
     const [headbgColor, setHeadbgColor] = useState({ 
         backgroundColor: 'transparent',
         backgroundImage: '',
@@ -20,10 +23,7 @@ export default function Header ({appName}) {
     })
     const wishlistItems = useSelector(listItems)
 
-    const { 
-        user_username, 
-        isLoggedIn,  
-        profilePicture, 
+    const {
         loading,
         setOpenMenu 
     } = useContext(userDetailsContext)
@@ -88,19 +88,19 @@ export default function Header ({appName}) {
                 {appName}
             </p>
             <div className="right">
-                {isLoggedIn &&
-                    <div className='contact'>
-                        <Link to='mailto: buymoreapp24@gmail.com' className='contAbt-btn' >
-                            <button style={{ fontWeight: 'bold'}}>Talk To Us</button>
-                        </Link>
-                    </div>
-                }
-                {isLoggedIn &&
-                    <div className='contact-icon-forMobile'>
-                        <Link to='mailto: buymoreapp24@gmail.com' className='contact-btn-mobile' >
-                            <QuestionAnswer htmlColor='white' style={{...theme == 'light' && window.innerWidth <= 650 && {color: '#3C3C3C'}}}/>
-                        </Link>
-                    </div>
+                {token &&
+                    <>
+                        <div className='contact'>
+                            <Link to='mailto: buymoreapp24@gmail.com' className='contAbt-btn' >
+                                <button style={{ fontWeight: 'bold'}}>Talk To Us</button>
+                            </Link>
+                        </div>
+                        <div className='contact-icon-forMobile'>
+                            <Link to='mailto: buymoreapp24@gmail.com' className='contact-btn-mobile' >
+                                <QuestionAnswer htmlColor='white' style={{...theme == 'light' && window.innerWidth <= 650 && {color: '#3C3C3C'}}}/>
+                            </Link>
+                        </div>
+                    </>
                 }
                 <div 
                     className="theme" 
@@ -135,20 +135,20 @@ export default function Header ({appName}) {
                 <div className='accounts'>
                     <>
                         {loading && <CircularProgress style={{width: 25, height: 25}} />}
-                        { isLoggedIn ?
+                        { token ?
                             <Link to='/settings/account' className='profileLink'>
                                 <div className="userProfile">
                                     { loading === true ? 
                                         <AccountCircle fontSize='large' /> 
                                         : 
                                         <>
-                                            { profilePicture ?
-                                                <img src={profilePicture} alt={user_username} /> 
+                                            { user.profileImage ?
+                                                <img src={user.profileImage} alt={user.username} /> 
                                                 :
                                                 <AccountCircle fontSize='large' htmlColor='lightgrey' />         
                                             }
                                         </>
-                                    }<p className='username' style={{color: 'white'}}>{user_username}</p>
+                                    }<p className='username' style={{color: 'white'}}>{user.username}</p>
                                 </div>
                             </Link>
                             :

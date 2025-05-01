@@ -14,7 +14,6 @@ const {
     filterProduct,
 } = require('../Controllers/allProducts')
 
-
 const router = Router()
 
 router.get('/products', allProductsController)

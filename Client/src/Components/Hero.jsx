@@ -40,7 +40,7 @@ export default function Hero () {
         }, carouselIntervalTime);
     
         return () => clearInterval(autoSlideInterval);
-      }, [isMobile, carouselIntervalTime, videos.length]);
+    }, [isMobile, carouselIntervalTime, videos.length]);
     useEffect(() => {
         if (isMobile) return;
     

@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import { userDetailsContext, themesContext } from "../Contexts/userDataContext"
+import { themesContext } from "../Contexts/userDataContext"
 import { useNavigate, Link } from "react-router-dom"
 import Panel from "../Components/Panel"
 import '../Styles/NewArr.css'
@@ -13,13 +13,14 @@ import { motion } from 'framer-motion'
 import Lottie from "lottie-react"
 import EmptyCart_Fav from '../Effects/EmptyCart_Fav.json'
 import LoginAnime from '../Effects/LoginAnime.json'
+import { tokenState } from "../Redux/Slices/authSlice"
 
 export default function NewArrivalsPage () {
-    const { isLoggedIn } = useContext(userDetailsContext)
     const dispatch = useDispatch()
     const favorites = useSelector(favoriteItems)
     const navigate = useNavigate()
     const {theme, themeStyles} = useContext(themesContext)
+    const token = useSelector(tokenState)
 
     useEffect(() => {
         dispatch(getFavoritesFromLocalStorage())
@@ -34,7 +35,7 @@ export default function NewArrivalsPage () {
     }
 
     const addToWishlist = (product) => {
-        if(isLoggedIn) {
+        if(token) {
             dispatch(addToCart(product))
             toast.success(`${product.name} added to wishlist`, {
                 style: {
@@ -53,7 +54,7 @@ export default function NewArrivalsPage () {
     }
 
     const msg = () => {
-        if(isLoggedIn) {
+        if(token) {
             return (
                 <motion.span 
                     initial={{y: '10vh', opacity: 0}} 

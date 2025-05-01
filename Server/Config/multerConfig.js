@@ -2,7 +2,6 @@ require('dotenv').config()
 const multer = require('multer')
 const cloudinary = require('cloudinary').v2
 const { CloudinaryStorage } = require('multer-storage-cloudinary')
-const path = require('path')
 
 
 cloudinary.config({
@@ -17,15 +16,16 @@ const storage = new CloudinaryStorage({
         folder: 'buymoreapp_user_profiles',
         allowed_formats: ['jpg', 'png', 'jpeg'],
         public_id: (req, file) => {
-            return `${req.user._id}_profile`
+            return `${req.params._id}_profile`
         },
     }
     
 })
+
 const upload = multer({
     storage: storage,
     limits: {
         fileSize: 2 * 1024 * 1024 //Shouldnt be more than 2MB
-    }
+    },
 })
 module.exports = upload

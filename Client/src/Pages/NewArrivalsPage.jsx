@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { userDetailsContext, themesContext } from "../Contexts/userDataContext"
+import { themesContext } from "../Contexts/userDataContext"
 import { useNavigate } from "react-router-dom"
 import Panel from "../Components/Panel"
 import { useLocation } from "react-router-dom"
@@ -10,16 +10,17 @@ import { useDispatch, useSelector } from "react-redux"
 import { addToCart } from "../Redux/Slices/WishlistSlice"
 import { addToFavorites, favoriteItems, removeFromFavorites } from "../Redux/Slices/FavoritesSlice"
 import { Button } from "@mui/material"
+import { tokenState } from "../Redux/Slices/authSlice"
 
 
 export default function NewArrivalsPage () {
-    const { isLoggedIn } = useContext(userDetailsContext)
     const { theme, themeStyles } = useContext(themesContext)
     const location = useLocation()
     const dispatch = useDispatch()
     const { newArrivals } = location.state || {}
     const navigate = useNavigate()
     const favorites = useSelector(favoriteItems)
+    const token = useSelector(tokenState)
     
     //favorite feature
     const isFav = (item) => { 
@@ -36,7 +37,7 @@ export default function NewArrivalsPage () {
         }
     }
     const addItemToFavorites = (item) => {
-        if(isLoggedIn) {
+        if(token) {
             const isFavorite = favorites.some(favorite => favorite._id === item._id)
             if(isFavorite) {
                 dispatch(removeFromFavorites(item))
@@ -65,7 +66,7 @@ export default function NewArrivalsPage () {
     }
 
     const addToWishlist = (product) => {
-        if(isLoggedIn) {
+        if(token) {
             dispatch(addToCart(product))
             toast.success(`${product.name} added to wishlist`, {
                 style: {

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, useRef } from 'react'
-import { userDetailsContext, themesContext } from '../Contexts/userDataContext'
+import { themesContext } from '../Contexts/userDataContext'
 import { useLocation, useNavigate } from 'react-router-dom'
 import '../Styles/Product.css'
 import { Button, CircularProgress } from '@mui/material'
@@ -20,6 +20,7 @@ import {
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import Panel from '../Components/Panel'
+import { userState, tokenState } from '../Redux/Slices/authSlice'
 
 export default function ProductCheck () {
     const [comment, setComment] = useState('')
@@ -28,18 +29,19 @@ export default function ProductCheck () {
     const [hover, setHover] = useState(null)
     const commentRef = useRef(null)
     const navigate = useNavigate()
-    const { isLoggedIn, userId, user_username } = useContext(userDetailsContext)
     const dispatch = useDispatch()
     const comments = useSelector(productComments)
     const status = useSelector(selectProductsStatus)
     const {theme, themeStyles} = useContext(themesContext)
+    const user = useSelector(userState)
+    const token = useSelector(tokenState)
     const location = useLocation()
     const {product} = location.state || {}
 
     const productId = product._id
 
     const addToWishlist = (product) => {
-        if(isLoggedIn) {
+        if(token) {
             dispatch(addToCart(product))
             toast.success(`${product.name} added to wishlist`, {
                 style: {
@@ -57,39 +59,27 @@ export default function ProductCheck () {
         }
     }
     
-    const commentBody = { productId, userId, user_username, comment } 
+    const userId = user?._id
+    const username = user?.username
+    const commentBody = { productId, userId, username, comment } 
     const addComment = async (e) => {
         e.preventDefault()
         commentRef.current.value = ''
-        if(isLoggedIn) {
-            try {
+        try {
+            if(token) {
                 const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/addProductComment`, commentBody, {withCredentials: true})
-                if(response.data.msg) {
-                    toast.success(response.data.msg, {
+                if(response?.status === 200) {
+                    toast.success(response?.data?.message, {
                         style: {
                             backgroundColor: 'black',
                             color: 'white',
                         }
                     })
                     setCommentSubmitted(prevState => !prevState)
-                } else {
-                    toast.error(`SOME ERR ${response.data.msg}`, {
-                        style: {
-                            backgroundColor: 'black',
-                            color: 'white',
-                        }
-                    })
                 }
-            } catch (err) {
-                toast.error(err, {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white',
-                    }
-                })
             }
-        } else {
-            toast.error(`Please log into your account to add a comment`, {
+        } catch (err) {
+            toast.error(err?.response?.data?.message, {
                 style: {
                     backgroundColor: 'black',
                     color: 'white',
@@ -103,36 +93,31 @@ export default function ProductCheck () {
         dispatch(fetchComments(productId)) //fetch the comments
     }, [dispatch, productId, commentSubmitted])
 
-    const ratingBody = {productId, userId, user_username, rating}
+    const ratingBody = {productId, userId, username, rating}
     const addRating = async () => {
-        if( isLoggedIn) {
-            try{
+        try{
+            if(token) {
                 const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/addRating`, ratingBody, {withCredentials: true})
-                toast.success(response.data.msg, {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white',
-                    }
-                })
-                setCommentSubmitted(prevState => !prevState)
-            } catch(err) {
-                toast.error(err, {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white',
-                    }
-                })
+                if(response?.status === 200) {
+                    toast.success(response?.data?.message, {
+                        style: {
+                            backgroundColor: 'black',
+                            color: 'white',
+                        }
+                    })
+                    setCommentSubmitted(prevState => !prevState)
+                }
             }
-        } else {
-            toast.error(`Please log into your account to add items to your wishlist`, {
+        } catch(err) {
+            toast.error(err?.response?.data?.message, {
                 style: {
                     backgroundColor: 'black',
                     color: 'white',
                 }
             })
         }
-
     }
+
 
 
     return (

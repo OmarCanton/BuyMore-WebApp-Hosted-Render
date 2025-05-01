@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../Styles/Signup.css'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
@@ -22,6 +22,8 @@ export default function Signup () {
     const [dialogContent, setDialogContent] = useState('')  
     const [shake, setShake] = useState(false)  
     const {theme, themeStyles} = useContext(themesContext)
+
+    const navigate = useNavigate()
 
     const passwordStrength = (password) => {
         let strength = 0
@@ -88,52 +90,24 @@ export default function Signup () {
         setLoading(true)
         setShake(false)
         try {
-
             const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/signup-verify`, formData, { withCredentials: true })
-            if(response.data.error) {
-                toast.error(response.data.error, {
-                    style: {
-                        backgroundColor: 'white',
-                        color: 'black'
-                    },
-                    duration: 3000
-                })
-                setShake(true)
-            }
-            if(response.data.success) {
-                toast.success(response.data.success, {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white'
-                    },
-                    duration: 3000,
-                })
-            }
             setLoading(false)
-            if(response.data.linkSent == true) {
+            if(response.data?.linkSent == true) {
                 setOpen(true)
-                setDialogContent(response.data.msg)
+                setDialogContent(response.data?.message)
             }
 
         } catch (error) {
             setLoading(false)
-            if(!error.response) {
-                toast.error('An unexpected error occured\n It could be that the server is down or not working!', {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white'
-                    },
-                    duration: 3000
-                })
-            } else {
-                toast.error('An unexpected error occured!', {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white'
-                    },
-                    duration: 4000
-                })
-            }
+            console.error(error)
+            toast.error(error.response.data?.message, {
+                style: {
+                    backgroundColor: 'white',
+                    color: 'black'
+                },
+                duration: 3000
+            })
+            setShake(true)
         }
     }
 
@@ -213,6 +187,7 @@ export default function Signup () {
                 onClose={(event, reason) => {
                     if(reason === 'backdropClick' || reason === 'escapeKeyDown'){
                         setOpen(false)
+                        navigate('/login')
                     }
                 }}
                 PaperProps={{style: {

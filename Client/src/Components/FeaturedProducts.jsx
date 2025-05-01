@@ -1,5 +1,4 @@
 import { useEffect, useContext } from "react"
-import { userDetailsContext } from "../Contexts/userDataContext"
 import { useDispatch, useSelector } from "react-redux"
 import { 
     fetchAppleFeaturedProducts, 
@@ -20,6 +19,7 @@ import { addToCart } from "../Redux/Slices/WishlistSlice"
 import { addToFavorites, favoriteItems, removeFromFavorites } from "../Redux/Slices/FavoritesSlice"
 import { toast } from 'react-hot-toast'
 import { themesContext } from "../Contexts/userDataContext"
+import { tokenState } from "../Redux/Slices/authSlice"
 
 export default function FeaturedProducts () {
     const dispatch = useDispatch()
@@ -30,9 +30,8 @@ export default function FeaturedProducts () {
     const status = useSelector(selectProductsStatus)
     const favorites = useSelector(favoriteItems)
     const navigate = useNavigate()
-    const { isLoggedIn } = useContext(userDetailsContext)
     const { theme, themeStyles } = useContext(themesContext)
-
+    const token = useSelector(tokenState)
     
     //favorite feature
     const isFav = (item) => { 
@@ -49,7 +48,7 @@ export default function FeaturedProducts () {
         }
     }
     const addItemToFavorites = (item) => {
-        if(isLoggedIn) {
+        if(token) {
             const isFavorite = favorites.some(favorite => favorite._id === item._id)
             if(isFavorite) {
                 dispatch(removeFromFavorites(item))
@@ -84,7 +83,7 @@ export default function FeaturedProducts () {
         event.stopPropagation()
     }
     const addItemTocart = (item) => {
-        if(isLoggedIn) {
+        if(token) {
             dispatch(addToCart(item))
             toast.success(`${item.name} added to wishlist`, {
                 style: {

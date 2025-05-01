@@ -20,22 +20,16 @@ import {
 import axios from 'axios'
 import { toast }from 'react-hot-toast'
 import { motion } from 'framer-motion'
+import { userState, tokenState, logout } from '../Redux/Slices/authSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function Settings () {
     const navigate = useNavigate()
     const { 
-        isLoggedIn, 
-        setIsLoggedIn, 
-        phone, 
-        setPhone, 
-        about, 
-        setAbout,
-        setUserId, 
-        user_username, 
-        setUser_username,
-        setUserEmail,
-        profilePicture, loading,
+      loading,
     } = useContext(userDetailsContext)
+    const user = useSelector(userState)
+    const token = useSelector(tokenState)
     const [isHovered1, setIsHovered1] = useState(false)
     const [isHovered2, setIsHovered2] = useState(false)
     const [isHovered3, setIsHovered3] = useState(false)
@@ -45,46 +39,21 @@ export default function Settings () {
     const [isHovered7, setIsHovered7] = useState(false)
     const {theme, themeStyles} = useContext(themesContext)
     const [loggingOut, setLoggingOut] = useState(false)
+    const dispatch = useDispatch()
 
-
-    const logout = async () => {
+    const logoutUser = async () => {
         setLoggingOut(true)
         try {
+            dispatch(logout())
             const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
-            if(response.data.success === true) {
+            if(response.status === 200) {
+                toast.success(response?.data?.message)
                 navigate('/')
-                setIsLoggedIn(false)
-                localStorage.removeItem('isAuth')
-                setUserId(null)
-                setUser_username(null)
-                setUserEmail(null)
-                setAbout(null)
-                setPhone(null)
-                toast.success(response.data.message, {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white'
-                    },
-                })
-
-            }
-            if(response.data.error) {
-                toast.error(response.data.error, {
-                    style: {
-                        backgroundColor: 'white',
-                        color: 'black'
-                    },
-                })   
             }
             setLoggingOut(false)
-            
         } catch(err) {
-            toast.error(err, {
-                style: {
-                    backgroundColor: 'black',
-                    color: 'white'
-                },
-            })
+            console.error(err)
+            toast.error(err?.response?.data?.message)
             setLoggingOut(false)
         }
     }
@@ -105,18 +74,18 @@ export default function Settings () {
             </div>
             <div className="settings-main">
                 <div className="user">
-                    { isLoggedIn ?
+                    { token ?
                         <>
                             <div 
-                                style={{...!profilePicture && {backgroundColor: 'transparent'}}}
+                                style={{...!user?.profileImage && {backgroundColor: 'transparent'}}}
                                 className="profileImage"
                             >
                                 {loading ? 
                                     <CircularProgress /> 
                                     :
                                     <>
-                                        { profilePicture ?
-                                            <img src={profilePicture} alt={user_username} />
+                                        { user ?
+                                            <img src={user?.profileImage} alt={user?.username} />
                                             :
                                             <AccountCircle fontSize='large' htmlColor='grey' style={{transform: 'scale(1.2)'}} className="noProfilePic" />         
                                         }
@@ -135,7 +104,7 @@ export default function Settings () {
                                         ...theme === 'dark' ? {color: themeStyles.style.color} : {color:'#1D2671'}
                                     }}
                                 >
-                                    {user_username} 
+                                    {user?.username} 
                                     <motion.span
                                         initial={{x: '20%', opacity: 0}}
                                         animate={{x: 0, opacity: 1}}
@@ -150,7 +119,7 @@ export default function Settings () {
                                     transition={{delay: 0.8, ease: 'anticipate'}} 
                                     className="phone"
                                 >
-                                    Phone: {phone ? phone : 'Phone not set'}
+                                    Phone: {user?.phone ? user?.phone : 'Phone not set'}
                                 </motion.p>
                                 <motion.p 
                                     initial={{y: '20%', opacity: 0}}
@@ -158,7 +127,7 @@ export default function Settings () {
                                     transition={{delay: 1, ease: 'anticipate'}} 
                                     className="About"
                                 >
-                                    About: {about ? about : 'Not set'}
+                                    About: {user?.about ? user?.about : 'Not set'}
                                 </motion.p>
                                 <motion.p 
                                     initial={{y: '20%', opacity: 0}}
@@ -259,13 +228,13 @@ export default function Settings () {
                     </li>
 
                 </ul>
-                {isLoggedIn ?
+                {token ?
                     <div 
                         onMouseEnter={() => setIsHovered7(true)}
                         onMouseLeave={() => setIsHovered7(false)}
                         style={{...isHovered7 && {...theme === 'dark' && {backgroundColor: themeStyles.style.divColor}}}}
                         className="logout" 
-                        onClick={logout}
+                        onClick={logoutUser}
                     >
                         {
                             loggingOut ? <CircularProgress style={{width: 25, height: 25, ...theme === 'dark' ? {color: 'white'} : {color: 'grey'}}} />

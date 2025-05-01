@@ -1,15 +1,31 @@
-import  { configureStore } from '@reduxjs/toolkit'
+import  { configureStore, combineReducers } from '@reduxjs/toolkit'
 import productsReducer from '../Slices/productsSlice'
-import imageReducer from '../Slices/imageslice'
 import wishlistReducer from '../Slices/WishlistSlice'
 import favoritesReducer from '../Slices/FavoritesSlice'
+import authReducer from '../Slices/authSlice'
+import { persistReducer, persistStore } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
-const store = configureStore({
-    reducer: {
-        products: productsReducer,
-        profileImage: imageReducer,
-        wishlist: wishlistReducer,
-        favorites: favoritesReducer
-    }
+const persistConfig = {
+    key: 'root',
+    version: 1,
+    storage,
+    whitelist: ['auth'] //add slices to persist here
+}
+const rootReducer = combineReducers({
+    auth: authReducer,
+    products: productsReducer,
+    wishlist: wishlistReducer,
+    favorites: favoritesReducer
 })
-export default store
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+export const store = configureStore({
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false
+    })
+})
+
+export const persistor = persistStore(store)

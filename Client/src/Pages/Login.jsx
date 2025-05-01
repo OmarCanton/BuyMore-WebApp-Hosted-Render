@@ -4,9 +4,11 @@ import '../Styles/Login.css'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import { userDetailsContext, themesContext } from '../Contexts/userDataContext'
+import { themesContext } from '../Contexts/userDataContext'
 import { CheckCircle, Visibility, VisibilityOff } from '@mui/icons-material'
 import { CircularProgress, Dialog, DialogActions, DialogTitle, Slide } from '@mui/material'
+import { login } from '../Redux/Slices/authSlice'
+import { useDispatch } from 'react-redux'
 
 export default function Login () {
     const [email, setEmail] = useState('')
@@ -24,16 +26,9 @@ export default function Login () {
     const passInputRef = useRef()
     const containerShakeRef = useRef()
     const navigate = useNavigate() 
+    const dispatch = useDispatch()
 
     const {theme, themeStyles} = useContext(themesContext)
-    const { 
-        setUser_username, 
-        setIsLoggedIn, 
-        setUserId, 
-        setUserEmail, 
-        setAbout, 
-        setPhone 
-    } = useContext(userDetailsContext)
     
     const userData = { email, password, rememberMe }
 
@@ -43,57 +38,42 @@ export default function Login () {
         setShake(false)
         try {
             const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/login`, userData, { withCredentials: true })
-            if(response.data.error) {
-                if(response.data.hasToVerify) {
-                    setReVerify(response.data.hasToVerify)
-                }
-                toast.error(response.data.error, {
+            if(response.status === 200) {
+                toast.success(response.data?.message, {
                     style: {
                         backgroundColor: 'black',
                         color: 'white'
+                    }
+                })
+                dispatch(login(response.data))
+                navigate('/')
+            }
+            setLoading(false)
+        } catch (error) {
+            console.error(error)
+            if(error?.response?.status === 403) {
+                setReVerify(error.response.data?.hasToVerify)
+                toast.error(error.response.data?.message, {
+                    style: {
+                        backgroundColor: 'white',
+                        color: 'black'
                     }
                 })
                 passInputRef.current.value = ''
                 setPassword('')
                 setShake(true)
-            }
-            if(response.data.success) {
-                toast.success(response.data.success, {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white'
-                    }
-                })
-                setIsLoggedIn(true)
-                localStorage.setItem('isAuth', true)
-                setUser_username(response.data.user.username)
-                setUserId(response.data.user._id)
-                setUserEmail(response.data.user.email)
-                setAbout(response.data.user.about) 
-                setPhone(response.data.user.phone)
-                navigate('/')
-            }
-            setLoading(false)
-        } catch (error) {
-            //The reason it's !error.response is that, if the server is not running at all there wont be any error from the server
-            if(!error.response) {
-                toast.error('An unexpected error occured\n It could be that the server is down or not working!', {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white'
-                    },
-                    duration: 3000
-                })
             } else {
-                toast.error('An unexpected error occured!', {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white'
-                    },
-                    duration: 3000
-                })
+                if(error?.response?.status !== 200 || error?.response?.status !== 201) {
+                    toast.error(error?.response?.data?.message, {
+                        style: {
+                            backgroundColor: 'white',
+                            color: 'black'
+                        }
+                    })
+                }
             }
             setLoading(false)
+            setShake(true)
         }
     }
 
@@ -102,27 +82,21 @@ export default function Login () {
         try {
             const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/reVerify`, { email })
             if(response.data.linkSent) {
-                setDialogContent(response.data.msg)
+                setDialogContent(response?.data?.message)
                 setVerifyOpen(true)
-            }
-            if(response.data.error) {
-                toast.error(response.data.error, {
-                    style: {
-                        backgroundColor: 'black',
-                        color: 'white'
-                    },
-                })
             }
             setLoading(false)
         } catch(err) {
-            toast.error(`An error occurred ${err}`, {
+            console.error(err)
+            toast.error(err?.response?.data?.message, {
                 style: {
-                    backgroundColor: 'black',
-                    color: 'white'
+                    backgroundColor: 'white',
+                    color: 'black'
                 },
             })
+            setReVerify(prevState => !prevState)
+            setLoading(false)
         }
-        
     }
 
     const showPasswordFunc = () => {
@@ -149,7 +123,7 @@ export default function Login () {
                 toast.error(response.data.message, {
                     style: {
                         backgroundColor: 'black',
-                        color: 'white'
+                        color: 'black'
                     },
                     duration: 5000
                 })    
@@ -164,8 +138,6 @@ export default function Login () {
                 },
                 duration: 5000
             })
-        } finally {
-            setResetEmail('')
         }
 
     }
@@ -251,6 +223,7 @@ export default function Login () {
                 onClose={ (event, reason) => {
                     if(reason === 'escapeKeyDown') {
                         setOpen(false)
+                        navigate('/login')
                     }
                 } }
             
@@ -287,6 +260,7 @@ export default function Login () {
                 onClose={(event, reason) => {
                     if(reason === 'backdropClick' || reason === 'escapeKeyDown'){
                         setVerifyOpen(false)
+                        navigate('/login')
                     }
                 }}
                 PaperProps={{style: {
