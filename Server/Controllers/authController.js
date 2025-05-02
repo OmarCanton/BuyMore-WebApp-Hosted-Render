@@ -120,7 +120,7 @@ const logoutUser = async (req, res) => {
         if(token) {
             res.clearCookie('refreshToken', {
                 httpOnly: true,
-                secure: false,
+                secure: true,
                 sameSite: 'None'
             })
             return res.status(200).json({ success: true, message: 'Logout successful, come back another time to BuyMore!'})
