@@ -1,4 +1,5 @@
 const User = require('../Config/Models/UserSchema')
+const crypto = require('crypto')
 
 const verifyEmail = async (req, res) => {
     const { token } = req.params

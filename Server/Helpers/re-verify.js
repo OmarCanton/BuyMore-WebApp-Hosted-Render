@@ -5,7 +5,7 @@ const crypto = require('crypto')
 const re_verifyEmail = async (req, res) => {
     const { email } = req.body
     const findUserWithEmail = await User.findOne({email})
-    if(!findUserWithEmail) return res.status(400).json({error: 'Email not found, please signup!'})
+    if(!findUserWithEmail) return res.status(400).json({message: 'Email not found, please signup!'})
     
     //check if the user is already verified
     if(findUserWithEmail.isVerified) return res.status(400).json({ message: 'User is already verified, please login'})
@@ -14,7 +14,6 @@ const re_verifyEmail = async (req, res) => {
     const randomToken = crypto.randomBytes(32).toString('hex')
     const hashedToken = crypto.createHash('sha256').update(randomToken).digest('hex')
 
-    //using passport's user object, the keys and values of the user authenticated by passport can be retrieved from the schema
     findUserWithEmail.verifyEmailToken = hashedToken
     findUserWithEmail.verifyEmailTokenExpires = Date.now() + 3600000
     //save it to the database 
