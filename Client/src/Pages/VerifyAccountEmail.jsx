@@ -14,9 +14,17 @@ export default function VerifyAccountEmail() {
 
     useEffect(() => {
         const completeEmailVerification = async () => {
-            const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/verifyEmail/${token}`)
-            setSuccess(response.data.success)
-            setMessage(response.data.message)
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/verifyEmail/${token}`)
+                if(response?.status === 200) {
+                    setSuccess(true)
+                }
+                setMessage(response.data?.message)
+            } catch (err) {
+                console.error(err)
+                setSuccess(false)
+                setMessage(err?.response.data?.message)
+            }
         }
         completeEmailVerification()
     }, [token])
@@ -28,13 +36,13 @@ export default function VerifyAccountEmail() {
                 style={{backgroundColor: themeStyles.style.divColor}}
                 className="success-info-wrappper"
             >
-                {success === true ? 
+                {success? 
                     <CheckCircleOutlined htmlColor='green' className='mark'/>
                     :
                     <CancelOutlined htmlColor='red' className='mark' />
                 }
                 <p style={{...theme === 'dark' ? {color: themeStyles.style.color} : {color: 'black'}}}>{message}</p>
-                {success === true ?
+                {success?
                     <button onClick={() => navigate('/login')}>Login</button>
                     :
                     <button onClick={() => navigate('/')}>Home</button>

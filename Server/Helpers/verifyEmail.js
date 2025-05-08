@@ -9,7 +9,7 @@ const verifyEmail = async (req, res) => {
             verifyEmailTokenExpires: { $gt: Date.now() }
         })
 
-        if(!findUserToken) return res.status(401).json({success: false, message: 'Token expired'})
+        if(!findUserToken) return res.status(401).json({ message: 'Token expired' })
         
         findUserToken.verifyEmailToken = undefined
         findUserToken.verifyEmailTokenExpires = undefined
@@ -21,7 +21,7 @@ const verifyEmail = async (req, res) => {
 
     } catch (err) {
         console.log(err)
-        res.status(500).json({ message: 'An error occured'})
+        res.status(500).json({ message: err?.message})
     }
 }
 
