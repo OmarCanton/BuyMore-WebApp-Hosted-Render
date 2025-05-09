@@ -284,9 +284,9 @@ export default function Shop () {
                 </h2>
             }
             { status === 'loading' &&
-                <p className="loadingEffectWrapper">
+                <div className="loadingEffectWrapper">
                     <LoadingEffect />
-                </p>
+                </div>
             }
             { status === 'succeeded' && (
                 <div 

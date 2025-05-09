@@ -126,7 +126,7 @@ export default function App () {
             openMenu, setOpenMenu,
             isVisible, setIsVisible
           }}>
-          <AnimatePresence>
+          <AnimatePresence mode='wait'>
             <ScrollPageToTop />
             <Routes location={location} key={location.pathname}>
               <Route index element={<Home />} />

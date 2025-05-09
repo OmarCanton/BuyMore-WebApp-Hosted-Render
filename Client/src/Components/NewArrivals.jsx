@@ -28,9 +28,9 @@ export default function NewArrivals (){
     return (
         <>
             { (status === 'loading' || status === 'failed') && 
-                <p className="loadingWrapper-newArrivals">
+                <div className="loadingWrapper-newArrivals">
                     <LoadingEffect />
-                </p> 
+                </div> 
             }
 
             { newArrivals.length > 0 &&

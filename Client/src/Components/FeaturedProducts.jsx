@@ -106,9 +106,9 @@ export default function FeaturedProducts () {
         <>
         
             { (status === 'loading' || status === 'failed') && 
-                <p className="loadingWrapper">
+                <div className="loadingWrapper">
                     <LoadingEffect />
-                </p> 
+                </div> 
             }
             { (status === 'succeeded') && (
 

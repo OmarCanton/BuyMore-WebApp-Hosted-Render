@@ -219,7 +219,7 @@ export default function ProductCheck () {
                                     You&apos;ve rated {rating} {rating <= 1 ? 'star': 'stars'}
                                 </p>
                             }
-                            <button disabled={rating === 0 ? 'true' : false} onClick={addRating}>Submit</button>
+                            <button disabled={rating === 0 ? true : false} onClick={addRating}>Submit</button>
                         </div>
                     </div>
                 </div>
