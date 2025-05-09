@@ -25,16 +25,28 @@ const sendEmails = async (user, res) => {
 
         const url = `${process.env.EXTERNAL_URL_FRONTEND_HOSTED}/verifyEmail/${randomToken}`
         const message = `
-            <h2>Click on the link below to complete and activate your account, link expires in 1 hour</h2>
-            <a href=${url}>Click here Verify</a>`
+            <div style="display: flex; align-items: center; justify-content: center; border: 1px solid grey; border-radius: 5px; flex-direction: column; width: fit-content; padding: 10px;">
+                <h1>Email Verification - BuyMore App</h1>
+                <p>Please click on the button below to verify your account on BuyMore</p>
+                <p>If the button fails to work, copy and paste the link in your browser to get verified </p>
+                <div style="margin-top: 10%; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    <button style="background-color: blue; border: none; padding: 10px; padding-left: 15px; padding-right: 15px; border-radius: 3px;">
+                        <a href=${url} style="color: white; text-decoration: none; font-weight: bold;">Verify</a>
+                    </button>
+                    <a href=${url}>${url}</a>
+                </div>
+                <p style="margin-top: 10%;">Thank you, Omar (Developer)</p>
+            </div>
+            `
+            
 
         try {
             await transporter.sendMail({
                 to: user.email,
-                subject: 'Verify buymore Account',
+                subject: 'Verify BuyMore Account',
                 html: message
             })
-            res.status(201).json({linkSent: true, message: 'Verification link has been sent to your email, kindly check your inbox to complete the signup process'})
+            res.status(201).json({linkSent: true, message: 'Verification link has been sent to your email, kindly check your inbox, or spam to complete the signup process'})
         } catch(err) {
             await User.findByIdAndDelete(user._id)
             res.status(401).json({ message: 'Verification link could not be sent, try again later'})
