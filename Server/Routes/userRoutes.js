@@ -96,12 +96,11 @@ router.post('/delUser/:id', async (req, res) => {
         if(findUserForDeletion) {
             const passwordCompare = await bcrypt.compare(password, findUserForDeletion.password)
             if(passwordCompare) {
-                //logout user by clearing the refreshToken cookie
-                res.clearCookie('refreshToken', {
-                    httpOnly: true,
-                    secure: true,
-                    sameSite: 'None'
-                })
+                //logout the user by deleting the refresh token
+                findUserForDeletion.refreshToken = undefined
+                findUserForDeletion.refreshToken_expires = undefined
+                await findUserForDeletion.save()
+                //delete the user
                 await User.deleteOne(findUserForDeletion)
                 res.status(200).json({ message: 'Account delete successful' })
             } else {

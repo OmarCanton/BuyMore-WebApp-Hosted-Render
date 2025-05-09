@@ -41,15 +41,17 @@ export default function Settings () {
     const [loggingOut, setLoggingOut] = useState(false)
     const dispatch = useDispatch()
 
+    const id = user?._id
+
     const logoutUser = async () => {
         setLoggingOut(true)
         try {
-            dispatch(logout())
-            const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
+            const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout/${id}`, { withCredentials: true })
             if(response.status === 200) {
                 toast.success(response?.data?.message)
                 navigate('/')
             }
+            dispatch(logout())
             setLoggingOut(false)
         } catch(err) {
             console.error(err)

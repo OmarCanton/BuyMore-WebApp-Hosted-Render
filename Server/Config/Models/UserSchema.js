@@ -25,6 +25,8 @@ const Users_local = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    refreshToken: String,
+    refreshToken_expires: Date,
     verifyEmailToken: String,
     verifyEmailTokenExpires: Date,
     resetPasswordToken: String,

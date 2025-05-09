@@ -48,6 +48,8 @@ export default function Account () {
     const [viewOps, setViewOps] = useState(false)
     const [loggingOut, setLoggingOut] = useState(false)
 
+    const id = user?._id
+
 
     const changeUsername = async () => {
         try {
@@ -173,12 +175,12 @@ export default function Account () {
     const logoutUser = async () => {
         setLoggingOut(true)
         try {
-            dispatch(logout())
-            const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, { withCredentials: true })
+            const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout/${id}`, { withCredentials: true })
             if(response.status === 200) {
                 toast.success(response?.data?.message)
                 navigate('/')
             }
+            dispatch(logout())
             setLoggingOut(false)
         } catch(err) {
             console.error(err)

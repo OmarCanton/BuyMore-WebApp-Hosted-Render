@@ -77,19 +77,15 @@ const loginUser = async (req, res) => {
         const accessToken = generateAccessToken(user)
         const refreshToken = generateRefreshToken(user, rememberMe)
 
-        rememberMe ? res.cookie('refreshToken', refreshToken, {
-            httpOnly: true,
-            secure: true, //set to false at development
-            sameSite: 'None', //set to strict for cross-site access
-            maxAge: 365 * 24 * 60 * 60 * 1000,
-        }) : res.cookie('refreshToken', refreshToken, {
-            httpOnly: true,
-            secure: true, 
-            sameSite: 'None',
-            maxAge: 3 * 24 * 60 * 60 * 1000,
-        })
+        user.refreshToken = refreshToken
+        if(rememberMe) {
+            user.refreshToken_expires = Date.now() +  365 * 24 * 60 * 60 * 1000 // valid for 1 year  
+        } else {
+            user.refreshToken_expires = Date.now() + 15 * 24 * 60 * 60 * 1000 // valid for 15 days 
+        }
+        await user.save()
 
-        const authenticatedUser = await User.findOne({ email: user.email }).lean().select("-password")
+        const authenticatedUser = await User.findOne({ email: user.email }).lean().select("-password").select("-refreshToken").select("-refreshToken_expires")
 
         res.status(200).json({ message: `Welcome ${user.username}`, token: accessToken, authenticatedUser })
     } catch (error) {
@@ -99,9 +95,15 @@ const loginUser = async (req, res) => {
 }
 
 const refresh = async (req, res) => {
+    const { id } = req.params
     try {
-        const refreshToken = req.cookies.refreshToken
-        if(!refreshToken) return res.status(401).json({ message: 'Session expired, please login again' })
+        const user = await User.findOne({
+            _id: id,
+            refreshToken_expires: { $gt: Date.now()}
+        })
+        if(!user) return res.status(404).json({ message: 'Session expired, please login again' })
+            
+        const refreshToken = user.refreshToken
         
         jwt.verify(refreshToken, process.env.JWT_REFRESH_TOKEN, (err, user) => {
             if(err) return res.status(403).json({ message: 'Invalid refresh token, please login' })
@@ -115,14 +117,17 @@ const refresh = async (req, res) => {
     }
 }
 const logoutUser = async (req, res) => {
-    const token = req.cookies.refreshToken
+    const { id } = req.params
     try {
+        const user = await User.findById(id)
+        if(!user) return res.status(404).json({ message: 'User not found' })
+
+        const token = user.refreshToken
+
         if(token) {
-            res.clearCookie('refreshToken', {
-                httpOnly: true,
-                secure: true,
-                sameSite: 'None'
-            })
+            user.refreshToken = undefined
+            user.refreshToken_expires = undefined
+            await user.save()
             return res.status(200).json({ success: true, message: 'Logout successful, come back another time to BuyMore!'})
         }
         return res.status(404).json({ success: false, message: 'No refresh token found!' })

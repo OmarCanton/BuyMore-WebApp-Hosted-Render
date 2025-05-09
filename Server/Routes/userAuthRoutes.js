@@ -19,9 +19,9 @@ router.post('/reVerify', re_verifyEmail)
 router.post('/login', loginUser)
 
 //refresh background to get new access token and keep user logged in
-router.post('/refresh', refresh)
+router.post('/refresh/:id', refresh)
 
-//logout user and clear cookie
-router.get('/logout', logoutUser)
+//logout user
+router.get('/logout/:id', logoutUser)
 
 module.exports = router

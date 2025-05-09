@@ -9,7 +9,7 @@ const generateAccessToken = (user) => {
         id: user._id,
         username: user.username
     }
-    return jwt.sign(payload, ACCESS_TOKEN, {expiresIn: '1h'})
+    return jwt.sign(payload, ACCESS_TOKEN, {expiresIn: '15m'})
 }
 const generateRefreshToken = (user, rememberMe) => {
     const payload = {
@@ -20,7 +20,7 @@ const generateRefreshToken = (user, rememberMe) => {
     if(rememberMe) {
         return jwt.sign(payload, REFRESH_TOKEN, { expiresIn: '365d'})
     } else {
-        return jwt.sign(payload, REFRESH_TOKEN, { expiresIn: '3d'})
+        return jwt.sign(payload, REFRESH_TOKEN, { expiresIn: '15d'})
     }
 
 }

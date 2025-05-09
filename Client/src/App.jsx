@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AnimatePresence } from 'framer-motion'
 import { CircularProgress } from '@mui/material'
 import './Styles/App.css'
-import { logout, updateToken, tokenState } from './Redux/Slices/authSlice'
+import { logout, updateToken, tokenState, userState } from './Redux/Slices/authSlice'
 
 const LazyLoadSettings = React.lazy(() => import('./Pages/Settings'))
 const LazyLoadShop = React.lazy(() => import('./Pages/Shop'))
@@ -43,29 +43,29 @@ export default function App () {
   const location = useLocation ()
   const navigate = useNavigate()
   const token = useSelector(tokenState)
+  const user = useSelector(userState)
+  const id = user?._id
 
-  //constantly refresh the token every 15 minutes
+  //constantly refresh the token every 14 minutes
   // this is to prevent the user from being logged out when the token expires
   useEffect(() => {
     const refreshPage = setInterval(async () => {
       if(!token) return
       try {
-        const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/refresh`, {} , {withCredentials: true})
+        const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/refresh/${id}`, {} , {withCredentials: true})
         if(response?.status === 200) {
-          alert('updated', response?.data?.token)
-          console.error('updated', response?.data?.token)
           dispatch(updateToken(response?.data?.token))
         }
       } catch (err) {
         console.error('Error refreshing token:', err)
         toast.error(err?.response?.data?.message)
+        await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout/${id}`, {withCredentials: true})
         dispatch(logout())
-        await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/logout`, {withCredentials: true})
         navigate('/')
       }
-    }, 60 * 60 * 1000)
+    }, 14 * 60 * 1000)
     return () => clearInterval(refreshPage)
-  }, [dispatch, navigate, token])
+  }, [dispatch, navigate, token, id])
 
   useEffect(() => {
     if(openMenu) {
