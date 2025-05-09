@@ -309,7 +309,7 @@ export default function Shop () {
                                 className='wrapper' 
                                 key={product._id} 
                                 onClick={() => checkProduct(product)}
-                                style={{backgroundColor: theme === 'dark' && '#3C3C3C'}}
+                                style={{backgroundColor: theme === 'dark' && '#3C3C3C', willChange: 'transform, opacity'}}
                             >
                                 <img 
                                     src={product.image} 
