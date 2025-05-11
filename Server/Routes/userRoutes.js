@@ -150,7 +150,22 @@ router.post('/forgot-password', async (req, res) => {
     //a frontend link to redirect user to enter a new password (sent to the user seeking reset)
     const resetUrl = `${process.env.EXTERNAL_URL_FRONTEND_HOSTED}/reset-password/${resetToken}`
     //the message to be sent to the user seeking password reset (***Sent in html format to make the link clickable***)
-    const  message = `<h2>You requested for a password reset, click on the link below to reset password, expires in 1 hour</h2><a href=${resetUrl}>Click Here to reset password</a>`
+    const  message = `
+        <div style="display: flex; align-items: center; justify-content: center; border: 1px solid grey; border-radius: 5px; flex-direction: column; width: fit-content; padding: 10px">
+            <h1>Password Reset - BuyMore App</h1>
+            <p>Please click on the button below to reset your password on BuyMore</p>
+            <p>If the button fails to work, copy and paste the link in your browser to get verified </p>
+            <p>If you did not request this, we strongly advice you to ignore this mail
+            <div style="margin-top: 10%; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                <button style="background-color: blue; border: none; padding: 10px; padding-left: 15px; padding-right: 15px; border-radius: 3px;">
+                    <a href=${resetUrl} style="color: white; text-decoration: none; font-weight: bold;">Reset Password</a>
+                </button>
+                <a href=${resetUrl}>${resetUrl}</a>
+            </div>
+            <p style="margin-top: 10%;">Thank you, Omar (Developer)</p>
+            <p style="margin-top: 10%;">&cpoy; BuyMore, ${Date.getFullYear()}</p>
+        </div>
+    `
 
     try {
         //the mail receiver (user account seeking password reset)

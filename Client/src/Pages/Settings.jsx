@@ -254,7 +254,7 @@ export default function Settings () {
                 }
             </div>
             <div className="footer">
-                <p>Version: 1.2.0</p>
+                <p>&copy; BuyMore {Date.getFullYear()} Version: 1.2.0</p>
             </div>
             <Panel />
         </div>

@@ -46,7 +46,7 @@ const signupUser = async (req, res) => {
         }) 
         await local_User.save()
 
-        // send email after successful registration
+        // send verificaion mail after saving the user object
         await sendEmails(local_User, res)
     } catch (err) {
         console.error(err)
