@@ -84,7 +84,7 @@ const sendEmails = async (user, res) => {
                             <a href=${url}>${url}</a>
                         </div>
                         <p class="thanks">Thank you, Omar (Developer)</p>
-                        <p class="thanks">&copy; BuyMore ${Date().getFullYear()}. All Rights Reserved.</p>
+                        <p class="thanks">&copy; BuyMore ${new Date().getFullYear()}. All Rights Reserved.</p>
                     </div>
                 </body>
             </html>
