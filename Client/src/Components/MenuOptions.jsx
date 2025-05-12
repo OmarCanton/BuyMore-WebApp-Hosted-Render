@@ -133,7 +133,7 @@ export default function MenuOptions() {
                 className='comp'
                 style={{...theme === 'light' && {color: '#3C3C3C'}}}
             >
-                @CantonsTech 2024, All Rights Reserved.
+                @CantonsTech {new Date().getFullYear()}, All Rights Reserved.
             </small>
         </Dialog>
     )
