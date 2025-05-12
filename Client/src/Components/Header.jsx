@@ -29,7 +29,7 @@ export default function Header ({appName}) {
     } = useContext(userDetailsContext)
 
     useEffect(() => {
-        const scrollEffect = window.addEventListener('scroll', () => {
+        const handler = () => {
             if(window.innerWidth <= 650) {
                 if(window.scrollY === 0) {
                     setHeadbgColor((prevState) => (
@@ -66,9 +66,9 @@ export default function Header ({appName}) {
                     ))
                 }
             }
-        })
-        scrollEffect()
-        return () => window.removeEventListener(scrollEffect)
+        }
+        window.addEventListener('scroll', handler)
+        return () => window.removeEventListener('scroll', handler)
     }, [theme])
 
     const enableThemeOverlay = () => {
