@@ -151,20 +151,54 @@ router.post('/forgot-password', async (req, res) => {
     const resetUrl = `${process.env.EXTERNAL_URL_FRONTEND_HOSTED}/reset-password/${resetToken}`
     //the message to be sent to the user seeking password reset (***Sent in html format to make the link clickable***)
     const  message = `
-        <div style="display: flex; align-items: center; justify-content: center; border: 1px solid grey; border-radius: 5px; flex-direction: column; width: fit-content; padding: 10px">
-            <h1>Password Reset - BuyMore App</h1>
-            <p>Please click on the button below to reset your password on BuyMore</p>
-            <p>If the button fails to work, copy and paste the link in your browser to get verified </p>
-            <p>If you did not request this, we strongly advice you to ignore this mail
-            <div style="margin-top: 10%; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-                <button style="background-color: blue; border: none; padding: 10px; padding-left: 15px; padding-right: 15px; border-radius: 3px;">
-                    <a href=${resetUrl} style="color: white; text-decoration: none; font-weight: bold;">Reset Password</a>
-                </button>
-                <a href=${resetUrl}>${resetUrl}</a>
-            </div>
-            <p style="margin-top: 10%;">Thank you, Omar (Developer)</p>
-            <p style="margin-top: 10%;">&cpoy; BuyMore, ${Date.getFullYear()}</p>
-        </div>
+        <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Email Verification</title>
+                <style>
+                    .container {
+                        border: 1px solid grey; 
+                        border-radius: 5px; 
+                        width: fit-content; 
+                        padding: 10px;
+                        text-align: center;
+                    }
+                    .link {
+                        gap: 10px;
+                    }
+                    .btn {
+                        background-color: rgb(0, 85, 255); 
+                        border: none; 
+                        padding: 10px;
+                        border-radius: 3px;
+                    }
+                    .verifyLink {
+                        color: white; 
+                        text-decoration: none; 
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <h1>Password Reset - BuyMore App</h1>
+                    <p>You requested a reset of your passsword to your BuyMore account</p>
+                    <p>If you did not request this, we strongly advice you to ignore this mail</p>
+                    <p>If the button fails to work, copy and paste the link in your browser to get verified </p>
+                    <p>Link expires in 1 hour</p>
+                    <div class="link">
+                        <button class="btn">
+                            <a class="verifyLink" style="color: white;" href=${resetUrl}>Reset</a>
+                        </button>
+                        <a style="display: block; margin-top: 10px;" href=${resetUrl}>${resetUrl}</a>
+                    </div>
+                    <p class="thanks">Thank you, Omar (Developer)</p>
+                    <p class="thanks">&copy; BuyMore ${new Date().getFullYear()}. All Rights Reserved.</p>
+                </div>
+            </body>
+        </html>
     `
 
     try {
