@@ -12,8 +12,8 @@ const signupUser = async (req, res) => {
         if(!password) return res.status(400).json({ message: 'Password is required' })
         if(!confPassword) return res.status(400).json({ message: 'Confirm password' })
         if(!email) return res.status(400).json({ message: 'Email is required' })
-        if(!birthday) return res.status(400).json({ message: 'Birthdate is required' })
-        if(!sex) return res.status(400).json({ message: 'Sex is required' })
+        // if(!birthday) return res.status(400).json({ message: 'Birthdate is required' })
+        // if(!sex) return res.status(400).json({ message: 'Sex is required' })
 
         //check if password has the at least one uppercase, one number and a symbol and also minimum of eight characters long
         const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*\W)[A-Za-z0-9!@#$%^&*()_+-|{}]{8,}$/
