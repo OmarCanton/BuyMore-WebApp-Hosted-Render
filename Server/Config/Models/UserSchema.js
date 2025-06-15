@@ -14,10 +14,6 @@ const Users_local = new mongoose.Schema({
         required: true,
         unique: true
     },
-    sex: {
-        type: String,
-        required: true
-    },
     profileImage: String,
     phone: String,
     about: String,

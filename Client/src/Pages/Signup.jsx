@@ -162,18 +162,6 @@ export default function Signup () {
                             { showConfPassword ? <VisibilityOff htmlColor='grey' style={{cursor: 'pointer'}} /> : <Visibility htmlColor='#1D2671' style={{cursor: 'pointer'}} /> }
                         </span>
                     </div>
-                    <div>
-                        <input type="date" name="birthday" id="birthday" placeholder='Enter Birthdate' onChange={(e) => setBirthday(e.target.value) } />
-                    </div>
-                    <span className='sexOp'>
-                        <label htmlFor="sex" style={{color: themeStyles.style.color}}>Sex:</label>
-                        <select name="sex" defaultValue={'none'} id="sex" onChange={(e) => setSex(e.target.value) }>
-                            <option value="none" >none</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </span>
                     <button>{loading && <CircularProgress style={{width: 25, height: 25, color: 'white'}}/>} Signup</button>
                 </form>
                 <div className='loginSignupLink'>
