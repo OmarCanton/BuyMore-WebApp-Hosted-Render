@@ -13,8 +13,6 @@ export default function Signup () {
     const [password, setPassword] = useState('')
     const [confPassword, setConfPassword] = useState('')
     const [email, setEmail] = useState('')
-    const [birthday, setBirthday] = useState('')
-    const [sex, setSex] = useState('')
     const [showPassword, setShowPassword] = useState(false)
     const [showConfPassword, setShowConfPassword] = useState(false) 
     const [loading, setLoading] = useState(false) 
@@ -83,7 +81,7 @@ export default function Signup () {
         backgroundColor: `${backgroundColor}`
     }
 
-    const formData = { username, password, confPassword, email, birthday, sex }
+    const formData = { username, password, confPassword, email }
     
     const handleSignUp = async (event) => {
         event.preventDefault()
