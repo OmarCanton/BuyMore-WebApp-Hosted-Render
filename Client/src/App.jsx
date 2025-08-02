@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import Home from './Pages/Home'
 import Cart from './Pages/Cart'
@@ -13,23 +13,35 @@ import { userDetailsContext, themesContext } from './Contexts/userDataContext'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { AnimatePresence } from 'framer-motion'
-import { CircularProgress } from '@mui/material'
 import './Styles/App.css'
 import { logout, updateToken, tokenState, userState } from './Redux/Slices/authSlice'
+import Settings from './Pages/Settings'
+import Shop from './Pages/Shop'
+import Signup from './Pages/Signup'
+import Login from './Pages/Login'
+import Account from './Pages/Account'
+import ResetPassword from './Pages/ResetPasssword'
+import VerifyAccountEmail from './Pages/VerifyAccountEmail'
+import ProductCheck from './Pages/Product'
+import SuccessPage from './Pages/PaymentPages/Success'
+import CancelPage from './Pages/PaymentPages/Cancel'
+import PageNotFound from './Pages/PageNotFound'
+import Dev from './Pages/Developer'
+import TermsAndCons from './Pages/TermsAndCons'
 
-const LazyLoadSettings = React.lazy(() => import('./Pages/Settings'))
-const LazyLoadShop = React.lazy(() => import('./Pages/Shop'))
-const LazyLoadSignup = React.lazy(() => import('./Pages/Signup'))
-const LazyLoadLogin = React.lazy(() => import('./Pages/Login'))
-const LazyLoadAccount = React.lazy(() => import('./Pages/Account'))
-const LazyLoadResetPassword = React.lazy(() => import('./Pages/ResetPasssword'))
-const LazyLoadVerifyEmailAcc = React.lazy(() => import('./Pages/VerifyAccountEmail'))
-const LazyLoadProductCheck = React.lazy(() => import('./Pages/Product'))
-const LazyLoadSuccessPage = React.lazy(() => import('./Pages/PaymentPages/Success'))
-const LazyLoadCancelPage = React.lazy(() => import('./Pages/PaymentPages/Cancel'))
-const LazyLoadPageNotFound = React.lazy(() => import('./Pages/PageNotFound'))
-const LazyLoadDev = React.lazy(() => import('./Pages/Developer'))
-const LazyLoadTerms = React.lazy(() => import('./Pages/TermsAndCons'))
+// const LazyLoadSettings = React.lazy(() => import('./Pages/Settings'))
+// const LazyLoadShop = React.lazy(() => import('./Pages/Shop'))
+// const LazyLoadSignup = React.lazy(() => import('./Pages/Signup'))
+// const LazyLoadLogin = React.lazy(() => import('./Pages/Login'))
+// const LazyLoadAccount = React.lazy(() => import('./Pages/Account'))
+// const LazyLoadResetPassword = React.lazy(() => import('./Pages/ResetPasssword'))
+// const LazyLoadVerifyEmailAcc = React.lazy(() => import('./Pages/VerifyAccountEmail'))
+// const LazyLoadProductCheck = React.lazy(() => import('./Pages/Product'))
+// const LazyLoadSuccessPage = React.lazy(() => import('./Pages/PaymentPages/Success'))
+// const LazyLoadCancelPage = React.lazy(() => import('./Pages/PaymentPages/Cancel'))
+// const LazyLoadPageNotFound = React.lazy(() => import('./Pages/PageNotFound'))
+// const LazyLoadDev = React.lazy(() => import('./Pages/Developer'))
+// const LazyLoadTerms = React.lazy(() => import('./Pages/TermsAndCons'))
 
 export default function App () {
   const dispatch = useDispatch()
@@ -131,168 +143,25 @@ export default function App () {
             <Routes location={location} key={location.pathname}>
               <Route index element={<Home />} />
               <Route path='/home' element={<Home />} />
-              <Route path='settings' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadSettings />
-                </Suspense>
-              } />
-              <Route path='settings/account' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadAccount />
-                </Suspense>
-              } />
-              <Route path='settings/themes' element={<Themes />}/>
-              <Route path='settings/order_Payment_History' element={<OrderPayment />}/>
-              <Route path='settings/terms_and_conditions' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadTerms />
-                </Suspense>
-              }/>
+              <Route path='settings' element={<Settings />} />
+              <Route path='settings/account' element={<Account />} />
+              <Route path='settings/themes' element={<Themes />} />
+              <Route path='settings/order_Payment_History' element={<OrderPayment />} />
+              <Route path='settings/terms_and_conditions' element={<TermsAndCons />} />
               <Route path='about' element={<About />} />
-              <Route path='dev' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadDev />
-                </Suspense>
-              } />
+              <Route path='dev' element={<Dev />} />
               <Route path='cart' element={<Cart />} />
               <Route path='newArrivals' element={<NewArrivalsPage />} />
-              <Route path='shop' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>  
-                  <LazyLoadShop />
-                </Suspense>
-              } />
+              <Route path='shop' element={<Shop />} />
               <Route path='favorites' element={<Favorites />} />
-              <Route path='login' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadLogin />
-                </Suspense>
-              } />
-              <Route path='signup' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadSignup />
-                </Suspense>
-              } />
-              <Route path='reset-password/:token' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadResetPassword />
-                </Suspense>
-              } />
-              <Route path='verifyEmail/:token' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadVerifyEmailAcc />
-                </Suspense>
-              } />
-              <Route path='product/:id' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadProductCheck />
-                </Suspense>
-              } />
-              <Route path='checkout/success' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadSuccessPage />
-                </Suspense>
-              } />
-              <Route path='checkout/cancel' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadCancelPage />
-                </Suspense>
-              } />
-              <Route path='*' element={
-                <Suspense fallback={
-                  <div 
-                    style={{...theme === 'dark' && {backgroundColor: 'rgb(22, 22, 22)'}}}
-                    className='activityIndicator'
-                  >
-                    <CircularProgress />
-                  </div>
-                }>
-                  <LazyLoadPageNotFound />
-                </Suspense>
-              }/>
+              <Route path='login' element={<Login />} />
+              <Route path='signup' element={<Signup />} />
+              <Route path='reset-password/:token' element={<ResetPassword />} />
+              <Route path='verifyEmail/:token' element={<VerifyAccountEmail />} />
+              <Route path='product/:id' element={<ProductCheck />} />
+              <Route path='checkout/success' element={<SuccessPage />} />
+              <Route path='checkout/cancel' element={<CancelPage />} />
+              <Route path='*' element={<PageNotFound />}/>
             </Routes>
           </AnimatePresence>
         </userDetailsContext.Provider>
