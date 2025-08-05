@@ -12,13 +12,11 @@ const {
     addRating,
     searchProduct,
     filterProduct,
-    getProduct,
 } = require('../Controllers/allProducts')
 
 const router = Router()
 
 router.get('/products', allProductsController)
-router.get('/products/:pid', getProduct)
 
 router.get('/newArrivals', newArrivals)
 

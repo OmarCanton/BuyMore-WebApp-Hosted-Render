@@ -6,7 +6,6 @@ const userAuthRoutes = require('../Routes/userAuthRoutes')
 const productsRoutes = require('../Routes/productsRoutes')
 const paymentRoute = require('../Routes/payment')
 const userRoutes = require('../Routes/userRoutes')
-const recommenderRoutes  = require('../Routes/recommenderRoutes')
 const cors = require('cors')
 
 const app = express();
@@ -37,9 +36,6 @@ app.use(productsRoutes)
 
 //payments
 app.use(paymentRoute)
-
-//ai recommender service
-app.use(recommenderRoutes)
 
 const PORT = process.env.PORT
 

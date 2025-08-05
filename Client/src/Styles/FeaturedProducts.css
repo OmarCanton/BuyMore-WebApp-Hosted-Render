@@ -1,0 +1,201 @@
+* {
+    transition: all 0.2s;
+}
+.loadingWrapper {
+    padding: 200px;
+}
+.featuredProductsWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    & > div { /* apple, nike, etc*/
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        padding: 20px;
+        & h2 {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        & > div { /* container*/
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            & > div { /*featuredWrapper*/
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(224, 224, 224);
+                box-shadow: 0 5px 10px -5px black;
+                height: 400px;
+                padding: 10px;
+                gap: 10px;
+                border-radius: 10px;
+                & > * {
+                    width: 100%;
+                }
+                & img {
+                    height: 60%;
+                    width: 100%;
+                    object-fit: contain;
+                    background-color: white;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    border: 1px solid rgb(228, 228, 228);
+                    overflow: hidden;
+                }
+                & .productName {
+                    font-weight: bold;
+                    color: #1D2671;
+                    font-size: larger;
+                    cursor: pointer;
+                    text-align: center;
+                    width: 100%;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    line-clamp: 1;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+                & .categoryBrand {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    color: grey;
+                    cursor: pointer;
+                    gap: 10px;
+                    width: 100%;
+                    text-wrap: break-word;
+                    overflow-wrap: break-word;
+                    & p {
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 1;
+                        line-clamp: 1;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+                }
+                & .prices {
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    color: #1D2671;
+                    cursor: pointer;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+                & .addToCartFav {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 10px;
+                    cursor: pointer;
+                    & .addICart {
+                        display: none;
+                    }
+                    & button {
+                        width: 100%;
+                        padding: 5%;
+                        border-radius: 5px;
+                        border: none;
+                        color: white;
+                        background-color: #C33764;
+                        transition: all 0.15s;
+                        cursor: pointer;
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                        &:active {
+                            width: 75%;
+                        }
+                    }
+                    & .fav {
+                        border-radius: 50%;
+                        height: 30px;
+                        width: 30px;
+                        padding: 1%;
+                        transition: all 0.15s;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        &:hover {
+                            padding: 5px;
+                            background-color: rgb(157, 198, 223);
+                        }
+                    }
+            
+                }
+            }
+            & > div:hover img {
+                scale: 1.05;
+                border: none;
+                transition: all 0.2s 0.5s;
+            }
+        }
+    }
+
+}
+
+@media (min-width: 450px) and (max-width: 1050px) {
+    .container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    }
+}
+
+
+@media (max-width: 425px) {
+    .loadingWrapper {
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+    }
+    .container {
+        & .featuredWrapper {
+            height: 300px !important;
+        }
+    }
+}
+
+
+@media (max-width: 375px) {
+    .container {
+        & .featuredWrapper {
+            height: 285px !important;
+            & .productName {
+                font-size: 1rem !important;
+                height: 30px;
+            }
+            & .categoryBrand {
+                font-size: 0.9rem;
+            }
+            & .addToCartFav {
+                padding-left: 5px;
+                padding-right: 5px;
+                & .addICart {
+                    display: block !important;
+                }
+                & button {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 320px) {
+    .featuredWrapper {
+        height: 220px !important;
+    }
+}
