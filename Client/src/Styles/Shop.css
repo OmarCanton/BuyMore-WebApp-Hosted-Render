@@ -4,10 +4,14 @@
 
 .shop-wrapper {
     min-height: 100vh;
+}
+
+.shop-wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    background-color: whitesmoke;
     & .shop-header {
         position: fixed;
         z-index: 99;
@@ -17,7 +21,7 @@
         justify-content: center;
         flex-direction: column;
         padding: 10px;
-        background-color: rgb(224, 224, 224);
+        background-color: whitesmoke;
         & .headerComp-first {
             width: 100%;
             display: flex;
@@ -48,7 +52,7 @@
                         font-size: large;
                         padding: 10px;
                         outline: none;
-                        width: 80%;
+                        width: 60%;
                         border-right: none;
                         cursor: auto;
                         border: none;
@@ -140,7 +144,7 @@
         width: 100%;
         display: grid;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 12px;
         padding: 20px;
         margin-top: 100px;

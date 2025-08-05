@@ -29,20 +29,6 @@ import PageNotFound from './Pages/PageNotFound'
 import Dev from './Pages/Developer'
 import TermsAndCons from './Pages/TermsAndCons'
 
-// const LazyLoadSettings = React.lazy(() => import('./Pages/Settings'))
-// const LazyLoadShop = React.lazy(() => import('./Pages/Shop'))
-// const LazyLoadSignup = React.lazy(() => import('./Pages/Signup'))
-// const LazyLoadLogin = React.lazy(() => import('./Pages/Login'))
-// const LazyLoadAccount = React.lazy(() => import('./Pages/Account'))
-// const LazyLoadResetPassword = React.lazy(() => import('./Pages/ResetPasssword'))
-// const LazyLoadVerifyEmailAcc = React.lazy(() => import('./Pages/VerifyAccountEmail'))
-// const LazyLoadProductCheck = React.lazy(() => import('./Pages/Product'))
-// const LazyLoadSuccessPage = React.lazy(() => import('./Pages/PaymentPages/Success'))
-// const LazyLoadCancelPage = React.lazy(() => import('./Pages/PaymentPages/Cancel'))
-// const LazyLoadPageNotFound = React.lazy(() => import('./Pages/PageNotFound'))
-// const LazyLoadDev = React.lazy(() => import('./Pages/Developer'))
-// const LazyLoadTerms = React.lazy(() => import('./Pages/TermsAndCons'))
-
 export default function App () {
   const dispatch = useDispatch()
   const [openMenu, setOpenMenu] = useState(false)

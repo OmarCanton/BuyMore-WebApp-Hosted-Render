@@ -2,13 +2,10 @@ import { useEffect, useContext, useState, useRef } from "react";
 import { themesContext } from "../Contexts/userDataContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import { 
-    FavoriteBorderRounded, 
     ArrowBackIosRounded, 
     Search, 
     Tune, 
-    FavoriteRounded, 
     Cancel, 
-    AddShoppingCart 
 } from '@mui/icons-material'
 import '../Styles/Shop.css'
 import { Button } from "@mui/material";
@@ -26,14 +23,12 @@ import {
     selectProductsStatus,
     selectProducts 
 } from '../Redux/Slices/productsSlice'
-import { addToFavorites, favoriteItems, removeFromFavorites } from "../Redux/Slices/FavoritesSlice"
-import { addToCart } from "../Redux/Slices/WishlistSlice"
-import { toast } from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import Lottie from 'lottie-react'
 import SearchNotFound from '../Effects/SearchNotFound.json' 
 import ShopEmpty from '../Effects/SearchNotFound.json' 
-import { tokenState } from '../Redux/Slices/authSlice'
+import ProductContainer from '../Components/ProductContainer'
+import '../Styles/overallPrdsCont.css'
 
 export default function Shop () {
     const dispatch = useDispatch()
@@ -41,7 +36,6 @@ export default function Shop () {
     const products = useSelector(selectProducts)
     const totalProductsPages = useSelector(totalNumberOfProductsPages)
     const status = useSelector(selectProductsStatus)
-    const favorites = useSelector(favoriteItems)
     const is_Search = useSelector(isSearch)
     const is_Filtered = useSelector(isFiltered)
     const searched_Name = useSelector(searchedName)
@@ -56,40 +50,6 @@ export default function Shop () {
     const [viewCloseSearch, setViewCloseSearch] = useState(false)
     const location = useLocation()
     const {category} = location.state || {}
-    const token = useSelector(tokenState)
-
-    //favorite feature
-    const isFav = (item) => { 
-        const isfav = favorites.some(favorite => favorite._id === item._id)
-        //if item is found return isfav as true else false (i.e is the use of some() method)
-        if(isfav) {
-            return(
-                <FavoriteRounded htmlColor="red" className='fav' style={{cursor: 'pointer'}} /> 
-            )
-        }else {
-            return (
-                <FavoriteBorderRounded className='fav' style={{cursor: 'pointer'}} />
-            )
-        }
-    }
-    const addItemToFavorites = (item) => {
-        if(token) {
-            const isFavorite = favorites.some(favorite => favorite._id === item._id)
-            if(isFavorite) {
-                dispatch(removeFromFavorites(item))
-            } else {
-                dispatch(addToFavorites(item))
-            }
-        } else {
-            toast.error(`Please log into your account to add items to your Favorites`, {
-                style: {
-                    backgroundColor: 'black',
-                    color: 'white',
-                }
-            })
-        }
-    }
-    //end
 
     useEffect(() => {
         if(category) {
@@ -98,34 +58,6 @@ export default function Shop () {
             dispatch(fetchProducts(pageNumber))
         }
     }, [dispatch, pageNumber, category])
-
-
-    const checkProduct = (product) => {
-        navigate(`/product/${product._id}`, {state: { product }})
-    }
-
-    
-    const buttonHandler = (event) => {
-        event.stopPropagation()
-    }
-    const addItemTocart = (item) => {
-        if(token) {
-            dispatch(addToCart(item))
-            toast.success(`${item.name} added to wishlist`, {
-                style: {
-                    backgroundColor: 'black',
-                    color: 'white',
-                }
-            })
-        } else {
-            toast.error(`Please log into your account to add items to your wishlist`, {
-                style: {
-                    backgroundColor: 'black',
-                    color: 'white',
-                }
-            })
-        }
-    }
 
     const searchForProduct = (e, name) => {
         e.preventDefault()
@@ -293,50 +225,14 @@ export default function Shop () {
                     style={{
                         ...is_Search && {paddingBottom: 100}, 
                         ...is_Filtered && {paddingBottom: 100},
-                        ...viewSearchInput && {paddingTop: 50}
+                        ...viewSearchInput && {paddingTop: 50},
+                        marginTop: '10%'
                     }}
-                    className="productsWrapper"
+                    className="gridContainer"
                 >
                     { products.length > 0 &&
                         products.map(product => (
-                            <motion.div 
-                                initial={{y: '10%', opacity: 0}}
-                                animate={{y:0, opacity: 1}}
-                                exit={{y: '10%', opacity: 0, transition: {
-                                    delay: 0.2
-                                }}}
-                                transition={{delay: 0.15, duration: 0.4, ease: 'anticipate'}}
-                                className='wrapper' 
-                                key={product._id} 
-                                onClick={() => checkProduct(product)}
-                                style={{backgroundColor: theme === 'dark' && '#3C3C3C', willChange: 'transform, opacity'}}
-                            >
-                                <img 
-                                    src={product.image} 
-                                    alt={product.name} 
-                                    style={{...theme === 'dark' && {backgroundColor: 'white', border: 'none'}}}
-                                />
-                                <p className='productName' 
-                                    style={{...theme === 'dark' && {color: themeStyles.style.color}}}
-                                >{product.name}</p>
-                                <div className='prices' 
-                                    style={{...theme === 'dark' && {color: 'lightgrey'}}}
-                                >
-                                    <p className="actualPrice">${product.actualPrice}</p>
-                                    <p className="prevPrice"><s>${product.prevPrice}</s></p>
-                                </div>
-                                <div className="categoryBrand">
-                                    <p className="category">{product.category}</p>
-                                    <p className="brand">{product.brand}</p>
-                                </div>
-                                <div className='addToCartFav' onClick={buttonHandler}>
-                                    <AddShoppingCart onClick={() => addItemTocart(product)} className="addItToCart" htmlColor="#C33764"/>
-                                    <button onClick={() => addItemTocart(product)}>Add To Wishlist</button>
-                                    <span onClick={() => addItemToFavorites(product)}>
-                                        { isFav(product) }
-                                    </span>
-                                </div>
-                            </motion.div>
+                            <ProductContainer key={product?._id} item={product} />
                         ))
                     }
                 </div>

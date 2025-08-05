@@ -200,6 +200,17 @@ const filterProduct = async (req, res) => {
     }
 }
 
+const getProduct = async (res, req) => {
+    const { pid } = req.params
+    try {
+        const product = await products.findById(pid)
+        res.status(200).json({product})
+    } catch(err) {
+        console.error(err)
+        res.status(500).json({ message: err?.message || 'An error occured fetching product'})
+    }
+}
+
 module.exports = {
     allProductsController,
     addProducts,
@@ -212,5 +223,6 @@ module.exports = {
     getAllProductComments,
     addRating,
     searchProduct,
-    filterProduct
+    filterProduct,
+    getProduct
 }

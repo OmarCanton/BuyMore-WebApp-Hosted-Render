@@ -4,16 +4,14 @@
     justify-content: space-around;
     flex-direction: column;
     width: 100%;
+    background-color: whitesmoke;
     & .featuredHeader {
-        padding: 5px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        text-align: center;
-        margin-left: 20px;
-        color: #1D2671;
         font-size: 2.25rem;
         font-weight: bold;
+        width: 100%;
+        padding-left: 12.5%;
     }
 }
 

@@ -5,6 +5,7 @@ import favoritesReducer from '../Slices/FavoritesSlice'
 import authReducer from '../Slices/authSlice'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+// import recommendationsReducer from '../Slices/recommendations'
 
 const persistConfig = {
     key: 'root',
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     auth: authReducer,
     products: productsReducer,
     wishlist: wishlistReducer,
-    favorites: favoritesReducer
+    favorites: favoritesReducer,
+    // recommendations: recommendationsReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
