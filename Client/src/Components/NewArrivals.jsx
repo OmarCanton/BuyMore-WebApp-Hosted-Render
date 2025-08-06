@@ -2,16 +2,13 @@ import { useContext, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchNewArrivals, selectNewArrivals } from '../Redux/Slices/productsSlice'
-import {  selectProductsStatus } from '../Redux/Slices/productsSlice'
 import '../Styles/newArrivals.css'
 import { themesContext } from '../Contexts/userDataContext'
-import LoadingEffect from '../Effects/LoadingEffect'
 
 export default function NewArrivals (){
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const newArrivals = useSelector(selectNewArrivals)
-    const status = useSelector(selectProductsStatus)
     const { theme, themeStyles } = useContext(themesContext)
 
     useEffect(() => {
@@ -23,16 +20,8 @@ export default function NewArrivals (){
         navigate('/newArrivals', { state: { newArrivals } })
     }
 
-
-
     return (
         <>
-            { (status === 'loading' || status === 'failed') && 
-                <div className="loadingWrapper-newArrivals">
-                    <LoadingEffect />
-                </div> 
-            }
-
             { newArrivals.length > 0 &&
                 <div className="newArrivals" 
                     style={{borderBottom: theme === 'dark' ? '1px solid rgb(73, 73, 73)' : '1px solid lightgrey'}}

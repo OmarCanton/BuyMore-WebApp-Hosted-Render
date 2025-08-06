@@ -9,9 +9,11 @@ import { themesContext } from '../Contexts/userDataContext'
 import { useContext } from 'react'
 import ThemeChangeAnime from '../Components/ThemeChangeAnime'
 import MenuOptions from '../Components/MenuOptions'
+import Recommendations from '../Components/Recommendations'
 
 export default function Home () {
     const { theme, showThemeOverlay } = useContext(themesContext)
+
     return (
         <div className='mainWrapper-home' 
             style={{...theme == 'dark' && {backgroundColor: 'rgb(22, 22, 22'}}}
@@ -19,22 +21,17 @@ export default function Home () {
             <Header appName='buyMore&reg;' />
             <MenuOptions />
             <Hero />
-            <NewArrivals />
             <ShopByCategories />
+            <NewArrivals />
+            <Recommendations />
             <span 
                 className='featuredHeader' 
-                style={{...theme === 'dark' && {
+                style={{
                     background: 'linear-gradient( to right, #C33764, #1D2671)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
-<<<<<<< Updated upstream
                     filter: 'brightness(1.5)'                
-                }}}
-=======
-                    filter: 'brightness(1.5)',
-                    justifyContent: window.innerWidth <= 700 && 'center'                 
                 }}
->>>>>>> Stashed changes
             >Featured Products</span>
             <FeaturedProducts />
             <Panel />

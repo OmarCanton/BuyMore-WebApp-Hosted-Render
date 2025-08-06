@@ -44,7 +44,7 @@ export default function Header ({appName}) {
                         {
                             ...prevState,
                             boxShadow: '0 5px 5px -5px black',
-                            ...theme === 'dark' ? {backgroundColor: '#3C3C3C'} : {backgroundColor: 'rgb(224, 224, 224)'}
+                            ...theme === 'dark' ? {backgroundColor: '#3C3C3C'} : {backgroundColor: 'whitesmoke'}
                         }
                     ))
                 }

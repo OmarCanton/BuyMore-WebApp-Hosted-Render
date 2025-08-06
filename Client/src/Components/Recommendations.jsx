@@ -34,7 +34,7 @@ export default function Recommendations() {
             {recommended_items.length > 0 && (
                 <div style={{
                     paddingTop: 10, 
-                    paddingLeft: window.innerWidth > 700 && '9%', 
+                    paddingLeft: window.innerWidth > 700 && '12.5%', 
                     display: 'flex', 
                     flexDirection: window.innerWidth <= 700 && 'column', 
                     alignItems: 'center', 
@@ -63,7 +63,7 @@ export default function Recommendations() {
                     >AI Generated</p>
                 </div>
             )}
-            {!loadingRecommended ? (
+            {loadingRecommended ? (
                 <div style={{padding: 30}}>
                     <MutatingDots
                         height={100}
@@ -94,7 +94,7 @@ export default function Recommendations() {
                     {seeWhy && (
                         <i style={{color: 'grey', fontSize: 'small',  padding: 20, paddingLeft: window.innerWidth > 700 ? '12.5%' : '15%',}}>We’ve hand‑picked these products based on your ratings and shopping activity. 
                             The more products you rate, the better we can understand your style and suggest items you’ll love. 
-                            Keep exploring and rating to unlock even more personalized recommendations.
+                            Keep exploring and rating to unlock even more personalized recommendations!
                         </i>
                     )}
                     <div className='gridContainer'>
