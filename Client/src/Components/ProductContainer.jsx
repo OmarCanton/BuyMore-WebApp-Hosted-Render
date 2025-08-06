@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import '../Styles/productContainer.css';
+import '../Styles/ProductContainer.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { tokenState } from '../Redux/Slices/authSlice';
