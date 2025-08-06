@@ -76,33 +76,35 @@ export default function Recommendations() {
                     />
                 </div>
             ):(
-                <>
-                    <div 
-                        onClick={() => setSeeWhy(prev => !prev)} 
-                        style={{
-                            width: '100%', 
-                            paddingLeft: '12.5%', 
-                            cursor: 'pointer',
-                            paddingTop: 20
-                        }}
-                    >
-                        <div style={{display: 'flex', alignItems: 'center', gap: 3}}>
-                            <Info htmlColor="grey" fontSize="small"/>
-                            <p style={{color: 'grey', fontSize: 'small'}}>Why am I seeing this?</p>
+                recommended_items.length > 0 && (
+                    <>
+                        <div 
+                            onClick={() => setSeeWhy(prev => !prev)} 
+                            style={{
+                                width: '100%', 
+                                paddingLeft: '12.5%', 
+                                cursor: 'pointer',
+                                paddingTop: 20
+                            }}
+                        >
+                            <div style={{display: 'flex', alignItems: 'center', gap: 3}}>
+                                <Info htmlColor="grey" fontSize="small"/>
+                                <p style={{color: 'grey', fontSize: 'small'}}>Why am I seeing this?</p>
+                            </div>
                         </div>
-                    </div>
-                    {seeWhy && (
-                        <i style={{color: 'grey', fontSize: 'small',  padding: 20, paddingLeft: window.innerWidth > 700 ? '12.5%' : '15%',}}>We’ve hand‑picked these products based on your ratings and shopping activity. 
-                            The more products you rate, the better we can understand your style and suggest items you’ll love. 
-                            Keep exploring and rating to unlock even more personalized recommendations!
-                        </i>
-                    )}
-                    <div className='gridContainer'>
-                        {recommended_items.map((product, index) => (   
-                            <ProductContainer key={index} item={product}/>
-                        ))}
-                    </div>
-                </>
+                        {seeWhy && (
+                            <i style={{color: 'grey', fontSize: 'small',  padding: 20, paddingLeft: window.innerWidth > 700 ? '12.5%' : '15%',}}>We’ve hand‑picked these products based on your ratings and shopping activity. 
+                                The more products you rate, the better we can understand your style and suggest items you’ll love. 
+                                Keep exploring and rating to unlock even more personalized recommendations!
+                            </i>
+                        )}
+                        <div className='gridContainer'>
+                            {recommended_items.map((product, index) => (   
+                                <ProductContainer key={index} item={product}/>
+                            ))}
+                        </div>
+                    </>
+                )
             )}
         </>
     )
