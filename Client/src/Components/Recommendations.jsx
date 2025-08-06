@@ -34,12 +34,12 @@ export default function Recommendations() {
             {recommended_items.length > 0 && (
                 <div style={{
                     paddingTop: 10, 
-                    paddingLeft: window.innerWidth > 700 && '12.5%', 
+                    paddingLeft: window.innerWidth > 700 && '9%', 
                     display: 'flex', 
                     flexDirection: window.innerWidth <= 700 && 'column', 
                     alignItems: 'center', 
                     gap: 10, 
-                    width: '100%'
+                    width: '100%',
                 }}>
                     <h2 style={{
                         background: 'linear-gradient( to right, #C33764, #1D2671)',

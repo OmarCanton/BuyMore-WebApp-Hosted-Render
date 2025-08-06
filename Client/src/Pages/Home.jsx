@@ -30,7 +30,9 @@ export default function Home () {
                     background: 'linear-gradient( to right, #C33764, #1D2671)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
-                    filter: 'brightness(1.5)'                
+                    filter: 'brightness(1.5)',
+                    justifyContent: window.innerWidth <= 700 && 'center',
+                    paddingLeft: window.innerWidth > 700 && '9%'         
                 }}
             >Featured Products</span>
             <FeaturedProducts />

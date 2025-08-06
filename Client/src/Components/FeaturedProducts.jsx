@@ -97,7 +97,7 @@ export default function FeaturedProducts () {
             <>
                 <div className="apple">
                     <h2 
-                        style={{color: themeStyles.style.color, width: '100%', paddingLeft: '2.5%', display: 'flex', alignItems: 'center', gap: 2}}
+                        style={{color: themeStyles.style.color, width: '100%', paddingLeft: window.innerWidth > 700 ? '9%': '5%', display: 'flex', alignItems: 'center', gap: 2}}
                     >FROM APPLE <Verified style={{color: theme === 'dark' ? 'lightgrey' : 'grey'}} /></h2>
                     <div className="container">
                         <div className={window.innerWidth <= 768 ? 'gridContainer2' : 'gridContainer'}>
@@ -109,7 +109,7 @@ export default function FeaturedProducts () {
                 </div>
                 <div className="nike">
                     <h2 
-                        style={{color: themeStyles.style.color, width: '100%', paddingLeft: '2.5%', display: 'flex', alignItems: 'center', gap: 2}}
+                        style={{color: themeStyles.style.color, width: '100%', paddingLeft: window.innerWidth > 700 ? '9%': '5%', display: 'flex', alignItems: 'center', gap: 2}}
                     >FROM NIKE <Verified style={{color: theme === 'dark' ? 'lightgrey' : 'grey'}} /></h2>
                     <div className="container">
                     <div className={window.innerWidth <= 768 ? 'gridContainer2' : 'gridContainer'}>
@@ -121,7 +121,7 @@ export default function FeaturedProducts () {
                 </div>
                 <div className="samsung">
                     <h2 
-                        style={{color: themeStyles.style.color, width: '100%', paddingLeft: '2.5%', display: 'flex', alignItems: 'center', gap: 2}}
+                        style={{color: themeStyles.style.color, width: '100%', paddingLeft: window.innerWidth > 700 ? '9%': '5%', display: 'flex', alignItems: 'center', gap: 2}}
                     >FROM SAMSUNG <Verified style={{color: theme === 'dark' ? 'lightgrey' : 'grey'}} /></h2>
                     <div className="container">
                         <div className={window.innerWidth <= 768 ? 'gridContainer2' : 'gridContainer'}>
@@ -133,7 +133,7 @@ export default function FeaturedProducts () {
                 </div>
                 <div className="louisVuitton">
                     <h2 
-                        style={{color: themeStyles.style.color, width: '100%', paddingLeft: '2.5%', display: 'flex', alignItems: 'center', gap: 2}}
+                        style={{color: themeStyles.style.color, width: '100%', paddingLeft: window.innerWidth > 700 ? '9%': '5%', display: 'flex', alignItems: 'center', gap: 2}}
                     >FROM LOUIS VUITTON <Verified style={{color: theme === 'dark' ? 'lightgrey' : 'grey'}} /></h2>
                     <div className="container">
                         <div className={window.innerWidth <= 768 ? 'gridContainer2' : 'gridContainer'}>

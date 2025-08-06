@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+import os
 from fastapi import FastAPI
 from pymongo import MongoClient
 import pandas as pd
@@ -5,13 +7,14 @@ from surprise import Dataset, Reader, SVD
 from surprise.model_selection import train_test_split
 
 app = FastAPI()
+load_dotenv()
 
 # =========================
 # MongoDB connection
 # =========================
-MONGO_URI = "mongodb+srv://buymoreapp24:sQIA3jiSZZw1XFoa@cluster0.w88yx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-DB_NAME = "test"
-COLLECTION = "products"
+MONGO_URI = os.getenv("MONGO_URI")
+DB_NAME = os.getenv("DB_NAME")
+COLLECTION = os.getenv("COLLECTION")
 
 client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
