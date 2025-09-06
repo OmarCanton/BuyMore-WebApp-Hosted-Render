@@ -3,6 +3,7 @@ import productsReducer from '../Slices/productsSlice'
 import wishlistReducer from '../Slices/WishlistSlice'
 import favoritesReducer from '../Slices/FavoritesSlice'
 import authReducer from '../Slices/authSlice'
+import paymentReducer from '../Slices/paymentSlice'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 // import recommendationsReducer from '../Slices/recommendations'
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     products: productsReducer,
     wishlist: wishlistReducer,
     favorites: favoritesReducer,
+    payment: paymentReducer
     // recommendations: recommendationsReducer
 })
 

@@ -80,6 +80,11 @@
 }
 .mainWrapper:hover{
     width: 341.5px;
+    /* width: 391.5px; */
+}
+.mainWrapper-extended:hover{
+    /* width: 341.5px; */
+    width: 391.5px !important;
 }
 .mainWrapper:hover + .panelNotificationCount {
     opacity: 0;

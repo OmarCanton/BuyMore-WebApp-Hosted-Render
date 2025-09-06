@@ -16,9 +16,11 @@ export default function Recommendations() {
 
     useEffect(() => {
         const fetchRecommendedPrds = async () => {
+            if(user === null) return
             setLoadingRecommended(true)
             try {
                 const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/get_recommendations/${user?._id}`)
+                console.log(response?.data?.recommendations[0])
                 setRecommendItems(response?.data?.recommendations)
             } catch(err) {
                 console.error(err)
@@ -27,7 +29,7 @@ export default function Recommendations() {
             }
         }
         fetchRecommendedPrds()
-    }, [user?._id])
+    }, [user])
 
     return (
         <>

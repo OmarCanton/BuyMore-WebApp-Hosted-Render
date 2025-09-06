@@ -4,7 +4,7 @@ import '../Styles/Header.css'
 import PropTypes from 'prop-types'
 import { userDetailsContext } from '../Contexts/userDataContext'
 import { Button, CircularProgress } from '@mui/material'
-import { AccountCircle, ShoppingBag, QuestionAnswer, Menu } from '@mui/icons-material'
+import { AccountCircle, QuestionAnswer, Menu, ShoppingCart } from '@mui/icons-material'
 import {  useSelector } from 'react-redux'
 import { listItems } from '../Redux/Slices/WishlistSlice'
 import { LightMode, DarkMode } from '@mui/icons-material'
@@ -125,7 +125,7 @@ export default function Header ({appName}) {
                 <div className="wishlist">
                     <Link to='/cart'>
                         <Button className='but' fullWidth sx={{borderRadius: '50px'}}>
-                            <ShoppingBag 
+                            <ShoppingCart 
                                 style={{...theme == 'light' && window.innerWidth <= 650 && {color: '#3C3C3C'}}} 
                                 htmlColor='white' 
                                 fontSize='large'

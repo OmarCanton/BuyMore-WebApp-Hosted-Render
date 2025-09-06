@@ -154,7 +154,7 @@ export default function Login () {
                 style={{...theme === 'dark' && {boxShadow: '0 5px 10px -3px black'}, ...shake && {animation: 'shake 0.2s forwards'}}}
                 className='login-wrapper'
             >
-                <div className='welcomeMsg'>
+                {/* <div className='welcomeMsg'>
                     <div className='child1'>
                         <p>Welcome to BuyMore</p>
                         <p>Please sign into your account</p>
@@ -168,7 +168,7 @@ export default function Login () {
                             
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div 
                     style={{backgroundColor: themeStyles.style.divColor}}
                     className="login-form"

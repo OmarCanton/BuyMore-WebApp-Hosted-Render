@@ -23,6 +23,7 @@ import Lottie from 'lottie-react'
 import EmptyCart_Fav from '../Effects/EmptyCart_Fav.json'
 import LoginAnime from '../Effects/LoginAnime.json'
 import { userState, tokenState } from "../Redux/Slices/authSlice";
+// import { updateSessionId } from "../Redux/Slices/paymentSlice";
 
 export default function Cart () {
     const [loadingPayment, setLoadingPayment] = useState(false)
@@ -35,6 +36,7 @@ export default function Cart () {
     const {theme, themeStyles} = useContext(themesContext)
     const user = useSelector(userState)
     const token = useSelector(tokenState)
+    const userId = user?._id
 
     useEffect(() => {
         dispatch(getWishlistFromLocalStorage())
@@ -112,12 +114,13 @@ export default function Cart () {
             if(canRedirectToCheckout) {
                 const StripePromise = loadStripe(import.meta.env.VITE_LOADSTRIPE_KEY)
                 try {
-                    const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/checkout`, {items, ...user._id}, {withCredentials: true})
+                    const response = await axios.post(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/checkout`, {items, userId}, {withCredentials: true})
                     const { id: sessionId } = response.data
                     const stripe = await StripePromise
                     stripe.redirectToCheckout({sessionId}) 
                 } catch(err) {
-                    toast.error(err, {
+                    console.error(err)
+                    toast.error(err?.message, {
                         style: {
                             backgroundColor: 'black',
                             color: 'white'
@@ -172,7 +175,7 @@ export default function Cart () {
                     className="wishlist-header"
                     style={{color: themeStyles.style.color, backgroundColor: themeStyles.style.backgroundColor}}
                 >
-                    {user?.username ? `${user.username}'s wishlist`: 'Wishlist'}
+                    {user?.username && `${user.username}'s Cart`}
                 </span>
                 {items.length > 0 && 
                     <>
@@ -212,7 +215,7 @@ export default function Cart () {
                                 >Qty: {item.quantity}</p>
                                 <p 
                                     style={{...theme === 'dark' && { color: 'lightgrey'}}}
-                                >Price: ${item.totalItemPrice}</p>
+                                >Price: GHS {item.totalItemPrice}</p>
                                 <div className="incDec" 
                                     style={{...theme === 'dark' && {border: 'none'}}}
                                 >
@@ -251,7 +254,7 @@ export default function Cart () {
                     <h3>Total Quantity of Selected Items: {totalCartQuantity}</h3>
                     <h2 
                         style={{...theme === 'dark' ? {color: 'yellowgreen'} : {color: '#1D2671'}}}
-                    >Total Price: ${totalCartPrice.toFixed(2)}</h2>
+                    >Total Price: GHS {totalCartPrice.toFixed(2)}</h2>
                     <button className="toCheckout" onClick={handlePayment}>
                         {loadingPayment && <CircularProgress style={{width: 25, height: 25, color: 'white'}} />} Proceed to checkout
                     </button>

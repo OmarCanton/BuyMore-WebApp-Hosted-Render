@@ -3,10 +3,7 @@ const {
     allProductsController,
     addProducts, 
     newArrivals,
-    appleFeaturedProducts,
-    samsungFeaturedProducts,
-    nikeFeaturedProducts,
-    luisVuittonFeaturedProducts,
+    featuredProducts,
     addComment,
     getAllProductComments,
     addRating,
@@ -26,12 +23,9 @@ router.get('/newArrivals', newArrivals)
 router.post('/addProducts', addProducts)
 
 //featuredProducts
-router.get('/appleFeaturedProducts', appleFeaturedProducts)
-router.get('/nikeFeaturedProducts', nikeFeaturedProducts)
-router.get('/samsungFeaturedProducts', samsungFeaturedProducts)
-router.get('/luisVuittonFeaturedProducts', luisVuittonFeaturedProducts)
+router.get('/featuredProducts', featuredProducts)
 
-//ad comment to a product
+//add comment to a product
 router.post('/addProductComment', addComment)
 //add rating to a product
 router.post('/addRating', addRating)

@@ -27,7 +27,7 @@
         align-items: flex-start;
         justify-content: center;
         gap: 3%;
-        padding-bottom: 90px;
+        /* padding-bottom: 90px; */
         & .productSection {
             width: 50%;
             display: flex;

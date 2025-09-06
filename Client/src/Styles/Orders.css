@@ -1,0 +1,131 @@
+.orderPayment-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    & .orderPay-backTitle {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px;
+        & span {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+    }
+    & .orderPayment-main{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        flex-direction: column;
+        & span {
+            font-weight: bold;
+            font-size: 2.25rem;
+        }
+    }
+}
+
+.orders-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+.orders-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 10px;
+  /* box-shadow: 0px 2px 6px rgba(0,0,0,0.1); */
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  /* background: #fff; */
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid grey;
+}
+
+.orders-table th {
+  /* background-color: #f7f7f7; */
+  font-weight: 600;
+}
+
+/* .orders-table tr:hover {
+  background-color: #f1f1f1;
+} */
+
+/* Status Badges */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.status-badge.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.completed {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-badge.shipped {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+/* Action Button */
+.view-btn {
+  padding: 6px 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
+}
+
+
+@media (max-width: 425px) {
+    .orderPay-backTitle {
+        & span {
+            font-size: 1.3rem !important;
+        }
+    }
+    .orderPayment-main {
+        & span {
+            font-size: 2rem !important;
+        }
+    }
+}
+@media (max-width: 375px) {
+    .orderPay-backTitle {
+        & span {
+            font-size: 1.2rem !important;
+        }
+    }
+}

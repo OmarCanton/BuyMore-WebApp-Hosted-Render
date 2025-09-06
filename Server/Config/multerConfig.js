@@ -22,10 +22,29 @@ const storage = new CloudinaryStorage({
     
 })
 
+const productImages_storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'product_images',
+        allowed_formats: ['jpg', 'png', 'jpeg'],
+        public_id: (req, file) => {
+            return `${file}_product_image`
+        },
+    }  
+})
+
 const upload = multer({
     storage: storage,
     limits: {
         fileSize: 2 * 1024 * 1024 //Shouldnt be more than 2MB
     },
 })
-module.exports = upload
+
+const upload_productImage = multer({
+    storage: productImages_storage,
+    limits: {
+        fileSize: 10 * 1024 * 1024 //Shouldnt be more than 10MB
+    },
+})
+
+module.exports = { upload, upload_productImage }

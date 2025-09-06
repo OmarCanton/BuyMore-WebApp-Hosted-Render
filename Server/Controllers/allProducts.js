@@ -65,46 +65,49 @@ const newArrivals = async (req, res) => {
         res.status(500).json({error: 'Unable to retrieve new arrivals at this time'})
     }
 } 
-const appleFeaturedProducts = async (req, res) => {
+const featuredProducts = async (req, res) => {
     try {
-        const featuredProducts = await products.find({brand: 'Apple'}).lean().limit(5)
-        res.status(200).json({featuredProducts})
+        const apple = await products.find({brand: 'Apple'}).lean().limit(5)
+        const samsung = await products.find({brand: 'Samsung'}).lean().limit(5)
+        const nike = await products.find({brand: 'Nike'}).lean().limit(5)
+        const lvt = await products.find({brand: 'Louis Vuitton'}).lean().limit(5)
+        res.status(200).json({apple, samsung, nike, lvt})
     } catch (err) {
         console.log(err)
         res.status(500).json({error: 'Cannot retrieve products at this time'})
     }
 
 } 
-const samsungFeaturedProducts = async (req, res) => {
-    try {
-        const featuredProducts = await products.find({brand: 'Samsung'}).lean().limit(5)
-        res.status(200).json({featuredProducts})
-    } catch (err) {
-        console.log(err)
-        res.status(500).json({error: 'Cannot retrieve products at this time'})
-    }
+// const samsungFeaturedProducts = async (req, res) => {
+//     try {
+//         const featuredProducts = await products.find({brand: 'Samsung'}).lean().limit(5)
+//         res.status(200).json({featuredProducts})
+//     } catch (err) {
+//         console.log(err)
+//         res.status(500).json({error: 'Cannot retrieve products at this time'})
+//     }
 
-} 
-const nikeFeaturedProducts = async (req, res) => {
-    try {
-        const featuredProducts = await products.find({brand: 'Nike'}).lean().limit(5)
-        res.status(200).json({featuredProducts})
-    } catch (err) {
-        console.log(err)
-        res.status(500).json({error: 'Cannot retrieve products at this time'})
-    }
+// } 
+// const nikeFeaturedProducts = async (req, res) => {
+//     try {
+//         const featuredProducts = await products.find({brand: 'Nike'}).lean().limit(5)
+//         res.status(200).json({featuredProducts})
+//     } catch (err) {
+//         console.log(err)
+//         res.status(500).json({error: 'Cannot retrieve products at this time'})
+//     }
 
-} 
-const luisVuittonFeaturedProducts = async (req, res) => {
-    try {
-        const featuredProducts = await products.find({brand: 'Louis Vuitton'}).lean().limit(5)
-        res.status(200).json({featuredProducts})
-    } catch (err) {
-        console.log(err)
-        res.status(500).json({error: 'Cannot retrieve products at this time'})
-    }
+// } 
+// const luisVuittonFeaturedProducts = async (req, res) => {
+//     try {
+//         const featuredProducts = await products.find({brand: 'Louis Vuitton'}).lean().limit(5)
+//         res.status(200).json({featuredProducts})
+//     } catch (err) {
+//         console.log(err)
+//         res.status(500).json({error: 'Cannot retrieve products at this time'})
+//     }
 
-} 
+// } 
 const addComment = async (req, res) => {
     const { productId, userId, username, comment } = req.body
     try {
@@ -215,10 +218,7 @@ module.exports = {
     allProductsController,
     addProducts,
     newArrivals,
-    appleFeaturedProducts,
-    samsungFeaturedProducts,
-    nikeFeaturedProducts,
-    luisVuittonFeaturedProducts,
+    featuredProducts,
     addComment,
     getAllProductComments,
     addRating,

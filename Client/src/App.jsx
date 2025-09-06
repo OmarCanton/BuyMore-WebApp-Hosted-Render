@@ -28,12 +28,15 @@ import CancelPage from './Pages/PaymentPages/Cancel'
 import PageNotFound from './Pages/PageNotFound'
 import Dev from './Pages/Developer'
 import TermsAndCons from './Pages/TermsAndCons'
+import AdminHome from './Pages/admin'
+import AddProduct from './Pages/admin/addProduct'
 
 export default function App () {
   const dispatch = useDispatch()
   const [openMenu, setOpenMenu] = useState(false)
   const [showThemeOverlay, setShowThemeOverlay] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
+  const [stripeSessionId, setStripeSessionId] = useState(null)
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'light'
   })
@@ -122,7 +125,8 @@ export default function App () {
       >
         <userDetailsContext.Provider value={{
             openMenu, setOpenMenu,
-            isVisible, setIsVisible
+            isVisible, setIsVisible,
+            stripeSessionId, setStripeSessionId
           }}>
           <AnimatePresence mode='wait'>
             <ScrollPageToTop />
@@ -147,6 +151,8 @@ export default function App () {
               <Route path='product/:id' element={<ProductCheck />} />
               <Route path='checkout/success' element={<SuccessPage />} />
               <Route path='checkout/cancel' element={<CancelPage />} />
+              <Route path='admin/dashboard' element={<AdminHome />} />
+              <Route path='admin/addProduct' element={<AddProduct />} />
               <Route path='*' element={<PageNotFound />}/>
             </Routes>
           </AnimatePresence>

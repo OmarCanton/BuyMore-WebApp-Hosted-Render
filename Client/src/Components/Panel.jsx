@@ -7,12 +7,14 @@ import {
     SettingsRounded, 
     HomeRounded, 
     FavoriteRounded, 
-    ShopRounded
+    ShopRounded,
+    Dashboard
 } from '@mui/icons-material'
 import { Button } from '@mui/material'
 import { listItems } from '../Redux/Slices/WishlistSlice'
 import { favoriteItems } from '../Redux/Slices/FavoritesSlice'
 import { useSelector } from 'react-redux'
+import { userState } from '../Redux/Slices/authSlice'
 
 export default function Panel () {
     const location = useLocation()
@@ -20,7 +22,7 @@ export default function Panel () {
     const wishlistItems = useSelector(listItems)
     const favorites = useSelector(favoriteItems)
     const {theme, themeStyles} = useContext(themesContext)
-
+    const user = useSelector(userState)
 
     const {isVisible, setIsVisible} = useContext(userDetailsContext)
     const [lastScrollY, setLastScrollY] = useState(0)
@@ -61,7 +63,7 @@ export default function Panel () {
                     ...theme === 'dark' && {backgroundColor: themeStyles.style.divColor}, 
                     ...!isVisible && {transform: 'translateY(120%)'}
                 }} 
-                className='mainWrapper'
+                className={`mainWrapper ${user?.role === 'admin' && 'mainWrapper-extended'}`}
             >
                 <Link 
                     to='/' 
@@ -75,6 +77,20 @@ export default function Panel () {
                         />
                     </Button>
                 </Link>
+                {user?.role === 'admin' && (
+                    <Link 
+                        to='/admin/dashboard' 
+                        className='Dashboard'
+                    >
+                        <Button className='but' fullWidth sx={{borderRadius: '50px'}}>
+                            <Dashboard
+                                fontSize='large' 
+                                htmlColor='white'  
+                                style={{...theme == 'light' && window.innerWidth <= 768 && {color: '#3C3C3C'}}}
+                            />
+                        </Button>
+                    </Link>
+                )}
                 <Link 
                     to='/shop' 
                     className='shop'
@@ -85,7 +101,7 @@ export default function Panel () {
                             fontSize='large' 
                             htmlColor='white'
                         />
-                        </Button>
+                    </Button>
                 </Link>
                 <Link 
                     to='/cart' 

@@ -14,14 +14,14 @@
     
     & .login-wrapper {
         height: 80vh;
-        width: 80vw;
+        width: 30%;
         border-radius: 20px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         box-shadow: var(--box-shadow);
 
-        & .welcomeMsg {
+        /* & .welcomeMsg {
             background-image: linear-gradient( to right, #C33764, #1D2671);
             height: 100%;
             width: 50%;
@@ -74,13 +74,14 @@
                 }
             }
 
-        }
+        } */
 
         & .login-form {
             height: 100%;
-            width: 50%;
-            border-top-right-radius: var(--borRad);
-            border-bottom-right-radius: var(--borRad);
+            width: 100%;
+            border-radius: var(--borRad);
+            /* border-top-right-radius: var(--borRad);
+            border-bottom-right-radius: var(--borRad); */
             background-color: white;
             display: flex;
             align-items: center;
@@ -185,8 +186,10 @@
                         }
                     }                
                 }
-                & .singup-noAcc {
-                    display: none;
+                & .singup-noAcc a {
+                    color: #C33764;
+                    text-decoration: none;
+                    font-weight: bold;
                 }
             } 
 

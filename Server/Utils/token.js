@@ -11,6 +11,7 @@ const generateAccessToken = (user) => {
     }
     return jwt.sign(payload, ACCESS_TOKEN, {expiresIn: '15m'})
 }
+
 const generateRefreshToken = (user, rememberMe) => {
     const payload = {
         id: user._id,
@@ -24,5 +25,7 @@ const generateRefreshToken = (user, rememberMe) => {
     }
 
 }
+
+
 
 module.exports = { generateAccessToken, generateRefreshToken }

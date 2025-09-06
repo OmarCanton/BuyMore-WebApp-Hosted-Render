@@ -4,9 +4,9 @@ const crypto = require('crypto')
 const bcrypt = require('bcrypt')
 const User = require('../Config/Models/UserSchema')
 const multer = require('multer')
-const upload = require('../Config/multerConfig')
+const { upload } = require('../Config/multerConfig')
 const nodemailer = require('nodemailer')
-const MulterErrorHandler = require('../Helpers/multerErrorHandler')
+const { MulterErrorHandler } = require('../Helpers/multerErrorHandler')
 
 const router = Router();
 

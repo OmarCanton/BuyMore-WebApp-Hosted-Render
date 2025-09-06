@@ -4,9 +4,11 @@ const connectToDB = require('../Config/connection/mongooseConnect')
 const cookieParser = require('cookie-parser')
 const userAuthRoutes = require('../Routes/userAuthRoutes')
 const productsRoutes = require('../Routes/productsRoutes')
+const ordersRoutes = require('../Routes/orders')
 const paymentRoute = require('../Routes/payment')
 const userRoutes = require('../Routes/userRoutes')
 const recommenderRoutes  = require('../Routes/recommenderRoutes')
+const adminRoutes = require('../Routes/adminRoutes')
 const cors = require('cors')
 
 const app = express();
@@ -35,11 +37,17 @@ app.use(userRoutes)
 //productsRoutes
 app.use(productsRoutes)
 
+//orderRoutes
+app.use(ordersRoutes)
+
 //payments
 app.use(paymentRoute)
 
 //ai recommender service
 app.use(recommenderRoutes)
+
+//adminRoutes
+app.use(adminRoutes)
 
 const PORT = process.env.PORT
 

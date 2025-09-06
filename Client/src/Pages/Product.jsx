@@ -21,6 +21,7 @@ import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import Panel from '../Components/Panel'
 import { userState, tokenState } from '../Redux/Slices/authSlice'
+import Recommendations from '../Components/Recommendations'
 
 export default function ProductCheck () {
     const [comment, setComment] = useState('')
@@ -161,7 +162,7 @@ export default function ProductCheck () {
                         <div className="prices" 
                             style={{...theme === 'dark' && {color: 'yellowgreen'}}}
                         >
-                            <h2 className="actualPrice">Price: ${(product.actualPrice).toFixed(2)}</h2>
+                            <h2 className="actualPrice">GHS {(product.actualPrice).toFixed(2)}</h2>
                         </div>
                         <div className="cart" onClick={() => addToWishlist(product)}>
                             <button className="addTocart">Add To Wishlist</button>
@@ -275,6 +276,7 @@ export default function ProductCheck () {
                     </div>
                 }
             </div>
+            <Recommendations />
             <Panel />
         </div>
     )

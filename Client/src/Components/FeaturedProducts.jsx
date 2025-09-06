@@ -12,77 +12,95 @@ export default function FeaturedProducts () {
     const [nikePrds, setNikePrds] = useState([])
     const [samsungPrds, setSamsungPrds] = useState([])
     const [lvtPrds, setLvtPrds] = useState([])
-    const [loadingApplePrds, setLoadingApplePrds] = useState(false)
-    const [loadingNikePrds, setLoadingNikePrds] = useState(false)
-    const [loadingSamsungPrds, setLoadingSamsungPrds] = useState(false)
-    const [loadingLVTPrds, setLoadingLVTPrds] = useState(false)
+    const [loadingFetauredPrds, setLoadingFetauredPrds] = useState(false)
+    // const [loadingNikePrds, setLoadingNikePrds] = useState(false)
+    // const [loadingSamsungPrds, setLoadingSamsungPrds] = useState(false)
+    // const [loadingLVTPrds, setLoadingLVTPrds] = useState(false)
 
     //apple
     useEffect(() => {
-        const fetchApplePrds = async () => {
-            setLoadingApplePrds(true)
+        const fetchFeaturedProducts = async () => {
+            setLoadingFetauredPrds(true)
             try {
-                const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/appleFeaturedProducts`)
-                setApplePrds(response?.data?.featuredProducts)
+                const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/featuredProducts`)
+                setApplePrds(response?.data?.apple)
+                setNikePrds(response?.data?.nike)
+                setSamsungPrds(response?.data?.samsung)
+                setLvtPrds(response?.data?.lvt)
             } catch(err) {
                 console.error(err)
             } finally {
-                setLoadingApplePrds(false)
+                setLoadingFetauredPrds(false)
             }
         }
-        fetchApplePrds()
+        fetchFeaturedProducts()
     }, [])
 
-    //nike
-    useEffect(() => {
-        const fetchNikePrds = async () => {
-            setLoadingNikePrds(true)
-            try {
-                const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/nikeFeaturedProducts`)
-                setNikePrds(response?.data?.featuredProducts)
-            } catch(err) {
-                console.error(err)
-            } finally {
-                setLoadingNikePrds(false)
-            }
-        }
-        fetchNikePrds()
-    }, [])
+    // useEffect(() => {
+    //     const fetchApplePrds = async () => {
+    //         setLoadingApplePrds(true)
+    //         try {
+    //             const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/appleFeaturedProducts`)
+    //             setApplePrds(response?.data?.featuredProducts)
+    //         } catch(err) {
+    //             console.error(err)
+    //         } finally {
+    //             setLoadingApplePrds(false)
+    //         }
+    //     }
+    //     fetchApplePrds()
+    // }, [])
 
-    //samsung
-    useEffect(() => {
-        const fetchSamsungPrds = async () => {
-            setLoadingSamsungPrds(true)
-            try {
-                const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/samsungFeaturedProducts`)
-                setSamsungPrds(response?.data?.featuredProducts)
-            } catch(err) {
-                console.error(err)
-            } finally {
-                setLoadingSamsungPrds(false)
-            }
-        }
-        fetchSamsungPrds()
-    }, [])
+    // //nike
+    // useEffect(() => {
+    //     const fetchNikePrds = async () => {
+    //         setLoadingNikePrds(true)
+    //         try {
+    //             const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/nikeFeaturedProducts`)
+    //             setNikePrds(response?.data?.featuredProducts)
+    //         } catch(err) {
+    //             console.error(err)
+    //         } finally {
+    //             setLoadingNikePrds(false)
+    //         }
+    //     }
+    //     fetchNikePrds()
+    // }, [])
+
+    // //samsung
+    // useEffect(() => {
+    //     const fetchSamsungPrds = async () => {
+    //         setLoadingSamsungPrds(true)
+    //         try {
+    //             const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/samsungFeaturedProducts`)
+    //             setSamsungPrds(response?.data?.featuredProducts)
+    //         } catch(err) {
+    //             console.error(err)
+    //         } finally {
+    //             setLoadingSamsungPrds(false)
+    //         }
+    //     }
+    //     fetchSamsungPrds()
+    // }, [])
     
-    //louis vuitton
-    useEffect(() => {
-        const fetchLVTPrds = async () => {
-            setLoadingLVTPrds(true)
-            try {
-                const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/luisVuittonFeaturedProducts`)
-                setLvtPrds(response?.data?.featuredProducts)
-            } catch(err) {
-                console.error(err)
-            } finally {
-                setLoadingLVTPrds(false)
-            }
-        }
-        fetchLVTPrds()
-    }, [])
+    // //louis vuitton
+    // useEffect(() => {
+    //     const fetchLVTPrds = async () => {
+    //         setLoadingLVTPrds(true)
+    //         try {
+    //             const response = await axios.get(`${import.meta.env.VITE_EXTERNAL_HOSTED_BACKEND_URL}/luisVuittonFeaturedProducts`)
+    //             setLvtPrds(response?.data?.featuredProducts)
+    //         } catch(err) {
+    //             console.error(err)
+    //         } finally {
+    //             setLoadingLVTPrds(false)
+    //         }
+    //     }
+    //     fetchLVTPrds()
+    // }, [])
 
     return (
-        (loadingApplePrds || loadingNikePrds || loadingSamsungPrds || loadingLVTPrds) ? (
+        (loadingFetauredPrds) ? (
             <div style={{padding: 30}}>
                 <Puff
                     height={40}
