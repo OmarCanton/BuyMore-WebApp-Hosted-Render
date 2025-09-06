@@ -6,12 +6,14 @@ import { userState } from "../Redux/Slices/authSlice"
 import axios from "axios"
 import { MutatingDots } from 'react-loader-spinner'
 import { Info } from "@mui/icons-material"
+import { useLocation } from "react-router-dom"
 
 export default function Recommendations() {
     const user = useSelector(userState)
     const [recommended_items, setRecommendItems] = useState([])
     const [loadingRecommended, setLoadingRecommended] = useState(false)
     const [seeWhy, setSeeWhy] = useState(false)
+    const location = useLocation().pathname
     
 
     useEffect(() => {
@@ -36,7 +38,7 @@ export default function Recommendations() {
             {recommended_items.length > 0 && (
                 <div style={{
                     paddingTop: 10, 
-                    paddingLeft: window.innerWidth > 700 && '9%', 
+                    paddingLeft: window.innerWidth > 700 && '10%',
                     display: 'flex', 
                     flexDirection: window.innerWidth <= 700 && 'column', 
                     alignItems: 'center', 
@@ -44,12 +46,21 @@ export default function Recommendations() {
                     width: '100%',
                 }}>
                     <h2 style={{
-                        background: 'linear-gradient( to right, #C33764, #1D2671)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        filter: 'brightness(1.5)',
+                        ...location.startsWith('/product') ? 
+                        {
+                            color: 'white'
+                        }:{
+                            background: 'linear-gradient( to right, #C33764, #1D2671)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            filter: 'brightness(1.5)'
+                        },
                         fontSize: window.innerWidth <= 700 ? '2rem' : '2.25rem'  
-                    }}>Recommended For you</h2>
+                    }}>
+                        {location.startsWith('/product') ? 
+                            'You May Also Like' : 'Recommended For you' 
+                        }
+                    </h2>
                     <p
                         style={{
                             padding: 5, 

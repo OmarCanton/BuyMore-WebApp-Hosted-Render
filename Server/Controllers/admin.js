@@ -1,10 +1,25 @@
 const Products = require('../Config/Models/productsSchema')
 
 const addProduct = async (req, res) => {
-    console.log(req.body)
+    const { 
+        name, 
+        category, 
+        actualPrice, 
+        prevPrice, 
+        description, 
+        brand
+    } = req.body
     try {
+        const productImage = req?.file?.path
+        
         const product = new Products({
-            ...req.body,
+            image: productImage,
+            name: name,
+            category: category,
+            actualPrice: actualPrice,
+            prevPrice: prevPrice,
+            description: description,
+            brand: brand,
         })
 
         product.save()

@@ -77,7 +77,7 @@ export default function Dev() {
                             transition={{delay: 0.6, ease: 'anticipate'}}
                             className="status"
                         >
-                            Status: WEB Developer
+                            <pre style={{fontWeight: 'bold'}}>Status:</pre> WEB Apps Developer, Mobile App Developer and Ai Enthusiast  
                         </motion.p>
                         <motion.p 
                             initial={{y: '20%', opacity: 0}}
@@ -85,7 +85,7 @@ export default function Dev() {
                             transition={{delay: 0.8, ease: 'anticipate'}}
                             className="contact"
                         >
-                            Contact: 0536342775
+                            <pre style={{fontWeight: 'bold'}}>Contact:</pre> 0536342775
                         </motion.p>
                         <motion.p 
                             initial={{y: '20%', opacity: 0}}
@@ -93,7 +93,7 @@ export default function Dev() {
                             transition={{delay: 1, ease: 'anticipate'}}
                             className="frontend"
                         >
-                            Front-end Technologies: HTML, CSS, React JS
+                            <pre style={{fontWeight: 'bold'}}>Front-end Technologies:</pre> HTML, CSS, React JS, React Native
                         </motion.p>
                         <motion.p 
                             initial={{y: '20%', opacity: 0}}
@@ -101,7 +101,7 @@ export default function Dev() {
                             transition={{delay: 1.2, ease: 'anticipate'}}
                             className="backend"
                         >
-                            Backend Technologies: Node JS, Express JS, MongoDB
+                            <pre style={{fontWeight: 'bold'}}>Backend Technologies:</pre> Node JS, Express JS, MongoDB
                         </motion.p>
                         <motion.p 
                             initial={{y: '20%', opacity: 0}}

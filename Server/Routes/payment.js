@@ -53,7 +53,7 @@ router.post('/checkout', async (req, res) => {
         })
         res.status(200).json({id: session.id})
     } catch(err) {
-        res.status(500).json({error: true, msg: `Error completing payment\n${err}`})
+        res.status(500).json({error: true, msg: `There was an unexpected error completing payment\n${err}`})
     }
 })
 

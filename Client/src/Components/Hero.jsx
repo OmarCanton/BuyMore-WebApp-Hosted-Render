@@ -153,7 +153,7 @@ export default function Hero () {
             <div className='welcomeMessage'>
                 <div className="welcMsgCont">
                     <h1>{appNameText1}&middot;{appNameText2}</h1>
-                    <h2 style={{opacity: opacity, transition: 'opacity 0.5s ease'}}>Welcome To Your No.1 Ecommerce Platform</h2>
+                    <h2 style={{opacity: opacity, transition: 'opacity 0.5s ease'}}>Welcome To Your No.1 e-commerce Platform</h2>
                     <button className='shopNowBtn' style={translateBut} onClick={viewAllProducts}>Shop Now</button>
                 </div>
             </div>
