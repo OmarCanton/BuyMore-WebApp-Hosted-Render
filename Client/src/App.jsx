@@ -30,6 +30,8 @@ import Dev from './Pages/Developer'
 import TermsAndCons from './Pages/TermsAndCons'
 import AdminHome from './Pages/admin'
 import AddProduct from './Pages/admin/addProduct'
+import EditProducts from './Pages/admin/editProducts'
+import EditPage from './Pages/admin/editPage'
 
 export default function App () {
   const dispatch = useDispatch()
@@ -153,6 +155,8 @@ export default function App () {
               <Route path='checkout/cancel' element={<CancelPage />} />
               <Route path='admin/dashboard' element={<AdminHome />} />
               <Route path='admin/addProduct' element={<AddProduct />} />
+              <Route path='admin/editProduct' element={<EditProducts />} />
+              <Route path='admin/editPage/:id' element={<EditPage />} />
               <Route path='*' element={<PageNotFound />}/>
             </Routes>
           </AnimatePresence>

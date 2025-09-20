@@ -41,8 +41,8 @@ export default function AdminHome () {
                 <Link to={'/admin/addProduct'} style={{ textDecoration: 'none', background: 'linear-gradient(135deg, #C33764, #1D2671)', borderRadius: 15 }}>
                     <p style={{fontWeight: 'bold', fontSize: '1.5rem', color: 'white',  padding: 70, alignItems: 'center', justifyContent: 'flex-start',}}>Add a Product</p>
                 </Link>
-                {/* <Link to={'/admin/updateProduct'} style={{ textDecoration: 'none', background: 'linear-gradient(to right, #1D2671, #C33764)', borderRadius: 15 }}>
-                    <p style={{fontWeight: 'bold', fontSize: '1.5rem', color: 'white',  padding: 70, alignItems: 'center', justifyContent: 'flex-start',}}>update a Product</p>
+                {/* <Link to={'/admin/editProduct'} style={{ textDecoration: 'none', background: 'linear-gradient(to right, #1D2671, #C33764)', borderRadius: 15 }}>
+                    <p style={{fontWeight: 'bold', fontSize: '1.5rem', color: 'white',  padding: 70, alignItems: 'center', justifyContent: 'flex-start',}}>Edit Products</p>
                 </Link> */}
             </div>
             <Panel />

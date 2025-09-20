@@ -205,6 +205,7 @@ const filterProduct = async (req, res) => {
 
 const getProduct = async (res, req) => {
     const { pid } = req.params
+    console.log(pid)
     try {
         const product = await products.findById(pid)
         res.status(200).json({product})
